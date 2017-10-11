@@ -1,7 +1,7 @@
 1. Open your Terminal application.
 Ensure Git 1.9.5 or :arrow_up: is installed, type:
 
- ''' git --version'''
+ '' git --version''
 
 If your Git version is below 1.9.5, check git-scm.com to download the latest version.
 
