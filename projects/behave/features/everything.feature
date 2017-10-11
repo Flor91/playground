@@ -1,0 +1,6 @@
+# Created by f.silvestre at 28/03/2016
+Feature: #Enter feature name here
+  # Enter feature description here
+
+  Scenario: # Enter scenario name here
+    # Enter steps here
