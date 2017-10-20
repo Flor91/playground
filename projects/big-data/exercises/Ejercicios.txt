@@ -1,0 +1,66 @@
+Mapreduce - Exercise 1 
+Inverted Index 
+
+Given a directory with books in txt format, write a mapreduce which outputs an inverted index, i.e., a table that associates a word with the books and the corresponding positions at which it occurs (http://en.wikipedia.org/wiki/Inverted_index).
+
+Dataset URL: here HDFS Cluster DataSet path: /user/hadoop/mapreduce/data/books
+
+hint 1: Suggested output example (not real data): Love     alice_in_wonderland.txt:100,the_prince.txt:900,the_prince.txt:1050 
+hint 2: Given the mapper doesn’t receive the filename as input. A Hadoop Configured Parameter (environment variable) could help to retrieve the filename from which the word comes.
+
+
+Mapreduce - Exercise 2 
+Column-wise Variance of a matrix 
+
+Given a csv file without headers, calculate the sample variance ( s2 ) of each column. (http://en.wikipedia.org/wiki/Variance)
+
+HDFS DataSet path: /user/hadoop/mapreduce/data/matrix     ¡¡¡DON’T DOWNLOAD IT FROM THE CLUSTER $$$$!!! 
+
+hint 1: Suggested output: columnIndex<tab>sampleVariance. Example: 0    135.6 1    2.2 2    536.9 ... 
+hint 2: Assume the file has only numeric values and no entries are missing (no NULLs or empty). 
+hint 3: The python modules os and sys will come quite handy. 
+hint 4: Focus on the the mapreduce. (If any) other plumbing code is required, do it manually, afterwards implement it if you have the time (with python of course!).
+
+question 1: Assuming your matrix is very big (both rows and columns), how many reducers does it make sense to have?
+question 2: How many mapreduce jobs do you need?
+question 3: Implement combiners and notice the savings in bytes transferred to the reducers.
+
+
+
+Sqoop - Exercise 1
+
+1A. Import a dataset from MySql into HDFS 
+Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import into HDFS only the crimes of 2005.
+- Dataset: https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2 
+- MySQL Table: bdtraining.chicago_crimes
+
+1B. Export a dataset from HDFS into MySQL 
+Export the data that you have stored in HDFS in the previous exercise into a new table in MySQL.
+Hint 1: Check the output that Sqoop writes to command line, there’s always useful data there.
+Hint 2: To improve the performance, vary the number of mappers by applying different values to --num-mappers <n>.
+
+
+Pig Practice
+
+A. Investigating Crimes
+1. Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import it into HDFS using Sqoop. 
+2. Count all the crimes which description is “Simple”; order those crimes by year; print the results to console, and also store them to a text file.     - 
+Dataset: https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2 
+- MySQL Table: bdtraining.chicago_crimes
+Hint 1: There are many ways for resolving this exercise. Check the “performance considerations” slide and find the most suitable approach.
+
+B. The 100 most popular words
+1. We would like to know the 100 most popular words which appeared in both of the following books, in descending order by number of appearances:
+ the_adventures_of_sherlock_holmes.txt 
+ the_adventures_of_tom_sawyer.txt
+ (*) Filter articles and pronouns
+        - URL: /home/hadoop/mapreduce/data/books
+Hint 1: Remember that the JOIN operation is one of the most expensives in terms of performance. Consider to pre-process the data before joins.
+
+
+Hive - Exercise
+Column-wise Variance (s2) of a matrix Given a csv file without headers, calculate the sample variance ( s2 ) of each column. (http://en.wikipedia.org/wiki/Variance)
+HDFS DataSet path: /user/hadoop/mapreduce/data/matrix     ¡¡¡DON’T DOWNLOAD IT FROM THE CLUSTER $$$$!!!
+
+hint 1: Suggested output: sampleVariance1<tab>sampleVariance2<tab>sampleVariance3... Example: 135.6   2.2   536.9   ...
+hint 2: Assume the file has only numeric values and no entries are missing (no NULLs or empty).

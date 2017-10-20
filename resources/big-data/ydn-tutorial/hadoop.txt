@@ -1,0 +1,76 @@
+Hadoop is a large-scale distributed batch processing infrastructure designed
+to efficiently distribute large amounts of work across a set of machines.
+
+Includes a distributed file system which breaks up input data and sends fractions of the original
+data to several machines in your cluster to hold.
+
+Problem being processed in parallel using all of the machines in the
+cluster and computes output results as efficiently as possible.
+
+# Challenges at Large Scale:
+In a distributed environment, however, partial failures are an expected and common occurrence
+
+Hadoop provides no security model, nor safeguards against maliciously inserted data
+designed to handle hardware failure and data congestion issues very robustly
+
+Intermediate data sets generated while performing a large-scale computation can easily fill up several times more space than what the
+original input data set had occupied. During this process, some of the hard drives employed by the system may become full, and the distributed
+system may need to route this data to other nodes which can store the overflow.
+
+Bandwidth is a scarce resource even on an internal network
+a large-scale distributed system must be able to manage the above mentioned resources efficiently
+Synchronization between multiple machines
+
+
+# Moore's Law
+the number of transistors that can be placed in a
+processor will double approximately every two years, for half the cost
+this does not necessarily result in faster single-threaded performance
+
+# The Hadoop Approach
+Individual hard drives can only sustain read speeds between 60-100 MB/second.
+connecting many commodity computers together to work in parallel into a single cost-effective compute cluster
+
+
+# Comparison to Existing Techniques
+Hadoop unique is its simplified programming model efficient,
+automatic distribution of data and work across machines and in turn
+utilizing the underlying parallelism of the CPU cores
+
+# Data Distribution
+Hadoop Distributed File System (HDFS) will split large data files into chunks
+Each chunk is replicated across several machines, so that a single machine failure does not result in any data being unavailable
+Active monitoring system then re-replicates the data in response to system failures
+They form a single namespace, so their contents are universally accessible
+
+- Data record-oriented: Individual input files are broken into lines
+Each process running on a node in the cluster then processes a subset of these records
+Hadoop framework then schedules these processes in proximity to the location of data/records using knowledge from the
+distributed file system
+Each compute process running on a node operates on a subset of the data
+Which data operated on by a node is chosen based on its locality to the node: most data is read from the local
+disk straight into the CPU, alleviating strain on network bandwidth and preventing unnecessary network transfers.
+
+Moving computation to the data
+
+Communication in Hadoop is performed implicitly
+Hadoop internally manages all of the data transfer and cluster topology issues.
+
+
+By restricting the communication between nodes,
+Hadoop makes the distributed system much more reliable. Individual node
+failures can be worked around by restarting tasks on other machines.
+
+In MapReduce, records are processed in isolation by tasks called Mappers. The output from the Mappers
+is then brought together into a second set of tasks called Reducers, where results from different mappers can be merged together.
+Hadoop internally manages all of the data transfer and cluster topology issues
+
+# Flat Scalability
+Executing Hadoop on a limited amount of data on a small number of nodes may not demonstrate particularly stellar performance as the overhead
+involved in starting Hadoop programs is relatively high.
+
+Orders of magnitude of growth can be managed with little re-work required for
+your applications. The underlying Hadoop platform will manage the data
+and hardware resources and provide dependable performance growth proportionate to the number of machines available.
+
+· Highlighted Source : http://lnr.li/SWFca/· Original Source : https://developer.yahoo.com/hadoop/tutorial/module1.html

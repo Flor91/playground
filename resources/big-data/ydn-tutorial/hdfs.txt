@@ -1,0 +1,99 @@
+HDFS, the Hadoop Distributed File System, is a distributed file system designed to hold very large amounts
+  of data, and provide high-throughput access to this information.
+
+Files are stored in a redundant fashion across multiple machines to ensure their
+  durability to failure and high availability to very parallel applications.
+
+HDFS is designed to store a very large amount of
+    information (terabytes or petabytes). This requires spreading
+    the data across a large number of machines. It also supports
+    much larger file sizes than NFS.
+    HDFS should store data reliably. If individual machines
+    in the cluster malfunction, data should still be available.
+    HDFS should provide fast, scalable access to this information.
+    It should be possible to serve a larger number of clients by
+    simply adding more machines to the cluster.
+    HDFS should integrate well with Hadoop MapReduce, allowing
+    data to be read and computed upon locally when possible.
+Applications that use HDFS are assumed to perform long
+    sequential streaming reads from files. HDFS is optimized
+    to provide streaming read performance; this comes at the
+    expense of random seek times to arbitrary positions in files.
+    Data will be written to the HDFS once and then read
+    several times; updates to files after they have already
+    been closed are not supported. (An extension to
+    Hadoop will provide support for appending new data to the ends
+    of files; it is scheduled to be included in Hadoop 0.19 but
+    is not available yet.)
+    Due to the large size of files, and the sequential
+    nature of reads, the system does not provide a mechanism
+    for local caching of data. The overhead of caching is
+    great enough that data should simply be re-read from HDFS
+    source.
+    Individual machines are assumed to fail on a
+    frequent basis, both permanently and
+    intermittently. The cluster must be able to withstand the complete
+    failure of several machines, possibly many happening
+    at the same time (e.g., if a rack fails all together).
+    While performance may degrade proportional
+    to the number of machines lost, the system as a whole should
+    not become overly slow, nor should information be lost.
+    Data replication strategies combat this problem.
+HDFS is a block-structured file system: individual
+  files are broken into blocks of a fixed size. These blocks
+  are stored across a cluster of one or more machines with
+  data storage capacity. Individual machines in the cluster
+  are referred to as DataNodes. A file can be made of
+  several blocks, and they are not necessarily stored on the same
+  machine; the target machines which hold each block are chosen
+  randomly on a block-by-block basis.
+replicating each block across a number of
+  machines (3, by default).
+the default block size
+  in HDFS is 64MB
+This
+  allows HDFS to decrease the amount of metadata storage
+  required per file
+it allows for fast streaming reads of data,
+  by keeping large amounts of data sequentially laid out
+  on the disk.
+HDFS expects
+  to have very large files, and expects them to be
+  read sequentially.
+attempting to use HDFS as a general-purpose
+  distributed file system for a diverse set of applications
+  will be suboptimal.
+HDFS runs in
+  a separate namespace, isolated from the contents
+  of your local files. The files inside HDFS
+are stored in a
+  particular directory managed by the DataNode service, but
+  the files will named only with block ids.
+while the file data is accessed in a
+  write once and read many model, the metadata structures (e.g., the
+  names of files and directories) can be modified by a large
+  number of clients concurrently. It is important that this
+  information is never desynchronized. Therefore, it is all
+  handled by a single machine, called the NameNode.
+  The NameNode stores all the metadata for the file system.
+  Because of the relatively low amount of metadata per file
+  (it only tracks file names, permissions, and the locations
+  of each block of each file), all of this information
+  can be stored in the main memory of the NameNode machine,
+  allowing fast access to the metadata.
+To open a file, a client contacts the NameNode and
+  retrieves a list of locations for the blocks that comprise
+  the file. These locations identify the DataNodes which
+  hold each block.
+  Clients then read file data directly from the DataNode
+  servers, possibly in parallel. The NameNode is not directly
+  involved in this bulk data transfer, keeping its overhead
+  to a minimum.	- preguntar
+NameNode information must be preserved even
+  if the NameNode machine fails
+While individual DataNodes may crash and the entire
+  cluster will continue to operate, the loss of the NameNode
+  will render the cluster inaccessible until it is manually
+  restored.
+
+ Original Source : https://developer.yahoo.com/hadoop/tutorial/module2.html
