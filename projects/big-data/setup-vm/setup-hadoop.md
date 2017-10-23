@@ -67,6 +67,10 @@ Esperamos algunos segundos a que inicie y nos logueamos con las credenciales tra
 
 - Usar ssh o PuTTY, vía loopback (127.0.0.1) en el puerto 2222
 
+```
+ssh -p2222 training@127.0.0.1
+```
+
 ### 2.1. Java
 Verificar la versión de Java instalada:
 ```
