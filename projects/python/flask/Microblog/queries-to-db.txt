@@ -1,0 +1,76 @@
+PS>..\flask\Scripts\python.exe
+Python 2.7.13 (v2.7.13:a06454b1afa1, Dec 17 2016, 20:42:59) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from app import db, models
+D:\Documents\GitHub\playground\projects\python\flask\flask\lib\site-packages\flask_sqlalchemy\__init__.py:794: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+>>> u = models.User(nickname='John', email='john@email.com')
+>>> db.session.add(u)
+>>> db.session.commit()
+>>> u = models.User(nickname='Susan', email='susan@email.com')
+>>> db.session.add(u)
+>>> db.session.commit()
+>>> users = model.User.query.all()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'model' is not defined
+>>> users = models.User.query.all()
+>>> users
+[<User u'John'>, <User u'Susan'>]
+>>> for u in users:
+...     print(u.id, u.nickname)
+...
+(1, u'John')
+(2, u'Susan')
+>>> for u in users:
+...     print(u.id,u.nickname)
+...
+(1, u'John')
+(2, u'Susan')
+>>> u = models.User.query.get(1)
+>>> u
+<User u'John'>
+>>> import datetime
+>>> u = models.User.query.get(1)
+>>> p = models.Post(body='my first post', timestamp=datetime.datetime.utcnow(), author=u)
+>>> db.session.add(p)
+>>> db.session.commit()
+>>> u = models.User.query.get(1)
+>>> u
+<User u'John'>
+>>> posts = u.posts.all()
+>>> posts
+[<Post u'my first post'>]
+>>> for p in posts:
+...     print(p.id, p.author.nickname, p.body)
+...
+(1, u'John', u'my first post')
+>>>     print p.id p.author.nickname p.body
+  File "<stdin>", line 1
+    print p.id p.author.nickname p.body
+    ^
+IndentationError: unexpected indent
+>>> u = models.User.query.get(2)
+>>> u
+<User u'Susan'>
+>>> u.posts.all()
+[]
+>>> models.User.query.order_by('nickname desc').all()
+D:\Documents\GitHub\playground\projects\python\flask\flask\lib\site-packages\sqlalchemy\sql\compiler.py:624: SAWarning: Can't resolve label reference 'nickname desc'; converting to text() (this warning may be suppressed after 10 occurrences)
+  util.ellipses_string(element.element))
+[<User u'Susan'>, <User u'John'>]
+>>> users = models.User.query.all()
+>>> for u in user:
+...     db.session.delete(u)
+...
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'user' is not defined
+>>> for u in users:
+...     db.session.delete(u)
+...
+>>> posts = models.Post.query.all()
+>>> for p in posts:
+...     db.session.delete(p)
+...
+>>> db.session.commit()
