@@ -1,0 +1,16 @@
+# System-specific parameters and functions
+> Python v.2.x
+This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter. It is always available.
+
+## sys.argv
+The list of command line arguments passed to a Python script. argv[0] is the script name (it is operating system dependent whether this is a full pathname or not). If the command was executed using the -c command line option to the interpreter, argv[0] is set to the string '-c'. If no script name was passed to the Python interpreter, argv[0] is the empty string.
+
+To loop over the standard input, or the list of files given on the command line, see the fileinput module.
+
+## sys.byteorder
+An indicator of the native byte order. This will have the value 'big' on big-endian (most-significant byte first) platforms, and 'little' on little-endian (least-significant byte first) platforms.
+
+## sys.stdin
+## sys.stdout
+## sys.stderr
+File objects corresponding to the interpreter’s standard input, output and error streams. stdin is used for all interpreter input except for scripts but including calls to input() and raw_input(). stdout is used for the output of print and expression statements and for the prompts of input() and raw_input(). The interpreter’s own prompts and (almost all of) its error messages go to stderr. stdout and stderr needn’t be built-in file objects: any object is acceptable as long as it has a write() method that takes a string argument. (Changing these objects doesn’t affect the standard I/O streams of processes executed by os.popen(), os.system() or the exec*() family of functions in the os module.)
