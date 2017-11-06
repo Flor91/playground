@@ -30,7 +30,7 @@ Login to MySql
  Longitude INT,
  Location VARCHAR(30));
 
- mysqlimport --ignore-lines=1 --fields-terminated-by=, --columns='ID,CaseNumber,Date,Block,IUCR,PrimaryType,Description,LocationDescription,Arrest,Domestic,Beat,District,Ward,CommunityArea,FBICode,XCoordinate,YCoordinate,Year,UpdatedOn,Latitude,Longitude,Location' --local -u root -p training /home/training/data/crimes.csv;
+ mysqlimport --ignore-lines=1 --fields-terminated-by=, --columns='ID,CaseNumber,Date,Block,IUCR,PrimaryType,Description,LocationDescription,Arrest,Domestic,Beat,District,Ward,CommunityArea,FBICode,XCoordinate,YCoordinate,Year,UpdatedOn,Latitude,Longitude,Location' --local -u root -p training /home/training/data/crimes/crimes.csv;
 
 
 ---
