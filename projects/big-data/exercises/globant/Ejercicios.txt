@@ -11,12 +11,12 @@ hint 2: Given the mapper doesn�t receive the filename as input. A Hadoop Confi
 
 Mapreduce - Exercise 2
 Column-wise Variance of a matrix
-
 Given a csv file without headers, calculate the sample variance ( s2 ) of each column. (http://en.wikipedia.org/wiki/Variance)
 
-HDFS DataSet path: /user/hadoop/mapreduce/data/matrix     ���DON�T DOWNLOAD IT FROM THE CLUSTER $$$$!!!
+HDFS DataSet path: /user/hadoop/mapreduce/data/matrix
 
-hint 1: Suggested output: columnIndex<tab>sampleVariance. Example: 0    135.6 1    2.2 2    536.9 ...
+hint 1: Suggested output: columnIndex<tab>sampleVariance.
+Example: 0    135.6 1    2.2 2    536.9 ...
 hint 2: Assume the file has only numeric values and no entries are missing (no NULLs or empty).
 hint 3: The python modules os and sys will come quite handy.
 hint 4: Focus on the the mapreduce. (If any) other plumbing code is required, do it manually, afterwards implement it if you have the time (with python of course!).

@@ -66,12 +66,10 @@ $sqoop import-all-tables --connect jdbc:mysql://localhost:3306/training --userna
 Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import into HDFS only the crimes of 2005.
 - MySQL Table: training.crimes
 
-sqoop import --connect jdbc:mysql://localhost:3306/training --username root --password root --query "select * from crimes where year < 2005 order by name" --split-by state --hive-import --target-dir test --hive-table sorteddata
+sqoop import --connect jdbc:mysql://localhost:3306/training --username root --password root --query "select * from crimes where year < 2005 order by name" --table crimes
 
 # 1B. Export a dataset from HDFS into MySQL
 Export the data that you have stored in HDFS in the previous exercise into a new table in MySQL.
-Hint 1: Check the output that Sqoop writes to command line, there�s always useful data there.
-Hint 2: To improve the performance, vary the number of mappers by applying different values to --num-mappers <n>.
 
 
 ---------------------
