@@ -1,4 +1,4 @@
-Mapreduce - Exercise 1
+# Mapreduce - Exercise 1
 Inverted Index
 
 Given a directory with books in txt format, write a mapreduce which outputs an inverted index, i.e., a table that associates a word with the books and the corresponding positions at which it occurs (http://en.wikipedia.org/wiki/Inverted_index).
@@ -9,7 +9,7 @@ hint 1: Suggested output example (not real data): Love     alice_in_wonderland.t
 hint 2: Given the mapper doesn�t receive the filename as input. A Hadoop Configured Parameter (environment variable) could help to retrieve the filename from which the word comes.
 
 
-Mapreduce - Exercise 2
+# Mapreduce - Exercise 2
 Column-wise Variance of a matrix
 Given a csv file without headers, calculate the sample variance ( s2 ) of each column. (http://en.wikipedia.org/wiki/Variance)
 
@@ -27,7 +27,7 @@ question 3: Implement combiners and notice the savings in bytes transferred to t
 
 
 
-Sqoop - Exercise 1
+# Sqoop - Exercise 1
 
 1A. Import a dataset from MySql into HDFS
 Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import into HDFS only the crimes of 2005.
@@ -40,7 +40,7 @@ Hint 1: Check the output that Sqoop writes to command line, there�s always use
 Hint 2: To improve the performance, vary the number of mappers by applying different values to --num-mappers <n>.
 
 
-Pig Practice
+# Pig Practice
 
 A. Investigating Crimes
 1. Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import it into HDFS using Sqoop.
@@ -58,7 +58,7 @@ B. The 100 most popular words
 Hint 1: Remember that the JOIN operation is one of the most expensives in terms of performance. Consider to pre-process the data before joins.
 
 
-Hive - Exercise
+# Hive - Exercise
 Column-wise Variance (s2) of a matrix Given a csv file without headers, calculate the sample variance ( s2 ) of each column. (http://en.wikipedia.org/wiki/Variance)
 HDFS DataSet path: /user/hadoop/mapreduce/data/matrix     ���DON�T DOWNLOAD IT FROM THE CLUSTER $$$$!!!
 

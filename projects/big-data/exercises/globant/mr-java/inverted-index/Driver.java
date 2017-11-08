@@ -1,45 +1,29 @@
 public static void main(String[] args) throws Exception {
 
-Configuration conf= new Configuration();
+    Configuration conf= new Configuration();
+    Job job = new Job(conf,"UseCase1");
 
-Job job = new Job(conf,"UseCase1");
+    //Defining the output key and value class for the mapper
+    job.setMapOutputKeyClass(Text.class);
+    job.setMapOutputValueClass(Text.class);
+    job.setJarByClass(InvertedIndex.class);
+    job.setMapperClass(Map.class);
+    job.setReducerClass(Reduce.class);
 
-//Defining the output key and value class for the mapper
+    //Defining the output value class for the mapper
 
-job.setMapOutputKeyClass(Text.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(Text.class);
+    job.setInputFormatClass(TextInputFormat.class);
+    job.setOutputFormatClass(TextOutputFormat.class);
 
-job.setMapOutputValueClass(Text.class);
+    Path outputPath = new Path(args[1]);
+    FileInputFormat.addInputPath(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, outputPath);
 
-job.setJarByClass(InvertedIndex.class);
+    //deleting the output path automatically from hdfs so that we don't have delete it explicitly
+    outputPath.getFileSystem(conf).delete(outputPath);
 
-job.setMapperClass(Map.class);
-
-job.setReducerClass(Reduce.class);
-
-//Defining the output value class for the mapper
-
-job.setOutputKeyClass(Text.class);
-
-job.setOutputValueClass(Text.class);
-
-job.setInputFormatClass(TextInputFormat.class);
-
-job.setOutputFormatClass(TextOutputFormat.class);
-
-Path outputPath = new Path(args[1]);
-
-FileInputFormat.addInputPath(job, new Path(args[0]));
-
-FileOutputFormat.setOutputPath(job, outputPath);
-
-//deleting the output path automatically from hdfs so that we don't have delete it explicitly
-
-outputPath.getFileSystem(conf).delete(outputPath);
-
-//exiting the job only if the flag value becomes false
-
-System.exit(job.waitForCompletion(true) ? 0 : 1);
-
-}
-
+    //exiting the job only if the flag value becomes false
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
 }

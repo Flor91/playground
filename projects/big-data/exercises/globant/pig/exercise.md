@@ -1,6 +1,26 @@
-Install
+# Pig Practice
 
-wget -c http://apache.dattatec.com/pig/pig-0.16.0/pig-0.16.0.tar.g
+## A. Investigating Crimes
+1. Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import it into HDFS using Sqoop.
+2. Count all the crimes which description is �Simple�; order those crimes by year; print the results to console, and also store them to a text file.     -
+Dataset: https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2
+- MySQL Table: bdtraining.chicago_crimes
+
+Hint 1: There are many ways for resolving this exercise. Check the �performance considerations� slide and find the most suitable approach.
+
+## B. The 100 most popular words
+1. We would like to know the 100 most popular words which appeared in both of the following books, in descending order by number of appearances:
+
+ the_adventures_of_sherlock_holmes.txt
+ the_adventures_of_tom_sawyer.txt
+ (*) Filter articles and pronouns
+        - URL: /home/hadoop/mapreduce/data/books
+
+Hint 1: Remember that the JOIN operation is one of the most expensives in terms of performance. Consider to pre-process the data before joins.
+
+# Install
+
+wget -c http://apache.dattatec.com/pig/pig-0.16.0/pig-0.16.0.tar.gz
 
 Step 2: Extract the tar file using tar command. In below tar command, x means extract an archive file, z means filter an archive through gzip, f means filename of an archive file.
 
@@ -16,8 +36,7 @@ Command:  sudo gedit .bashrc
 
 Add the following at the end of the file:
 
-# Set PIG_HOME
-
+# PIG variables
 export PIG_HOME=/usr/local/pig
 export PATH=$PATH:/usr/local/pig/bin
 export PIG_CLASSPATH=$HADOOP_CONF_DIR
@@ -52,24 +71,3 @@ Execution modes in Apache Pig:
 MapReduce Mode – This is the default mode, which requires access to a Hadoop cluster and HDFS installation. Since, this is a default mode, it is not necessary to specify -x flag ( you can execute pig OR pig -x mapreduce). The input and output in this mode are present on HDFS.
 Local Mode – With access to a single machine, all files are installed and run using a local host and file system. Here the local mode is specified using ‘-x flag’ (pig -x local). The input and output in this mode are present on local file system.
 Command: pig -x local
-
-
-# Pig Practice
-
-## A. Investigating Crimes
-1. Given a real dataset that contains data about Crimes in Chicago from 2001 till now (already stored in MySQL), import it into HDFS using Sqoop.
-2. Count all the crimes which description is �Simple�; order those crimes by year; print the results to console, and also store them to a text file.     -
-Dataset: https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2
-- MySQL Table: bdtraining.chicago_crimes
-
-Hint 1: There are many ways for resolving this exercise. Check the �performance considerations� slide and find the most suitable approach.
-
-## B. The 100 most popular words
-1. We would like to know the 100 most popular words which appeared in both of the following books, in descending order by number of appearances:
-
- the_adventures_of_sherlock_holmes.txt
- the_adventures_of_tom_sawyer.txt
- (*) Filter articles and pronouns
-        - URL: /home/hadoop/mapreduce/data/books
-
-Hint 1: Remember that the JOIN operation is one of the most expensives in terms of performance. Consider to pre-process the data before joins.

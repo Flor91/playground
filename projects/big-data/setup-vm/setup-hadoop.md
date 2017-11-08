@@ -247,7 +247,12 @@ Corriendo los dos comandos arriba mencionados tendremos a Hadoop y listo para tr
 ```
 $ jps
 ```
-
+1714 DataNode
+2037 ResourceManager
+2330 NodeManager
+1886 SecondaryNameNode
+2415 Jps
+1583 NameNode
 
 To run this in a hadoop environment, first set up the alias in the .bashrc
 
