@@ -6,6 +6,15 @@
 Dataset: https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2
 - MySQL Table: bdtraining.chicago_crimes
 
+grunt> crimes = LOAD 'crimes.txt' USING PigStore(',') as (ID:int, CaseNumber:int, Date:datetime, Block:int, IUCR:int, PrimaryType:chararray, Description:chararray, LocationDescription:chararray, Arrest:boolean, Domestic:boolean, Beat:boolean, District:chararray, Ward:chararray, CommunityArea:chararray, FBICode:int, XCoordinate:int, YCoordinate:int, Year:int, UpdatedOn:datetime, Latitude:int, Longitude:int, Location:chararray);
+
+> simple_crimes = FILTER crimes BY description == 'Simple';
+
+> ordered = ORDER simple_crimes BY year;
+
+> STORE simple_crimes INTO '/user/data/crimes/output' USING PigStore(',');
+
+
 Hint 1: There are many ways for resolving this exercise. Check the �performance considerations� slide and find the most suitable approach.
 
 ## B. The 100 most popular words
@@ -17,6 +26,16 @@ Hint 1: There are many ways for resolving this exercise. Check the �performanc
         - URL: /home/hadoop/mapreduce/data/books
 
 Hint 1: Remember that the JOIN operation is one of the most expensives in terms of performance. Consider to pre-process the data before joins.
+
+lines_sherlock = LOAD '/user/data/books/the_adventures_of_sherlock_holmes.txt' as (line:chararray);
+lines_sawyer = LOAD '/user/data/books/the_adventures_of_tom_sawyer.txt' as (line:chararray);
+lines = UNION lines_sherlock, lines_sawyer;
+words = FOREACH lines GENERATE FLATTEN(TOKENIZE(LOWER(line))) as words;
+groupedwords = GROUP words BY words;
+wordcount = FOREACH groupedwords GENERATE group as words, COUNT(words) as total;
+orderedwordscount = ORDER wordcount BY total DESC;
+maxwordscount= LIMIT orderedwordscount 100;
+DUMP maxwordcount;
 
 # Install
 
@@ -62,12 +81,3 @@ Pig Help - Pig Installation - Edureka
 Step 6: Run Pig to start the grunt shell. Grunt shell is used to run Pig Latin scripts.
 
 Command: pig
-
-Pig Shell - Pig Installation - Edureka
-
-If you look at the above image correctly, Apache Pig has two modes in which it can run, by default it chooses MapReduce mode. The other mode in which you can run Pig is Local mode. Let me tell you more about this.
-
-Execution modes in Apache Pig:
-MapReduce Mode – This is the default mode, which requires access to a Hadoop cluster and HDFS installation. Since, this is a default mode, it is not necessary to specify -x flag ( you can execute pig OR pig -x mapreduce). The input and output in this mode are present on HDFS.
-Local Mode – With access to a single machine, all files are installed and run using a local host and file system. Here the local mode is specified using ‘-x flag’ (pig -x local). The input and output in this mode are present on local file system.
-Command: pig -x local
