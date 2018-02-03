@@ -9,9 +9,12 @@ import java.util.concurrent.Semaphore;
  */
 public class Main {
 
-	private static Semaphore producedSemaphore = new Semaphore(0);
+	// Creamos los semaforos:
+	private static Semaphore producedSemaphore = new Semaphore(0); // Restringe acceso a la cola
+	// Param 0 porque la cola esta vacía
 	private static Semaphore mutex = new Semaphore(1);
-	private static Queue<String> produced = new LinkedList<>();
+	// Param 1 porque es binario
+	private static Queue<String> produced = new LinkedList<>(); // Cola
 
 	public static void main(String[] args) {
 
@@ -24,10 +27,10 @@ public class Main {
 		consumer2.start();
 
 		try {
-			producer.join();
+			producer.join(); // Hilo principal termina cuando terminan de correr todos los threads
 			while(!isProducedQueueEmpty()) {
 				Thread.sleep(500);
-			}
+			} // Cuando la cola productora se vacia interrumpimos los consumidores
 			consumer1.interrupt();
 			consumer2.interrupt();
 		} catch (InterruptedException e) {
@@ -35,6 +38,7 @@ public class Main {
 		}
 	}
 
+	// Funcion auxiliar, que protege el codigo de consulta
 	private static boolean isProducedQueueEmpty() throws InterruptedException {
 		mutex.acquire();
 		boolean isEmpty = produced.isEmpty();
