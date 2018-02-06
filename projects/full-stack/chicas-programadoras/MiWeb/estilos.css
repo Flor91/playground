@@ -1,0 +1,71 @@
+<!-- Selector por nombre del elemento -->
+p {
+  color: #0000ff;
+  font-size: 15px;
+}
+
+<!-- Selector por clase del elemento -->
+.titulo {
+  font-family: 'Rammetto One', cursive;
+}
+
+<!-- Selector por id del elemento -->
+#tituloprincipal{
+  font-style: oblique;
+  font-weight: bold;
+}
+
+<!-- Selector hijo (hijos directos del elemento) -->
+li>a {
+    Font-size: 14px;
+}
+
+<!-- Selector descendente (todos los hijos del elemento) -->
+p a{
+  font-style: oblique;
+  font-weight: bold;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+input:focus {
+	background-color: yellow;
+}
+
+a:hover {
+	background-color: yellow;
+}
+
+button:hover {
+	color: blue;
+}
+
+div {
+  margin: 1px 2px 4px 3px;
+	/* margin-top: 1px;
+  margin-right: 2px;
+  margin-bottom: 4px;
+  margin-left: 3px; */
+}
+
+div {
+  padding: 10px 15px 20px 5px;
+  /* padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-left:5px; */
+}
+
+div {
+	/* border-width: 3px;
+  border-style: dotted;
+  border-color: #0088dd; */
+  border: 3px dotted #0088dd
+}
+
+img {
+  width:440px; /* you can use % */
+   height: auto
+}
