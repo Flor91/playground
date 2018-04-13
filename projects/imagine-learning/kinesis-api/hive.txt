@@ -1,0 +1,84 @@
+{
+schema_revision 1.0.0
+documentation_url null
+event_type teacher_sent_custom_message
+event_datetime Fri 29 Dec 2017 182041 GMT
+event_datetime_ms 1514571641188
+event_type_id 9
+student_id 16548962
+teacher_id 723676
+lesson_id 430
+item_step_id 40227
+enrollment_id 24800163
+engaged_at null
+ended_at null
+classroom_id 1377273
+school_id 20174
+system_generated false
+chatbot_generated false
+message Great job!
+message_guid f7b1d4b4-23e9-4978-a4ae-d87cc4595408
+event_guid b6c6c407-1ab0-4210-a6b9-729aa5bf1cbd
+input_event_guid be49548e-d0eb-4065-95c6-386b7afaa134
+input_message_guid c5bf6a7d-2dc0-4f64-8fda-89acac842e09
+suggestion_guid null
+negative_log_likelihood null
+conversation_guid 16548962-1514571525086
+conversation_message_id 18
+suggestion_option_id null
+conversation_transcript {
+conversationId 16548962-1514571525086
+messages [{
+messageText Hi! Let's look over your problem again. Would you like me to type or talk?
+speaker teacher
+messageGuid 31871725-9574-4587-81a1-d3c7a763f88f
+eventGuid 748eaf74-f2e5-4f6b-9beb-f53fb7f95f78
+inputMessageGuid null
+inputEventGuid null
+}]
+}
+student_first_name Alicia
+student_last_name Campbell
+student_user_name csusa180214665
+teacher_first_name Kimberly
+teacher_last_name Stanek
+teacher_user_name kstanek-liveteacher@thinkthroughmath-dot-com
+}
+
+
+schema_revision STRING, 
+documentation_url STRING, 
+event_type STRING, 
+event_datetime STRING, 
+event_datetime_ms INT, 
+event_type_id INT, 
+student_id INT, 
+teacher_id INT, 
+lesson_id INT, 
+item_step_id INT, 
+enrollment_id INT, 
+engaged_at STRING, 
+ended_at STRING, 
+classroom_id INT, 
+school_id INT, 
+system_generated BOOLEAN,
+chatbot_generated BOOLEAN,
+message STRING, 
+message_guid STRING, 
+event_guid STRING, 
+input_event_guid STRING, 
+input_message_guid STRING, 
+suggestion_guid STRING, 
+negative_log_likelihood STRING, 
+conversation_guid STRING, 
+conversation_message_id INT, 
+suggestion_option_id STRING, 
+conversation_transcript struct <
+	conversationId STRING,
+	messages struct<messageText STRING, speaker STRING, messageGuid STRING, eventGuid STRING, inputMessageGuid STRING, inputEventGuid STRING>>
+student_first_name STRING, 
+student_last_name STRING, 
+student_user_name STRING, 
+teacher_first_name STRING, 
+teacher_last_name STRING, 
+teacher_user_name STRING 
