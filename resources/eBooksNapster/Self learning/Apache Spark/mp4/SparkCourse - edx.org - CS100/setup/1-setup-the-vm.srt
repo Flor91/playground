@@ -1,0 +1,212 @@
+0
+00:00:00,000 --> 00:00:01,300
+
+
+1
+00:00:01,300 --> 00:00:04,210
+Now that we have VirtualBox and Vagrant installed,
+
+2
+00:00:04,210 --> 00:00:07,770
+we're going to go and download the box.
+
+3
+00:00:07,770 --> 00:00:10,720
+
+
+4
+00:00:10,720 --> 00:00:12,890
+So first off, what we basically have to do
+
+5
+00:00:12,890 --> 00:00:14,960
+is download a zip file that's going
+
+6
+00:00:14,960 --> 00:00:20,430
+to contain a Vagrant file, a file which is what we require
+
+7
+00:00:20,430 --> 00:00:22,745
+to interact with Vagrant.
+
+8
+00:00:22,745 --> 00:00:26,190
+
+
+9
+00:00:26,190 --> 00:00:27,830
+Here's the address here of the zip file
+
+10
+00:00:27,830 --> 00:00:28,955
+that we need to go get.
+
+11
+00:00:28,955 --> 00:00:36,910
+
+
+12
+00:00:36,910 --> 00:00:59,834
+Github.com/spark mooc/mooc setup/archive/master.zip
+
+13
+00:00:59,834 --> 00:01:02,650
+We're going to choose to save the file.
+
+14
+00:01:02,650 --> 00:01:09,660
+
+
+15
+00:01:09,660 --> 00:01:11,165
+Now, I'm going to open a terminal.
+
+16
+00:01:11,165 --> 00:01:21,570
+
+
+17
+00:01:21,570 --> 00:01:24,740
+My file has downloaded into my downloads folder.
+
+18
+00:01:24,740 --> 00:01:26,560
+I'm going to unzip it here.
+
+19
+00:01:26,560 --> 00:01:30,520
+
+
+20
+00:01:30,520 --> 00:01:33,990
+So we see a Vagrant file, and also a VM
+
+21
+00:01:33,990 --> 00:01:36,450
+test student IPython notebook which
+
+22
+00:01:36,450 --> 00:01:37,950
+will be used at a later time.
+
+23
+00:01:37,950 --> 00:01:42,194
+
+
+24
+00:01:42,194 --> 00:01:43,610
+So what I'm going to be doing here
+
+25
+00:01:43,610 --> 00:01:48,460
+is just create some folder.
+
+26
+00:01:48,460 --> 00:01:52,370
+It's your choice, I'm just going to call it myvagrant.
+
+27
+00:01:52,370 --> 00:01:56,000
+
+
+28
+00:01:56,000 --> 00:02:00,070
+And then I will CD into that directory,
+
+29
+00:02:00,070 --> 00:02:16,445
+and I will copy the Vagrant file.
+
+30
+00:02:16,445 --> 00:02:19,560
+Oh, sorry.
+
+31
+00:02:19,560 --> 00:02:28,476
+It's actually in downloads, mooc set up master vagrant.
+
+32
+00:02:28,476 --> 00:02:33,200
+
+
+33
+00:02:33,200 --> 00:02:38,740
+I'm going to copy that file here, typo.
+
+34
+00:02:38,740 --> 00:02:47,130
+
+
+35
+00:02:47,130 --> 00:02:49,810
+So now I have my vagrant file here.
+
+36
+00:02:49,810 --> 00:02:53,600
+
+
+37
+00:02:53,600 --> 00:02:56,995
+From this point, I simply need to do a Vagrant up.
+
+38
+00:02:56,995 --> 00:03:01,370
+
+
+39
+00:03:01,370 --> 00:03:07,246
+And this will go and download the box with the spark
+
+40
+00:03:07,246 --> 00:03:07,745
+that I need.
+
+41
+00:03:07,745 --> 00:03:15,290
+
+
+42
+00:03:15,290 --> 00:03:18,680
+And it's-- I've edited the video a bit here,
+
+43
+00:03:18,680 --> 00:03:23,110
+so it did take several minutes for the whole download
+
+44
+00:03:23,110 --> 00:03:27,480
+and everything to happen, but I've edited the video just
+
+45
+00:03:27,480 --> 00:03:30,000
+to remove that so you're not necessarily sitting here
+
+46
+00:03:30,000 --> 00:03:30,500
+waiting.
+
+47
+00:03:30,500 --> 00:03:40,605
+
+
+48
+00:03:40,605 --> 00:03:42,230
+So what I'm going to do now is I'm just
+
+49
+00:03:42,230 --> 00:03:47,230
+going to go up here, go to VirtualBox.
+
+50
+00:03:47,230 --> 00:03:56,060
+
+
+51
+00:03:56,060 --> 00:04:01,430
+OK, so what we see here is a Spark VM VM, and it's running.
+
+52
+00:04:01,430 --> 00:04:08,012
+
+

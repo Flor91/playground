@@ -1,0 +1,544 @@
+0
+00:00:00,000 --> 00:00:05,240
+
+
+1
+00:00:05,240 --> 00:00:07,780
+In this segment, we'll introduce the probabilistic
+
+2
+00:00:07,780 --> 00:00:10,550
+interpretation of logistic regression.
+
+3
+00:00:10,550 --> 00:00:13,360
+And we'll show how this probabilistic interpretation
+
+4
+00:00:13,360 --> 00:00:15,860
+relates to our previous discussion on linear decision
+
+5
+00:00:15,860 --> 00:00:16,660
+boundaries.
+
+6
+00:00:16,660 --> 00:00:19,610
+We previously discussed linear classification models
+
+7
+00:00:19,610 --> 00:00:21,700
+and showed how various surrogate convex loss
+
+8
+00:00:21,700 --> 00:00:25,460
+functions can be used to approximate the 0/1 loss.
+
+9
+00:00:25,460 --> 00:00:27,260
+In this setting, our goal was simply
+
+10
+00:00:27,260 --> 00:00:30,670
+to predict one of two class labels.
+
+11
+00:00:30,670 --> 00:00:33,900
+However, what if we want more granular information
+
+12
+00:00:33,900 --> 00:00:36,470
+and, instead, want a model of a conditional probability
+
+13
+00:00:36,470 --> 00:00:40,740
+that a label equals 1 given some set of predictive features?
+
+14
+00:00:40,740 --> 00:00:43,370
+As a toy example, we might predict
+
+15
+00:00:43,370 --> 00:00:45,930
+whether it will rain given weather-related features
+
+16
+00:00:45,930 --> 00:00:49,790
+such as the temperature, cloudiness, and the humidity.
+
+17
+00:00:49,790 --> 00:00:53,820
+When it's cold, not cloudy, and the humidity is very low,
+
+18
+00:00:53,820 --> 00:00:56,860
+we might expect rain to be unlikely.
+
+19
+00:00:56,860 --> 00:00:59,620
+In contrast, when it's warmer, cloudy,
+
+20
+00:00:59,620 --> 00:01:01,080
+and when the humidity is high, we
+
+21
+00:01:01,080 --> 00:01:05,060
+might expect a high probability of rain.
+
+22
+00:01:05,060 --> 00:01:07,670
+As another example, let's consider a click-through rate
+
+23
+00:01:07,670 --> 00:01:08,760
+prediction problem.
+
+24
+00:01:08,760 --> 00:01:11,100
+And recall that we want to predict the probability
+
+25
+00:01:11,100 --> 00:01:13,950
+that we'll see a click event given some predictive features
+
+26
+00:01:13,950 --> 00:01:16,560
+about the user, the advertisement,
+
+27
+00:01:16,560 --> 00:01:20,340
+and the publisher page under consideration.
+
+28
+00:01:20,340 --> 00:01:22,250
+As a simple example, imagine that we
+
+29
+00:01:22,250 --> 00:01:25,470
+have three predictive features that we're working with.
+
+30
+00:01:25,470 --> 00:01:28,450
+The first is an ad's historical performance,
+
+31
+00:01:28,450 --> 00:01:31,450
+or how often the ad has been clicked in the past.
+
+32
+00:01:31,450 --> 00:01:34,900
+The second is the user's click rate frequency over all ads
+
+33
+00:01:34,900 --> 00:01:37,770
+the user has ever been presented with.
+
+34
+00:01:37,770 --> 00:01:40,240
+The third feature is some notion of the relevance
+
+35
+00:01:40,240 --> 00:01:42,970
+of the publisher's site in the context of the ad
+
+36
+00:01:42,970 --> 00:01:45,950
+and the user's background.
+
+37
+00:01:45,950 --> 00:01:47,530
+If we're considering an ad that has
+
+38
+00:01:47,530 --> 00:01:50,820
+good historical performance, a user that has a high click rate
+
+39
+00:01:50,820 --> 00:01:54,530
+frequency, and a highly relevant publisher page,
+
+40
+00:01:54,530 --> 00:01:58,360
+we might expect a probability to be around 0.1.
+
+41
+00:01:58,360 --> 00:02:00,780
+And this would suggest that there's a 10% chance
+
+42
+00:02:00,780 --> 00:02:03,420
+that a click event will occur.
+
+43
+00:02:03,420 --> 00:02:06,010
+Although this number's low on an absolute scale,
+
+44
+00:02:06,010 --> 00:02:08,300
+recall that click events are rare,
+
+45
+00:02:08,300 --> 00:02:11,630
+and thus, the probability of 0.1 is a relatively high
+
+46
+00:02:11,630 --> 00:02:14,710
+probability in our context.
+
+47
+00:02:14,710 --> 00:02:18,510
+In contrast, if the ad has bad historical performance,
+
+48
+00:02:18,510 --> 00:02:22,370
+the user has a low click frequency,
+
+49
+00:02:22,370 --> 00:02:24,360
+and the publisher page is not relevant,
+
+50
+00:02:24,360 --> 00:02:27,890
+we'd expect a much lower probability.
+
+51
+00:02:27,890 --> 00:02:30,052
+So how can we model this probability?
+
+52
+00:02:30,052 --> 00:02:31,510
+Our first thought might be to model
+
+53
+00:02:31,510 --> 00:02:33,860
+it using the standard linear regression model we
+
+54
+00:02:33,860 --> 00:02:36,220
+obtain via linear regression.
+
+55
+00:02:36,220 --> 00:02:37,850
+But of course, this isn't going to work
+
+56
+00:02:37,850 --> 00:02:40,700
+because the linear regression model returns a real number.
+
+57
+00:02:40,700 --> 00:02:45,160
+And probabilities must range between 0 and 1.
+
+58
+00:02:45,160 --> 00:02:47,280
+So if we want to work with a linear model,
+
+59
+00:02:47,280 --> 00:02:49,600
+we need to squash its output so that it'll
+
+60
+00:02:49,600 --> 00:02:51,640
+be in the appropriate range.
+
+61
+00:02:51,640 --> 00:02:54,550
+We can do this using the logistic, or sigmoid function,
+
+62
+00:02:54,550 --> 00:02:57,220
+which takes as input the dot product between our model
+
+63
+00:02:57,220 --> 00:03:01,030
+and our features and returns a value between 0 and 1,
+
+64
+00:03:01,030 --> 00:03:04,830
+which we can interpret as a probability.
+
+65
+00:03:04,830 --> 00:03:06,680
+Let's look at a plot of a logistic function
+
+66
+00:03:06,680 --> 00:03:09,370
+to better understand what's going on.
+
+67
+00:03:09,370 --> 00:03:12,750
+First note that the x-axis, or domain of this function,
+
+68
+00:03:12,750 --> 00:03:15,430
+is all real numbers, which is good
+
+69
+00:03:15,430 --> 00:03:18,800
+since we're feeding into the logistic function w transpose
+
+70
+00:03:18,800 --> 00:03:20,290
+x.
+
+71
+00:03:20,290 --> 00:03:24,100
+Second, note that the y-axis, or the range of this function,
+
+72
+00:03:24,100 --> 00:03:26,530
+is between 0 and 1, which is also good
+
+73
+00:03:26,530 --> 00:03:29,400
+because we like to interpret the output of a logistic function
+
+74
+00:03:29,400 --> 00:03:31,330
+as a probability.
+
+75
+00:03:31,330 --> 00:03:34,880
+Additionally, note that large positive inputs asymptotically
+
+76
+00:03:34,880 --> 00:03:38,230
+approach 1 while large negative numbers asymptotically
+
+77
+00:03:38,230 --> 00:03:38,820
+approach 0.
+
+78
+00:03:38,820 --> 00:03:42,180
+
+
+79
+00:03:42,180 --> 00:03:45,120
+It turns out that we can interpret logistic regression
+
+80
+00:03:45,120 --> 00:03:47,370
+as using the logistic function to model
+
+81
+00:03:47,370 --> 00:03:50,330
+our conditional probability of interest.
+
+82
+00:03:50,330 --> 00:03:53,230
+I should note here that for the remainder of this lecture,
+
+83
+00:03:53,230 --> 00:03:56,290
+we'll be switching notation and assuming that labels are either
+
+84
+00:03:56,290 --> 00:03:58,450
+0 or 1.
+
+85
+00:03:58,450 --> 00:04:01,070
+We make this switch simply for notational convenience
+
+86
+00:04:01,070 --> 00:04:03,430
+when discussing probabilistic interpretations
+
+87
+00:04:03,430 --> 00:04:05,600
+of logistic regression.
+
+88
+00:04:05,600 --> 00:04:08,600
+Using this notation, logistic regression models
+
+89
+00:04:08,600 --> 00:04:11,850
+the conditional probability that a label equals 1
+
+90
+00:04:11,850 --> 00:04:16,190
+as the sigmoid function applied to w transpose x.
+
+91
+00:04:16,190 --> 00:04:18,050
+It further models the probability
+
+92
+00:04:18,050 --> 00:04:21,329
+that the label equals 0 as 1 minus this quantity.
+
+93
+00:04:21,329 --> 00:04:23,040
+And this makes sense because together,
+
+94
+00:04:23,040 --> 00:04:27,770
+the sum of these two probabilities should equal 1.
+
+95
+00:04:27,770 --> 00:04:29,570
+It can be very natural to work directly
+
+96
+00:04:29,570 --> 00:04:31,320
+with these class probabilities, as we'll
+
+97
+00:04:31,320 --> 00:04:33,500
+discuss in detail later on.
+
+98
+00:04:33,500 --> 00:04:35,280
+But there are also times when we want
+
+99
+00:04:35,280 --> 00:04:37,580
+to convert these probabilities into discrete class
+
+100
+00:04:37,580 --> 00:04:39,060
+predictions.
+
+101
+00:04:39,060 --> 00:04:41,710
+So how can we go about doing this?
+
+102
+00:04:41,710 --> 00:04:45,100
+A reasonable thing to do is to threshold these probabilities
+
+103
+00:04:45,100 --> 00:04:48,460
+with 0.5 being the default threshold.
+
+104
+00:04:48,460 --> 00:04:52,080
+Using thresholding, we define y hat to be equal to 1
+
+105
+00:04:52,080 --> 00:04:55,740
+if the conditional probability is greater than 0.5.
+
+106
+00:04:55,740 --> 00:04:58,370
+And we define y hat to be 0 if the probability is
+
+107
+00:04:58,370 --> 00:05:00,240
+less than 0.5.
+
+108
+00:05:00,240 --> 00:05:02,420
+When the probability exactly equals 0.5,
+
+109
+00:05:02,420 --> 00:05:06,370
+we can arbitrarily choose the value of y hat.
+
+110
+00:05:06,370 --> 00:05:08,310
+Returning to our rain example, this
+
+111
+00:05:08,310 --> 00:05:10,820
+would mean that when our conditional probability of rain
+
+112
+00:05:10,820 --> 00:05:14,280
+equals 0.05, our class prediction
+
+113
+00:05:14,280 --> 00:05:16,690
+would be y hat equals 0.
+
+114
+00:05:16,690 --> 00:05:19,360
+And when our conditional probability equals 0.9,
+
+115
+00:05:19,360 --> 00:05:22,080
+y hat equals 1.
+
+116
+00:05:22,080 --> 00:05:24,410
+It turns out that using this thresholding rule
+
+117
+00:05:24,410 --> 00:05:26,050
+leads to a very natural connection
+
+118
+00:05:26,050 --> 00:05:29,590
+with our previous discussion about decision boundaries.
+
+119
+00:05:29,590 --> 00:05:31,110
+Recall that we previously defined
+
+120
+00:05:31,110 --> 00:05:35,280
+y hat is the sine of w transpose x, which
+
+121
+00:05:35,280 --> 00:05:38,660
+implies that when w transpose x is greater than 0
+
+122
+00:05:38,660 --> 00:05:43,640
+that y hat equals 1 and when w transpose x is less than 0,
+
+123
+00:05:43,640 --> 00:05:45,590
+y hat equals 0.
+
+124
+00:05:45,590 --> 00:05:48,690
+Moreover, we saw that this leads to a decision boundary
+
+125
+00:05:48,690 --> 00:05:52,310
+of w transpose x equals 0.
+
+126
+00:05:52,310 --> 00:05:54,770
+So how does this compare with our new rule involving
+
+127
+00:05:54,770 --> 00:05:57,630
+thresholding conditional probabilities using the default
+
+128
+00:05:57,630 --> 00:06:00,630
+value of 0.5?
+
+129
+00:06:00,630 --> 00:06:04,500
+To see this, let's look at the plot of a logistic function.
+
+130
+00:06:04,500 --> 00:06:09,430
+And note that this function, applied at 0, equals 0.5.
+
+131
+00:06:09,430 --> 00:06:13,050
+So in other words, when w transpose x equals 0
+
+132
+00:06:13,050 --> 00:06:18,660
+and we apply it to the sigmoid function, we get back 0.5.
+
+133
+00:06:18,660 --> 00:06:22,060
+Hence, when using a threshold of 0.5,
+
+134
+00:06:22,060 --> 00:06:24,500
+the decision boundaries are identical.
+
+135
+00:06:24,500 --> 00:06:25,000
+
+

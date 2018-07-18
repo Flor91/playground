@@ -1,0 +1,52 @@
+0
+00:00:00,000 --> 00:00:01,050
+
+
+1
+00:00:01,050 --> 00:00:04,190
+Here's another cautionary tale about data cleaning.
+
+2
+00:00:04,190 --> 00:00:07,220
+This is a picture from the National Center for Atmospheric
+
+3
+00:00:07,220 --> 00:00:09,450
+Research that shows the appearance
+
+4
+00:00:09,450 --> 00:00:12,610
+of a hole in the ozone layer over Antarctica.
+
+5
+00:00:12,610 --> 00:00:17,185
+Now when this first occurred-- was observed in 1976,
+
+6
+00:00:17,185 --> 00:00:19,060
+the scientists thought that their instruments
+
+7
+00:00:19,060 --> 00:00:21,460
+were malfunctioning because they didn't expect to see it.
+
+8
+00:00:21,460 --> 00:00:24,340
+And so they rejected the data as unreasonable,
+
+9
+00:00:24,340 --> 00:00:27,630
+as a part of their data quality control algorithms.
+
+10
+00:00:27,630 --> 00:00:30,130
+But in reality, we know that that actually was
+
+11
+00:00:30,130 --> 00:00:32,901
+a real hole in the atmosphere.
+
+12
+00:00:32,901 --> 00:00:33,400
+
+

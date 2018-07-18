@@ -1,0 +1,112 @@
+0
+00:00:00,000 --> 00:00:01,300
+
+
+1
+00:00:01,300 --> 00:00:03,960
+Where do data quality problems come from?
+
+2
+00:00:03,960 --> 00:00:04,710
+Many places.
+
+3
+00:00:04,710 --> 00:00:07,660
+For example, the source data could be dirty on its own,
+
+4
+00:00:07,660 --> 00:00:09,990
+or transformations that you apply to the data
+
+5
+00:00:09,990 --> 00:00:11,140
+could corrupt the data.
+
+6
+00:00:11,140 --> 00:00:13,750
+And this is a challenge with the complexity of the software
+
+7
+00:00:13,750 --> 00:00:18,020
+pipelines that we build process data for data science.
+
+8
+00:00:18,020 --> 00:00:20,230
+We can also have clean data sets that are screwed up
+
+9
+00:00:20,230 --> 00:00:22,240
+because of the integration, where
+
+10
+00:00:22,240 --> 00:00:24,590
+we combine multiple data sets together
+
+11
+00:00:24,590 --> 00:00:27,140
+and do that incorrectly.
+
+12
+00:00:27,140 --> 00:00:29,960
+Things that are rare errors can become frequent errors
+
+13
+00:00:29,960 --> 00:00:33,140
+after we perform a transformation or integration.
+
+14
+00:00:33,140 --> 00:00:35,520
+And even a clean data set can suffer
+
+15
+00:00:35,520 --> 00:00:38,630
+from bit rot-- that's data that loses either its value
+
+16
+00:00:38,630 --> 00:00:40,490
+or accuracy over time.
+
+17
+00:00:40,490 --> 00:00:42,330
+Or any combination of the above can
+
+18
+00:00:42,330 --> 00:00:45,870
+cause data quality problems.
+
+19
+00:00:45,870 --> 00:00:47,590
+So again, looking at the big picture,
+
+20
+00:00:47,590 --> 00:00:49,770
+where does dirty data come from?
+
+21
+00:00:49,770 --> 00:00:51,870
+It can come from the extract, transform,
+
+22
+00:00:51,870 --> 00:00:55,670
+and load process, where we have to deal with integrating data
+
+23
+00:00:55,670 --> 00:00:58,320
+from multiple different data sources, such as application
+
+24
+00:00:58,320 --> 00:01:00,680
+databases, files, and logs.
+
+25
+00:01:00,680 --> 00:01:02,590
+We need to clean this data when we move it
+
+26
+00:01:02,590 --> 00:01:04,600
+into our data warehouse.
+
+27
+00:01:04,600 --> 00:01:05,099
+
+

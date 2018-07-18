@@ -1,0 +1,228 @@
+0
+00:00:00,000 --> 00:00:01,130
+
+
+1
+00:00:01,130 --> 00:00:04,220
+Some structured log files are created by print statements
+
+2
+00:00:04,220 --> 00:00:05,840
+in server processes.
+
+3
+00:00:05,840 --> 00:00:09,030
+And these include processes like web servers, database servers,
+
+4
+00:00:09,030 --> 00:00:11,220
+network file servers, and components
+
+5
+00:00:11,220 --> 00:00:12,580
+of the operating system.
+
+6
+00:00:12,580 --> 00:00:15,660
+All of these generate the semi-structured log files
+
+7
+00:00:15,660 --> 00:00:18,960
+that consist of human-readable text format files.
+
+8
+00:00:18,960 --> 00:00:20,810
+And this is a little ironic because it's
+
+9
+00:00:20,810 --> 00:00:24,000
+very rare for a human to actually read one of these log
+
+10
+00:00:24,000 --> 00:00:28,400
+files, and so oftentimes they're stored or archived in binary
+
+11
+00:00:28,400 --> 00:00:30,450
+or compressed format.
+
+12
+00:00:30,450 --> 00:00:33,910
+Now the format is either published in the specification
+
+13
+00:00:33,910 --> 00:00:36,310
+or defined by the code.
+
+14
+00:00:36,310 --> 00:00:38,640
+And as a result this can make it very
+
+15
+00:00:38,640 --> 00:00:41,410
+difficult to parse a semi-structured log
+
+16
+00:00:41,410 --> 00:00:44,310
+file, because the format can change at any time
+
+17
+00:00:44,310 --> 00:00:46,850
+and any time the code is changed or any time
+
+18
+00:00:46,850 --> 00:00:49,990
+the specification is changed.
+
+19
+00:00:49,990 --> 00:00:53,850
+So remember we looked at earlier in this course the Apache web
+
+20
+00:00:53,850 --> 00:00:55,110
+server log.
+
+21
+00:00:55,110 --> 00:00:57,150
+And you can see that each line here
+
+22
+00:00:57,150 --> 00:01:00,430
+consists of a request that's being made from a client
+
+23
+00:01:00,430 --> 00:01:01,830
+to the server.
+
+24
+00:01:01,830 --> 00:01:05,260
+Let's go through this file is defined by the Apache
+
+25
+00:01:05,260 --> 00:01:06,430
+common log format.
+
+26
+00:01:06,430 --> 00:01:08,820
+It specifies the long format file.
+
+27
+00:01:08,820 --> 00:01:11,970
+And here's an example line from that file.
+
+28
+00:01:11,970 --> 00:01:15,610
+The first component is the client IP address.
+
+29
+00:01:15,610 --> 00:01:17,780
+The second and the third components
+
+30
+00:01:17,780 --> 00:01:20,570
+are user identity from the remote machine,
+
+31
+00:01:20,570 --> 00:01:23,230
+and a hyphen means that that is not available.
+
+32
+00:01:23,230 --> 00:01:27,460
+The next component is the user identity from a local log on,
+
+33
+00:01:27,460 --> 00:01:30,140
+and a hyphen means that's not available.
+
+34
+00:01:30,140 --> 00:01:32,690
+The next component is the request time,
+
+35
+00:01:32,690 --> 00:01:39,030
+and this is broken up into a date, a time, and a times zone.
+
+36
+00:01:39,030 --> 00:01:41,160
+The next component is a client request,
+
+37
+00:01:41,160 --> 00:01:45,040
+and this consists of the request method, so get, post, put,
+
+38
+00:01:45,040 --> 00:01:46,400
+and so on.
+
+39
+00:01:46,400 --> 00:01:49,030
+The endpoint is a uniform resource identifier
+
+40
+00:01:49,030 --> 00:01:52,080
+which specifies what content the client is
+
+41
+00:01:52,080 --> 00:01:55,250
+trying to retrieve, and then finally the client protocol
+
+42
+00:01:55,250 --> 00:01:56,950
+version.
+
+43
+00:01:56,950 --> 00:01:59,820
+The last two components are status code at the server
+
+44
+00:01:59,820 --> 00:02:04,710
+sends back to the client and 200 means that everything went OK.
+
+45
+00:02:04,710 --> 00:02:08,160
+But there are other status codes like the 300 series, the 400
+
+46
+00:02:08,160 --> 00:02:10,460
+series and the 500 series.
+
+47
+00:02:10,460 --> 00:02:13,330
+The last component is the size of the object that's
+
+48
+00:02:13,330 --> 00:02:16,140
+returned to the client, and this is a hyphen
+
+49
+00:02:16,140 --> 00:02:20,050
+if no content is returned or sometimes a zero.
+
+50
+00:02:20,050 --> 00:02:23,940
+I have that underlined and bolded because this
+
+51
+00:02:23,940 --> 00:02:26,580
+is one of the things that makes parsing this kind of data
+
+52
+00:02:26,580 --> 00:02:29,260
+difficult, because sometimes it'll be a hyphen,
+
+53
+00:02:29,260 --> 00:02:30,430
+sometimes it'll be a zero.
+
+54
+00:02:30,430 --> 00:02:31,888
+You never know which one to expect.
+
+55
+00:02:31,888 --> 00:02:34,360
+You have to expect both.
+
+56
+00:02:34,360 --> 00:02:35,167
+
+

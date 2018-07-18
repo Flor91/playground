@@ -1,0 +1,144 @@
+0
+00:00:00,000 --> 00:00:01,460
+
+
+1
+00:00:01,460 --> 00:00:04,330
+With distributed execution in Map Reduce,
+
+2
+00:00:04,330 --> 00:00:08,000
+each stage that we perform passes through the hard drives.
+
+3
+00:00:08,000 --> 00:00:12,380
+So, the initial step of the map reads data from the hard drive,
+
+4
+00:00:12,380 --> 00:00:15,000
+processes it, and then writes it out to disk
+
+5
+00:00:15,000 --> 00:00:18,110
+before we perform the shuffle operation to send data
+
+6
+00:00:18,110 --> 00:00:19,280
+to the reducers.
+
+7
+00:00:19,280 --> 00:00:23,150
+At the reducers, they read the data in from disk,
+
+8
+00:00:23,150 --> 00:00:26,540
+process it, and write the results out to disk.
+
+9
+00:00:26,540 --> 00:00:30,844
+As a result, if we have an iterative job-- so here a job
+
+10
+00:00:30,844 --> 00:00:33,010
+that has three stages and we're just repeating that,
+
+11
+00:00:33,010 --> 00:00:35,620
+so we do stage one, stage two, stage three,
+
+12
+00:00:35,620 --> 00:00:37,560
+then repeat stage one again-- then
+
+13
+00:00:37,560 --> 00:00:42,930
+there'll be a lot of disk I/O operations for each repetition.
+
+14
+00:00:42,930 --> 00:00:45,810
+You can see this in the figure above the stage one, stage two,
+
+15
+00:00:45,810 --> 00:00:47,420
+stage three diagram.
+
+16
+00:00:47,420 --> 00:00:50,900
+Each of those mappers is reading in data from disk,
+
+17
+00:00:50,900 --> 00:00:54,330
+then writing data to disk, only to be read back again
+
+18
+00:00:54,330 --> 00:00:56,850
+from disk by the reducers, written
+
+19
+00:00:56,850 --> 00:01:00,540
+to disk by that reducer, then read again by the next stage's
+
+20
+00:01:00,540 --> 00:01:02,310
+mapper, and so on.
+
+21
+00:01:02,310 --> 00:01:05,230
+The problem here's that disk I/O is very slow.
+
+22
+00:01:05,230 --> 00:01:07,390
+So if we're running iterative jobs,
+
+23
+00:01:07,390 --> 00:01:09,210
+they're primarily going to run at the speed
+
+24
+00:01:09,210 --> 00:01:14,420
+of the disks instead of the speed of our CPUs.
+
+25
+00:01:14,420 --> 00:01:17,100
+This is a motivation for Apache Spark.
+
+26
+00:01:17,100 --> 00:01:19,100
+Because it's not just iterative jobs
+
+27
+00:01:19,100 --> 00:01:21,590
+that we want to perform when we're doing data science,
+
+28
+00:01:21,590 --> 00:01:25,380
+but also complex jobs like interactive mining or stream
+
+29
+00:01:25,380 --> 00:01:27,780
+processing or interactive queries.
+
+30
+00:01:27,780 --> 00:01:31,880
+In each one of these cases, we start with some source data,
+
+31
+00:01:31,880 --> 00:01:35,710
+and we repeatedly read that data and perform calculations
+
+32
+00:01:35,710 --> 00:01:39,120
+and write data back out to disk.
+
+33
+00:01:39,120 --> 00:01:42,722
+That high amount of disk I/O means things
+
+34
+00:01:42,722 --> 00:01:43,930
+are going to run very slowly.
+
+35
+00:01:43,930 --> 00:01:47,810
+Because, again, disk I/O is very slow.
+

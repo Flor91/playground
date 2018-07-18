@@ -1,0 +1,128 @@
+0
+00:00:00,000 --> 00:00:01,330
+
+
+1
+00:00:01,330 --> 00:00:04,170
+The "R" language is an evolution of the "S" language
+
+2
+00:00:04,170 --> 00:00:07,580
+that was developed at Bell Labs for exploratory data analysis.
+
+3
+00:00:07,580 --> 00:00:10,480
+The idea is to allow interactive exploration and visualization
+
+4
+00:00:10,480 --> 00:00:11,030
+of data.
+
+5
+00:00:11,030 --> 00:00:13,560
+And it's the preferred language for statisticians
+
+6
+00:00:13,560 --> 00:00:15,630
+and used by many data scientists.
+
+7
+00:00:15,630 --> 00:00:18,700
+Its features include being the most comprehensive collection
+
+8
+00:00:18,700 --> 00:00:21,230
+of statistical models and distributions,
+
+9
+00:00:21,230 --> 00:00:25,760
+and also CRAN, which is a very large repository of open source
+
+10
+00:00:25,760 --> 00:00:28,900
+statistical models.
+
+11
+00:00:28,900 --> 00:00:31,800
+Now, let's talk about some definitions.
+
+12
+00:00:31,800 --> 00:00:34,930
+The mean of a set of values is the average of the values,
+
+13
+00:00:34,930 --> 00:00:38,190
+and the variance is a measure of the width of a distribution.
+
+14
+00:00:38,190 --> 00:00:41,460
+The standard deviation is the square root of the variance,
+
+15
+00:00:41,460 --> 00:00:43,910
+and a normal distribution is characterized
+
+16
+00:00:43,910 --> 00:00:45,740
+by a mean and a variance.
+
+17
+00:00:45,740 --> 00:00:48,480
+Here we have a figure that shows an example
+
+18
+00:00:48,480 --> 00:00:50,410
+of a normal distribution.
+
+19
+00:00:50,410 --> 00:00:53,840
+In probability theory, the central limit theorem
+
+20
+00:00:53,840 --> 00:00:55,970
+states that the distribution of a sum
+
+21
+00:00:55,970 --> 00:00:58,360
+or mean of n independent identically
+
+22
+00:00:58,360 --> 00:01:00,500
+distributed random variables approaches
+
+23
+00:01:00,500 --> 00:01:02,720
+a normal distribution as the number of variables
+
+24
+00:01:02,720 --> 00:01:05,060
+approaches infinity.
+
+25
+00:01:05,060 --> 00:01:06,990
+The common parametric statistical test,
+
+26
+00:01:06,990 --> 00:01:09,290
+for example t-test and ANOVA, assume
+
+27
+00:01:09,290 --> 00:01:11,870
+that you have a normally distributed data set.
+
+28
+00:01:11,870 --> 00:01:14,990
+But they also depend on the sample mean and variance.
+
+29
+00:01:14,990 --> 00:01:16,600
+These types of tests work reasonably
+
+30
+00:01:16,600 --> 00:01:19,180
+well for data that are not normally distributed,
+
+31
+00:01:19,180 --> 00:01:22,640
+as long as the samples are not too small.
+

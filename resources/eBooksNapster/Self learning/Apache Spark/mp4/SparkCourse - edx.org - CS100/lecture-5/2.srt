@@ -1,0 +1,112 @@
+0
+00:00:00,000 --> 00:00:01,410
+
+
+1
+00:00:01,410 --> 00:00:04,825
+So in review, the big picture is we have a data warehouse,
+
+2
+00:00:04,825 --> 00:00:06,200
+and from that data warehouse we'd
+
+3
+00:00:06,200 --> 00:00:08,380
+like to extract data products, analytics,
+
+4
+00:00:08,380 --> 00:00:10,210
+and business intelligence.
+
+5
+00:00:10,210 --> 00:00:12,780
+We get information into the data warehouse
+
+6
+00:00:12,780 --> 00:00:16,340
+by performing extract, transform, and load operations
+
+7
+00:00:16,340 --> 00:00:22,020
+on application databases, files, and logs.
+
+8
+00:00:22,020 --> 00:00:23,520
+Now, some of the key data management
+
+9
+00:00:23,520 --> 00:00:26,460
+concepts that we want to consider are a data model.
+
+10
+00:00:26,460 --> 00:00:28,540
+This is a collection of concepts for describing
+
+11
+00:00:28,540 --> 00:00:30,930
+data and a schema, which is a description
+
+12
+00:00:30,930 --> 00:00:35,930
+of a particular collection of data using a given data model.
+
+13
+00:00:35,930 --> 00:00:39,230
+Now, information spans a structure spectrum,
+
+14
+00:00:39,230 --> 00:00:42,640
+ranging from unstructured, or schema-never data.
+
+15
+00:00:42,640 --> 00:00:45,050
+This is information that has no structure
+
+16
+00:00:45,050 --> 00:00:46,620
+and never will have structure.
+
+17
+00:00:46,620 --> 00:00:49,850
+It includes things like plain text and media.
+
+18
+00:00:49,850 --> 00:00:52,790
+Semi-structured, or structure-later data,
+
+19
+00:00:52,790 --> 00:00:57,080
+includes things like documents, Extensible Markup Language
+
+20
+00:00:57,080 --> 00:01:01,370
+content, and tag text, or media.
+
+21
+00:01:01,370 --> 00:01:04,400
+The last structure element is structured data,
+
+22
+00:01:04,400 --> 00:01:06,270
+and this is schema-first data.
+
+23
+00:01:06,270 --> 00:01:08,480
+This includes things like relational databases
+
+24
+00:01:08,480 --> 00:01:10,680
+and formatted messages.
+
+25
+00:01:10,680 --> 00:01:14,090
+Today, we will look at semi-structured data
+
+26
+00:01:14,090 --> 00:01:17,180
+or schema-later data, where we apply a schema
+
+27
+00:01:17,180 --> 00:01:20,100
+after we create that data.
+

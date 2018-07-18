@@ -1,0 +1,148 @@
+0
+00:00:00,000 --> 00:00:00,990
+
+
+1
+00:00:00,990 --> 00:00:04,680
+Data quality problems can also rise during data retrieval.
+
+2
+00:00:04,680 --> 00:00:07,510
+Exported data sets are often just a view of the actual data.
+
+3
+00:00:07,510 --> 00:00:09,930
+And problems can occur because the source
+
+4
+00:00:09,930 --> 00:00:13,190
+or the need for drive data was not properly understood.
+
+5
+00:00:13,190 --> 00:00:15,920
+Or it can just be ordinary mistakes, for example,
+
+6
+00:00:15,920 --> 00:00:18,540
+performing an inner join instead of an outer join,
+
+7
+00:00:18,540 --> 00:00:21,500
+or not understanding what null values mean.
+
+8
+00:00:21,500 --> 00:00:23,760
+They can also be computational constraints.
+
+9
+00:00:23,760 --> 00:00:27,580
+For example, producing the full history might be too expensive.
+
+10
+00:00:27,580 --> 00:00:30,580
+And so you supply a limited snapshot instead.
+
+11
+00:00:30,580 --> 00:00:33,420
+But what are the limitations of that snapshot?
+
+12
+00:00:33,420 --> 00:00:36,650
+Or it could be incompatibility issues, for example,
+
+13
+00:00:36,650 --> 00:00:39,605
+producing the data in ASCII instead of Unicode or UTF-8.
+
+14
+00:00:39,605 --> 00:00:42,430
+
+
+15
+00:00:42,430 --> 00:00:47,360
+Data mining and analysis can also introduce problems.
+
+16
+00:00:47,360 --> 00:00:49,875
+You need to understand what you're doing with the data.
+
+17
+00:00:49,875 --> 00:00:51,750
+And there can be many problems that can occur
+
+18
+00:00:51,750 --> 00:00:53,480
+during the analysis phase.
+
+19
+00:00:53,480 --> 00:00:56,740
+Scale and performance issues, confidence
+
+20
+00:00:56,740 --> 00:01:00,210
+bounds-- understanding what they are-- black boxes
+
+21
+00:01:00,210 --> 00:01:04,090
+or dart boards, being attached to a model,
+
+22
+00:01:04,090 --> 00:01:06,970
+having insufficient domain expertise,
+
+23
+00:01:06,970 --> 00:01:09,970
+or applying casual empiricism-- that
+
+24
+00:01:09,970 --> 00:01:12,540
+is, using some arbitrary number has
+
+25
+00:01:12,540 --> 00:01:13,760
+to support a pre-conception.
+
+26
+00:01:13,760 --> 00:01:16,380
+
+
+27
+00:01:16,380 --> 00:01:17,920
+So for retrieval and mining, there
+
+28
+00:01:17,920 --> 00:01:19,690
+are many potential solutions.
+
+29
+00:01:19,690 --> 00:01:21,790
+For data exploration, you can try
+
+30
+00:01:21,790 --> 00:01:24,740
+to determine which models and techniques are appropriate.
+
+31
+00:01:24,740 --> 00:01:28,220
+Try to find data bugs and develop domain expertise.
+
+32
+00:01:28,220 --> 00:01:30,890
+You should perform continuous analysis to determine,
+
+33
+00:01:30,890 --> 00:01:32,530
+are the results stable?
+
+34
+00:01:32,530 --> 00:01:34,750
+If they change, how do they change?
+
+35
+00:01:34,750 --> 00:01:36,950
+And it's very important to have accountability.
+
+36
+00:01:36,950 --> 00:01:40,320
+Make analysis part of the feedback loop.
+

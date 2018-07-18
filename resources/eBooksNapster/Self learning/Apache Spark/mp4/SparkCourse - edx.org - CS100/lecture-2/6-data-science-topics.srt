@@ -1,0 +1,300 @@
+0
+00:00:00,000 --> 00:00:00,860
+
+
+1
+00:00:00,860 --> 00:00:03,670
+So what does a data scientist do in practice?
+
+2
+00:00:03,670 --> 00:00:06,580
+Well, first, they start by digging around in data,
+
+3
+00:00:06,580 --> 00:00:09,390
+trying to find interesting data to analyze.
+
+4
+00:00:09,390 --> 00:00:12,090
+And that's why I have a picture here of some kids panning
+
+5
+00:00:12,090 --> 00:00:15,400
+for gold, trying to find those little nuggets in a lot of dirt
+
+6
+00:00:15,400 --> 00:00:17,340
+and dirty water.
+
+7
+00:00:17,340 --> 00:00:18,860
+So the next step is that they have
+
+8
+00:00:18,860 --> 00:00:21,720
+to clean and prepare that data.
+
+9
+00:00:21,720 --> 00:00:23,170
+And then they hypothesize a model.
+
+10
+00:00:23,170 --> 00:00:25,400
+So they think about what they think
+
+11
+00:00:25,400 --> 00:00:27,800
+might be some interesting properties of the data
+
+12
+00:00:27,800 --> 00:00:28,760
+and build a model.
+
+13
+00:00:28,760 --> 00:00:32,470
+They then evaluate and interpret the results of that model.
+
+14
+00:00:32,470 --> 00:00:34,510
+And oftentimes, you don't get what you expected.
+
+15
+00:00:34,510 --> 00:00:37,370
+And so you have to go back and collect more data
+
+16
+00:00:37,370 --> 00:00:40,280
+and repeat the cycle of cleaning, preparing that data,
+
+17
+00:00:40,280 --> 00:00:42,970
+hypothesizing a new model or maybe a hybrid of your old
+
+18
+00:00:42,970 --> 00:00:47,470
+and new or some composite model, and then evaluate and interpret
+
+19
+00:00:47,470 --> 00:00:50,940
+the results from that, and then repeat, and repeat, and repeat.
+
+20
+00:00:50,940 --> 00:00:53,160
+Until finally, you have a model that you
+
+21
+00:00:53,160 --> 00:00:55,970
+think gives you interesting statistically
+
+22
+00:00:55,970 --> 00:00:57,750
+significant results.
+
+23
+00:00:57,750 --> 00:01:00,150
+And then you want to run that model at massive scale.
+
+24
+00:01:00,150 --> 00:01:05,390
+And so this is where large scale exploitation comes into play.
+
+25
+00:01:05,390 --> 00:01:08,080
+Now, some of the topics for data scientists
+
+26
+00:01:08,080 --> 00:01:14,240
+include data acquisition, data preparation, analysis,
+
+27
+00:01:14,240 --> 00:01:18,030
+data presentation, data products, and observation
+
+28
+00:01:18,030 --> 00:01:18,863
+and experimentation.
+
+29
+00:01:18,863 --> 00:01:21,810
+
+
+30
+00:01:21,810 --> 00:01:24,550
+Now, what makes data science difficult?
+
+31
+00:01:24,550 --> 00:01:25,730
+Many things.
+
+32
+00:01:25,730 --> 00:01:29,990
+First, we have to overcome assumptions
+
+33
+00:01:29,990 --> 00:01:33,830
+and making ad hoc explanations of data patterns.
+
+34
+00:01:33,830 --> 00:01:35,350
+And this is just human nature.
+
+35
+00:01:35,350 --> 00:01:39,500
+When we see something, we immediately see a pattern.
+
+36
+00:01:39,500 --> 00:01:41,540
+It's very hard for us to overcome that pattern
+
+37
+00:01:41,540 --> 00:01:44,240
+that we saw and really understand,
+
+38
+00:01:44,240 --> 00:01:48,480
+was that just something sort of like an optical illusion,
+
+39
+00:01:48,480 --> 00:01:51,090
+or was it really a significant pattern?
+
+40
+00:01:51,090 --> 00:01:53,470
+We also have to be very careful about just, well,
+
+41
+00:01:53,470 --> 00:01:56,390
+we think it might be this because.
+
+42
+00:01:56,390 --> 00:01:58,890
+Those kind of ad hoc explanations
+
+43
+00:01:58,890 --> 00:02:01,720
+aren't scientifically valid.
+
+44
+00:02:01,720 --> 00:02:03,480
+We also have to make sure we check,
+
+45
+00:02:03,480 --> 00:02:05,510
+and we check, and we check again.
+
+46
+00:02:05,510 --> 00:02:07,930
+We need to validate our models, validate
+
+47
+00:02:07,930 --> 00:02:10,800
+the integrity of our data pipeline, and so on.
+
+48
+00:02:10,800 --> 00:02:13,370
+So think about the Google Flu Trends results.
+
+49
+00:02:13,370 --> 00:02:16,130
+Initially, they had a very accurate model.
+
+50
+00:02:16,130 --> 00:02:19,506
+But over time, the model became very inaccurate.
+
+51
+00:02:19,506 --> 00:02:21,380
+And this is because the underlying conditions
+
+52
+00:02:21,380 --> 00:02:24,970
+changed, flu stories appearing on Google News.
+
+53
+00:02:24,970 --> 00:02:27,840
+They had to go back and revalidate their models
+
+54
+00:02:27,840 --> 00:02:29,870
+and revalidate their data pipeline.
+
+55
+00:02:29,870 --> 00:02:32,360
+And then they got great results again.
+
+56
+00:02:32,360 --> 00:02:35,260
+We also have to be very careful about overgeneralizing,
+
+57
+00:02:35,260 --> 00:02:38,780
+that is taking a model and trying to apply it everywhere.
+
+58
+00:02:38,780 --> 00:02:40,280
+Another hard thing for data science
+
+59
+00:02:40,280 --> 00:02:42,610
+is communicating our results.
+
+60
+00:02:42,610 --> 00:02:45,350
+How do you convey the results of your model
+
+61
+00:02:45,350 --> 00:02:46,980
+to someone who's not a domain expert
+
+62
+00:02:46,980 --> 00:02:50,850
+or who does not understand statistical methods?
+
+63
+00:02:50,850 --> 00:02:53,180
+And related to this is we have to make sure that we use
+
+64
+00:02:53,180 --> 00:02:54,960
+statistical tests correctly.
+
+65
+00:02:54,960 --> 00:02:57,330
+Again, think about the caveat example
+
+66
+00:02:57,330 --> 00:03:00,850
+with Facebook, where the researchers did not correctly
+
+67
+00:03:00,850 --> 00:03:04,870
+apply statistical techniques.
+
+68
+00:03:04,870 --> 00:03:07,850
+Another challenge is moving from a prototype
+
+69
+00:03:07,850 --> 00:03:11,140
+model into something that you can run in production
+
+70
+00:03:11,140 --> 00:03:14,280
+and can actually handle massive amounts of data
+
+71
+00:03:14,280 --> 00:03:19,610
+and deliver results nearly instantaneously.
+
+72
+00:03:19,610 --> 00:03:22,030
+And finally, data pipelines can be very complex,
+
+73
+00:03:22,030 --> 00:03:26,460
+lots of moving parts for many different projects and sources.
+
+74
+00:03:26,460 --> 00:03:30,630
+And so when something goes wrong, who do you ask for help?
+

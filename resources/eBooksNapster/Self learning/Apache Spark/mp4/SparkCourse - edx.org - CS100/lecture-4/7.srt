@@ -1,0 +1,276 @@
+0
+00:00:00,000 --> 00:00:01,490
+
+
+1
+00:00:01,490 --> 00:00:03,300
+-Let's look at the transformations
+
+2
+00:00:03,300 --> 00:00:05,320
+that we just talked about.
+
+3
+00:00:05,320 --> 00:00:09,860
+So here, we start with creating an RDD using sc.parallelize
+
+4
+00:00:09,860 --> 00:00:12,950
+of a list-- the list one, two, three, four.
+
+5
+00:00:12,950 --> 00:00:15,350
+Then we apply the transformation map.
+
+6
+00:00:15,350 --> 00:00:19,970
+And we pass in a lambda function that will double each element.
+
+7
+00:00:19,970 --> 00:00:24,090
+Now, spark turns this function literal into a closure
+
+8
+00:00:24,090 --> 00:00:26,660
+and passes it automatically to the worker.
+
+9
+00:00:26,660 --> 00:00:29,660
+So the code in black runs at the driver.
+
+10
+00:00:29,660 --> 00:00:34,920
+The code in green runs at individual workers.
+
+11
+00:00:34,920 --> 00:00:37,970
+So what will happen here is it'll take the RDD one, two,
+
+12
+00:00:37,970 --> 00:00:42,560
+three, four, and it'll transform it into two, four, six, eight.
+
+13
+00:00:42,560 --> 00:00:46,090
+Again, nothing actually happens until an action is performed.
+
+14
+00:00:46,090 --> 00:00:49,230
+But this is part of the recipe that we're constructing.
+
+15
+00:00:49,230 --> 00:00:53,500
+Now alternatively, we could have used a filter transformation.
+
+16
+00:00:53,500 --> 00:00:57,250
+Here, the lambda function will return true
+
+17
+00:00:57,250 --> 00:01:01,640
+if the element, modulo two, equals zero.
+
+18
+00:01:01,640 --> 00:01:05,069
+So this will take our RDD of one, two, three, four,
+
+19
+00:01:05,069 --> 00:01:07,630
+and return elements two, and four.
+
+20
+00:01:07,630 --> 00:01:13,830
+So we construct a new RDD consisting of two and four.
+
+21
+00:01:13,830 --> 00:01:16,090
+The last transformation on this slide
+
+22
+00:01:16,090 --> 00:01:18,820
+is the distinct transformation.
+
+23
+00:01:18,820 --> 00:01:23,610
+So we start by parallellizing the list one, four, two, two,
+
+24
+00:01:23,610 --> 00:01:24,760
+three.
+
+25
+00:01:24,760 --> 00:01:30,330
+And then, we take and pass that to the distinct transformation.
+
+26
+00:01:30,330 --> 00:01:33,070
+That would give us a new RDD that
+
+27
+00:01:33,070 --> 00:01:37,690
+only contains the distinct elements of the input RDD.
+
+28
+00:01:37,690 --> 00:01:43,020
+So this creates a new RDD with only one, four, two, and three.
+
+29
+00:01:43,020 --> 00:01:45,660
+Those are the unique elements of the input RDD.
+
+30
+00:01:45,660 --> 00:01:48,670
+
+
+31
+00:01:48,670 --> 00:01:52,190
+Here's another example of a transformation, the map
+
+32
+00:01:52,190 --> 00:01:53,450
+transformation.
+
+33
+00:01:53,450 --> 00:01:58,130
+So we pass in an RDD that we created using sc.parallelize
+
+34
+00:01:58,130 --> 00:02:00,380
+with one, two, three.
+
+35
+00:02:00,380 --> 00:02:04,140
+And that is then passed to a map with a lambda function
+
+36
+00:02:04,140 --> 00:02:11,800
+that will return x and x plus five as each element.
+
+37
+00:02:11,800 --> 00:02:16,200
+So this takes-- as a list-- this takes that RDD that
+
+38
+00:02:16,200 --> 00:02:19,940
+was one, two, three, and creates a new RDD where
+
+39
+00:02:19,940 --> 00:02:23,650
+each element of the RDD is a list.
+
+40
+00:02:23,650 --> 00:02:28,610
+So we have, now, first element of the RDD is one and six.
+
+41
+00:02:28,610 --> 00:02:32,170
+Second element is two and seven.
+
+42
+00:02:32,170 --> 00:02:36,530
+And the third element is a list of three and eight.
+
+43
+00:02:36,530 --> 00:02:40,630
+Now let's compare this to what happens when we use flat map.
+
+44
+00:02:40,630 --> 00:02:45,310
+When we use flat map, we would create the same RDD .
+
+45
+00:02:45,310 --> 00:02:49,280
+But then it flattens that RDD and takes each list
+
+46
+00:02:49,280 --> 00:02:53,490
+and turns it into individual elements.
+
+47
+00:02:53,490 --> 00:02:55,820
+So instead, we end up with the RDD
+
+48
+00:02:55,820 --> 00:03:01,210
+consisting of the elements one, six, two, seve, three,
+
+49
+00:03:01,210 --> 00:03:01,770
+and eight.
+
+50
+00:03:01,770 --> 00:03:05,690
+
+
+51
+00:03:05,690 --> 00:03:09,650
+So let's look at what happens when we transform a text
+
+52
+00:03:09,650 --> 00:03:12,010
+file based RDD.
+
+53
+00:03:12,010 --> 00:03:18,110
+So here, we create a new RDD lines from a text file.
+
+54
+00:03:18,110 --> 00:03:22,750
+And this is going to create an RDD with four partitions.
+
+55
+00:03:22,750 --> 00:03:25,750
+We then filter out lines that are comments.
+
+56
+00:03:25,750 --> 00:03:28,930
+And so here we're passing in a function
+
+57
+00:03:28,930 --> 00:03:31,810
+instead of passing in a lambda.
+
+58
+00:03:31,810 --> 00:03:33,780
+And the function here is called isComment.
+
+59
+00:03:33,780 --> 00:03:36,196
+And it doesn't matter what the function is actually doing,
+
+60
+00:03:36,196 --> 00:03:38,730
+but what we'll say is if the line is a comment,
+
+61
+00:03:38,730 --> 00:03:40,870
+we want it removed from the RDD.
+
+62
+00:03:40,870 --> 00:03:43,950
+So we'll create a new RDD comments
+
+63
+00:03:43,950 --> 00:03:47,300
+that contains only those elements from lines
+
+64
+00:03:47,300 --> 00:03:50,005
+that are not comments.
+
+65
+00:03:50,005 --> 00:03:52,680
+Now lazy evaluation means that nothing is actually
+
+66
+00:03:52,680 --> 00:03:53,880
+going to happen right now.
+
+67
+00:03:53,880 --> 00:03:56,630
+Spark, instead, will save a recipe for how it's
+
+68
+00:03:56,630 --> 00:03:59,510
+going to transform the source.
+

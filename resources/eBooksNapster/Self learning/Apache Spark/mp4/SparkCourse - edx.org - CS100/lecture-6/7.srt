@@ -1,0 +1,96 @@
+0
+00:00:00,000 --> 00:00:01,120
+
+
+1
+00:00:01,120 --> 00:00:04,330
+SQL allows you to explicitly state the type of JOIN
+
+2
+00:00:04,330 --> 00:00:05,670
+that you want to perform.
+
+3
+00:00:05,670 --> 00:00:07,780
+So in this case, we have stated that we
+
+4
+00:00:07,780 --> 00:00:12,710
+want to SELECT S.name and E.classid FROM Students S
+
+5
+00:00:12,710 --> 00:00:18,960
+INNER JOIN Enrolled E ON S.sid equals E.sid.
+
+6
+00:00:18,960 --> 00:00:21,210
+This is the same as what we saw earlier.
+
+7
+00:00:21,210 --> 00:00:24,330
+It will combine the two tables, the Cartesian product,
+
+8
+00:00:24,330 --> 00:00:29,700
+and then select those tuples where S.sid equals E.sid.
+
+9
+00:00:29,700 --> 00:00:33,270
+
+
+10
+00:00:33,270 --> 00:00:37,240
+Now, all of these are equivalent JOIN notations.
+
+11
+00:00:37,240 --> 00:00:39,570
+But the explicit versions are preferred.
+
+12
+00:00:39,570 --> 00:00:43,570
+In the explicit case, we have the example that we just saw,
+
+13
+00:00:43,570 --> 00:00:47,360
+SELECT S.name and E.classid FROM Students S
+
+14
+00:00:47,360 --> 00:00:53,140
+INNER JOIN Enrolled E ON S.sid equals E.sid,
+
+15
+00:00:53,140 --> 00:00:57,580
+or we can actually drop the keyword INNER as the default
+
+16
+00:00:57,580 --> 00:01:00,080
+JOIN is an INNER JOIN.
+
+17
+00:01:00,080 --> 00:01:02,330
+Now what we saw in the earlier example
+
+18
+00:01:02,330 --> 00:01:04,349
+was implicit JOIN notation.
+
+19
+00:01:04,349 --> 00:01:05,900
+But this has since been deprecated,
+
+20
+00:01:05,900 --> 00:01:07,400
+and so you shouldn't use it anymore.
+
+21
+00:01:07,400 --> 00:01:10,430
+Instead, you should explicitly say either INNER JOIN
+
+22
+00:01:10,430 --> 00:01:12,134
+or JOINED.
+
+23
+00:01:12,134 --> 00:01:12,633
+
+

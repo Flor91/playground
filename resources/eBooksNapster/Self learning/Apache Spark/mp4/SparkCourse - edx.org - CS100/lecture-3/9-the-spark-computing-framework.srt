@@ -1,0 +1,72 @@
+0
+00:00:00,000 --> 00:00:00,870
+
+
+1
+00:00:00,870 --> 00:00:02,590
+The Spark Computing Framework provides
+
+2
+00:00:02,590 --> 00:00:04,920
+programming abstractions and a parallel runtime
+
+3
+00:00:04,920 --> 00:00:07,420
+that hides the complexities of fault-tolerance and slow
+
+4
+00:00:07,420 --> 00:00:08,290
+machines.
+
+5
+00:00:08,290 --> 00:00:10,480
+Basically, all a programmer has to do is say here's
+
+6
+00:00:10,480 --> 00:00:12,506
+an operation, run it on all of the data.
+
+7
+00:00:12,506 --> 00:00:14,380
+They don't have to worry about where it runs.
+
+8
+00:00:14,380 --> 00:00:15,579
+That's handled by Spark.
+
+9
+00:00:15,579 --> 00:00:17,870
+And they don't have to worry about slow nodes or failed
+
+10
+00:00:17,870 --> 00:00:18,380
+nodes.
+
+11
+00:00:18,380 --> 00:00:20,780
+Spark will automatically run it multiple times
+
+12
+00:00:20,780 --> 00:00:23,635
+and guarantee the correct result.
+
+13
+00:00:23,635 --> 00:00:25,010
+Now, the Spark Framework actually
+
+14
+00:00:25,010 --> 00:00:26,980
+consists of four components.
+
+15
+00:00:26,980 --> 00:00:29,510
+There's the core Apache Spark component
+
+16
+00:00:29,510 --> 00:00:33,790
+along with Spark SQL, Spark Streaming, the ML machine
+
+17
+00:00:33,790 --> 00:00:38,320
+learning library, and the GraphX graphical computing library.
+

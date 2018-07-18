@@ -1,0 +1,188 @@
+0
+00:00:00,000 --> 00:00:01,150
+
+
+1
+00:00:01,150 --> 00:00:03,250
+Spark automatically creates closures
+
+2
+00:00:03,250 --> 00:00:05,550
+for functions that run on RDDs at workers,
+
+3
+00:00:05,550 --> 00:00:09,220
+and for any global variables that are used by those workers.
+
+4
+00:00:09,220 --> 00:00:13,380
+Now one closure per worker is sent with every task,
+
+5
+00:00:13,380 --> 00:00:16,740
+and there's no communication between workers.
+
+6
+00:00:16,740 --> 00:00:19,595
+And any changes that you make to the global variables that
+
+7
+00:00:19,595 --> 00:00:22,020
+are at the workers are not sent to the driver
+
+8
+00:00:22,020 --> 00:00:24,950
+or to other workers.
+
+9
+00:00:24,950 --> 00:00:27,390
+Now consider the following use cases.
+
+10
+00:00:27,390 --> 00:00:30,170
+What if we have an iterative or a single job
+
+11
+00:00:30,170 --> 00:00:32,200
+as a large global variable?
+
+12
+00:00:32,200 --> 00:00:35,720
+So this would result in sending a large read-only look-up table
+
+13
+00:00:35,720 --> 00:00:38,300
+to the workers or sending a large feature
+
+14
+00:00:38,300 --> 00:00:41,576
+vector in a machine learning algorithms to the workers.
+
+15
+00:00:41,576 --> 00:00:43,200
+Or what if we want to count events that
+
+16
+00:00:43,200 --> 00:00:45,520
+occur during job execution?
+
+17
+00:00:45,520 --> 00:00:47,790
+So for example, how many input lines were blank
+
+18
+00:00:47,790 --> 00:00:51,410
+or how many input records were corrupt?
+
+19
+00:00:51,410 --> 00:00:53,470
+The problem we have is that these closures
+
+20
+00:00:53,470 --> 00:00:57,650
+are automatically created are sent or re-sent with every job.
+
+21
+00:00:57,650 --> 00:01:00,280
+So for an interview job with a large global variable
+
+22
+00:01:00,280 --> 00:01:02,550
+we'll be sending that large global variable
+
+23
+00:01:02,550 --> 00:01:06,190
+with every single job to every single worker.
+
+24
+00:01:06,190 --> 00:01:08,890
+It's also very inefficient to continually send
+
+25
+00:01:08,890 --> 00:01:11,360
+large amounts of data to each worker,
+
+26
+00:01:11,360 --> 00:01:14,950
+and closures are one way from the driver to the worker.
+
+27
+00:01:14,950 --> 00:01:19,190
+So how can we count events that occur at a worker
+
+28
+00:01:19,190 --> 00:01:24,620
+and communicate that back to the driver?
+
+29
+00:01:24,620 --> 00:01:29,200
+Well, to do this, pySpark provides shared variables
+
+30
+00:01:29,200 --> 00:01:31,140
+in two different types.
+
+31
+00:01:31,140 --> 00:01:32,950
+The first is broadcast variables.
+
+32
+00:01:32,950 --> 00:01:36,170
+These enable us to efficiently send large read-only values
+
+33
+00:01:36,170 --> 00:01:37,770
+to all of the workers.
+
+34
+00:01:37,770 --> 00:01:39,700
+They're saved at the workers for use
+
+35
+00:01:39,700 --> 00:01:42,090
+in on or more Spark operations.
+
+36
+00:01:42,090 --> 00:01:44,520
+It's like sending a large read-only look-up table
+
+37
+00:01:44,520 --> 00:01:46,390
+to all of the nodes.
+
+38
+00:01:46,390 --> 00:01:49,260
+The second shared variable type is accumulators.
+
+39
+00:01:49,260 --> 00:01:51,540
+And they allow us to aggregate values from workers
+
+40
+00:01:51,540 --> 00:01:53,220
+back to the driver.
+
+41
+00:01:53,220 --> 00:01:55,270
+Now only the driver can access the value
+
+42
+00:01:55,270 --> 00:01:57,910
+of the accumulator for the tasks the accumulators
+
+43
+00:01:57,910 --> 00:02:00,350
+are basically write-only.
+
+44
+00:02:00,350 --> 00:02:02,100
+And we can use this as an example
+
+45
+00:02:02,100 --> 00:02:06,267
+to count errors that are seen in an RDD across workers.
+
+46
+00:02:06,267 --> 00:02:06,767
+
+

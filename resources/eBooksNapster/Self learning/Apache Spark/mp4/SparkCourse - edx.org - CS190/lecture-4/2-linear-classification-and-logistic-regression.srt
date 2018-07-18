@@ -1,0 +1,820 @@
+0
+00:00:00,000 --> 00:00:06,100
+
+
+1
+00:00:06,100 --> 00:00:09,190
+In this segment, we'll talk about linear classification
+
+2
+00:00:09,190 --> 00:00:12,320
+and relate it to the problem of linear regression.
+
+3
+00:00:12,320 --> 00:00:14,800
+We'll also introduce logistic regression,
+
+4
+00:00:14,800 --> 00:00:18,080
+which is a particular type of linear classification model.
+
+5
+00:00:18,080 --> 00:00:21,830
+As a reminder, classification is a supervised learning setting.
+
+6
+00:00:21,830 --> 00:00:24,430
+And our goal is to learn a mapping from observations
+
+7
+00:00:24,430 --> 00:00:28,190
+to discreet labels given a set of training examples.
+
+8
+00:00:28,190 --> 00:00:30,540
+Spam classification is a canonical example
+
+9
+00:00:30,540 --> 00:00:33,710
+of classification where the observations are emails
+
+10
+00:00:33,710 --> 00:00:37,460
+and the labels are spam and not spam.
+
+11
+00:00:37,460 --> 00:00:39,300
+Given a set of label to emails, we
+
+12
+00:00:39,300 --> 00:00:44,240
+want to predict whether a new email is spam or not spam.
+
+13
+00:00:44,240 --> 00:00:47,060
+Click-through rate prediction is another example.
+
+14
+00:00:47,060 --> 00:00:50,950
+Here, our observations are user and publisher triples.
+
+15
+00:00:50,950 --> 00:00:53,800
+Our labels are not-click and click.
+
+16
+00:00:53,800 --> 00:00:55,890
+And given a set of labeled observations,
+
+17
+00:00:55,890 --> 00:00:59,240
+we want to predict whether a new user ad publisher triple
+
+18
+00:00:59,240 --> 00:01:00,950
+will result in a click.
+
+19
+00:01:00,950 --> 00:01:02,970
+In fact, we really want to predict this
+
+20
+00:01:02,970 --> 00:01:05,570
+at a more granular level using probabilities.
+
+21
+00:01:05,570 --> 00:01:09,260
+But we'll discuss that in later segments.
+
+22
+00:01:09,260 --> 00:01:10,860
+In this segment, we're interested in
+
+23
+00:01:10,860 --> 00:01:12,840
+linear classification models.
+
+24
+00:01:12,840 --> 00:01:14,530
+And to develop our understanding,
+
+25
+00:01:14,530 --> 00:01:17,250
+we'll start with a review of linear regression.
+
+26
+00:01:17,250 --> 00:01:19,610
+In linear regression, our key assumption
+
+27
+00:01:19,610 --> 00:01:22,060
+is that there's a linear mapping between the features
+
+28
+00:01:22,060 --> 00:01:23,520
+and the label.
+
+29
+00:01:23,520 --> 00:01:28,660
+Assuming we have three features represented by x1, x2, and x3,
+
+30
+00:01:28,660 --> 00:01:31,430
+this means that we assume that we can define y
+
+31
+00:01:31,430 --> 00:01:33,670
+as a weighted sum of these features
+
+32
+00:01:33,670 --> 00:01:38,450
+plus some offset value, which we denote by w0.
+
+33
+00:01:38,450 --> 00:01:41,170
+Additionally, to account for this offset value,
+
+34
+00:01:41,170 --> 00:01:43,100
+we can augment our feature vector
+
+35
+00:01:43,100 --> 00:01:44,920
+by adding an additional feature that
+
+36
+00:01:44,920 --> 00:01:47,800
+equals 1 for all observations.
+
+37
+00:01:47,800 --> 00:01:50,460
+And then we can rewrite this linear mapping assumption
+
+38
+00:01:50,460 --> 00:01:53,880
+as a scalar or inner product.
+
+39
+00:01:53,880 --> 00:01:56,730
+As we previously discussed, using a linear mapping
+
+40
+00:01:56,730 --> 00:01:58,970
+is attractive for several reasons.
+
+41
+00:01:58,970 --> 00:02:02,030
+First, it is intuitive and mathematically simple.
+
+42
+00:02:02,030 --> 00:02:04,430
+Second, it often works well in practice.
+
+43
+00:02:04,430 --> 00:02:06,400
+And finally, we have the flexibility
+
+44
+00:02:06,400 --> 00:02:08,650
+to introduce new features as we like.
+
+45
+00:02:08,650 --> 00:02:10,280
+And we can thus increase the complexity
+
+46
+00:02:10,280 --> 00:02:14,390
+of this model via the process of feature extraction.
+
+47
+00:02:14,390 --> 00:02:17,110
+So the natural question is how can we extend these ideas
+
+48
+00:02:17,110 --> 00:02:20,606
+to the classification setting.
+
+49
+00:02:20,606 --> 00:02:22,730
+Let's assume we're trying to predict whether or not
+
+50
+00:02:22,730 --> 00:02:24,980
+it will rain given three weather related
+
+51
+00:02:24,980 --> 00:02:27,660
+features, in particular, temperature, cloudiness,
+
+52
+00:02:27,660 --> 00:02:29,590
+and humidity.
+
+53
+00:02:29,590 --> 00:02:31,960
+We can use the same feature representation, as
+
+54
+00:02:31,960 --> 00:02:34,490
+with linear regression, including the one feature
+
+55
+00:02:34,490 --> 00:02:37,446
+to multiply by an offset.
+
+56
+00:02:37,446 --> 00:02:38,820
+But now we need to figure out how
+
+57
+00:02:38,820 --> 00:02:40,550
+we can make class predictions.
+
+58
+00:02:40,550 --> 00:02:43,990
+In particular, we'll be focusing in binary classification.
+
+59
+00:02:43,990 --> 00:02:46,730
+So we want our predictions to ultimately be binary,
+
+60
+00:02:46,730 --> 00:02:51,970
+for example, not rain versus rain, not spam versus spam,
+
+61
+00:02:51,970 --> 00:02:54,010
+not click versus click.
+
+62
+00:02:54,010 --> 00:02:56,030
+To achieve this goal, we can't directly
+
+63
+00:02:56,030 --> 00:02:58,690
+use the linear regression model since linear regression
+
+64
+00:02:58,690 --> 00:03:03,020
+predictions are real values rather than class predictions.
+
+65
+00:03:03,020 --> 00:03:05,620
+But we can get around this issue by thresholding
+
+66
+00:03:05,620 --> 00:03:07,840
+the linear regression prediction.
+
+67
+00:03:07,840 --> 00:03:10,390
+So recall that the linear regression prediction is simply
+
+68
+00:03:10,390 --> 00:03:12,270
+the dot product between the parameter
+
+69
+00:03:12,270 --> 00:03:14,670
+vector and the feature vector.
+
+70
+00:03:14,670 --> 00:03:16,830
+And we can set our classification prediction
+
+71
+00:03:16,830 --> 00:03:21,040
+to be the sine of this dot product.
+
+72
+00:03:21,040 --> 00:03:24,800
+What this rule says is that a w transpose x is positive,
+
+73
+00:03:24,800 --> 00:03:27,350
+then our prediction y hat is 1.
+
+74
+00:03:27,350 --> 00:03:31,590
+And a w transpose x is negative, our prediction is negative 1.
+
+75
+00:03:31,590 --> 00:03:33,840
+And when w transpose x equals 0, we
+
+76
+00:03:33,840 --> 00:03:35,600
+can arbitrarily choose the prediction
+
+77
+00:03:35,600 --> 00:03:37,745
+to be 1 or negative 1.
+
+78
+00:03:37,745 --> 00:03:41,400
+Another way to say this is that w transpose x equals 0
+
+79
+00:03:41,400 --> 00:03:44,139
+is our decision boundary.
+
+80
+00:03:44,139 --> 00:03:46,180
+Now let's look at an example to better understand
+
+81
+00:03:46,180 --> 00:03:47,450
+what's going on.
+
+82
+00:03:47,450 --> 00:03:49,060
+Imagine we have two features.
+
+83
+00:03:49,060 --> 00:03:51,250
+And we are given a linear classifier.
+
+84
+00:03:51,250 --> 00:03:54,600
+This classifier puts weight of 3 on the first feature and weight
+
+85
+00:03:54,600 --> 00:03:56,890
+of negative 4 on the second feature.
+
+86
+00:03:56,890 --> 00:04:00,040
+And it has an offset of negative 1.
+
+87
+00:04:00,040 --> 00:04:03,380
+So how how does this linear classifier make predictions?
+
+88
+00:04:03,380 --> 00:04:06,650
+Imagine we have a test point whose first feature equals 2
+
+89
+00:04:06,650 --> 00:04:09,410
+and whose second feature equals 3,
+
+90
+00:04:09,410 --> 00:04:12,420
+as is shown in the graph on the left of the screen.
+
+91
+00:04:12,420 --> 00:04:15,810
+Also recall that we represent our point as a three
+
+92
+00:04:15,810 --> 00:04:17,970
+dimensional vector with the first component
+
+93
+00:04:17,970 --> 00:04:20,640
+of the vector equaling 1 to correspond
+
+94
+00:04:20,640 --> 00:04:23,810
+with the offset in the linear model.
+
+95
+00:04:23,810 --> 00:04:25,790
+Now, to compute our prediction, we simply
+
+96
+00:04:25,790 --> 00:04:28,860
+take the dot product between our feature vector and our model.
+
+97
+00:04:28,860 --> 00:04:31,410
+And we look at the sine of this resulting number.
+
+98
+00:04:31,410 --> 00:04:35,270
+In our example, the dot product equals 7, which is negative.
+
+99
+00:04:35,270 --> 00:04:37,226
+And thus, the prediction is negative 1.
+
+100
+00:04:37,226 --> 00:04:39,660
+We'll denote the label as being negative 1
+
+101
+00:04:39,660 --> 00:04:44,460
+by coloring the point red in the graph on the left.
+
+102
+00:04:44,460 --> 00:04:47,230
+We can do something similar with a second test point
+
+103
+00:04:47,230 --> 00:04:51,940
+whose first feature equals 2 and whose second feature equals 1.
+
+104
+00:04:51,940 --> 00:04:54,650
+This time, the dot product of the feature vector
+
+105
+00:04:54,650 --> 00:04:56,320
+and the model is positive.
+
+106
+00:04:56,320 --> 00:04:58,010
+So the label is 1.
+
+107
+00:04:58,010 --> 00:05:02,350
+And we color the point blue in the graph on the left.
+
+108
+00:05:02,350 --> 00:05:06,280
+We can follow this procedure for two more arbitrary test points,
+
+109
+00:05:06,280 --> 00:05:08,570
+visualizing them with the appropriate color based
+
+110
+00:05:08,570 --> 00:05:11,010
+on the sine of their dot products.
+
+111
+00:05:11,010 --> 00:05:14,140
+And if we repeat this exercise several more times,
+
+112
+00:05:14,140 --> 00:05:16,220
+a pattern starts to emerge.
+
+113
+00:05:16,220 --> 00:05:18,600
+In particular, we note that all points
+
+114
+00:05:18,600 --> 00:05:21,110
+on one side of the decision boundary are red.
+
+115
+00:05:21,110 --> 00:05:23,910
+And all points on the other side are blue.
+
+116
+00:05:23,910 --> 00:05:27,140
+This decision boundary is defined by the equation w
+
+117
+00:05:27,140 --> 00:05:28,660
+transpose x equals 0.
+
+118
+00:05:28,660 --> 00:05:31,210
+
+
+119
+00:05:31,210 --> 00:05:33,660
+So now we figured out how to adapt the linear regression
+
+120
+00:05:33,660 --> 00:05:36,080
+scheme to return class predictions.
+
+121
+00:05:36,080 --> 00:05:39,600
+But a related question is how do we evaluate these predictions.
+
+122
+00:05:39,600 --> 00:05:42,250
+In the regression setting, we were dealing with real value
+
+123
+00:05:42,250 --> 00:05:44,930
+predictions where we had some notion of closeness
+
+124
+00:05:44,930 --> 00:05:46,740
+between the label and the prediction.
+
+125
+00:05:46,740 --> 00:05:50,990
+So squared loss was a natural metric for evaluation.
+
+126
+00:05:50,990 --> 00:05:53,530
+However, in the classification setting,
+
+127
+00:05:53,530 --> 00:05:55,714
+our class labels are discreet.
+
+128
+00:05:55,714 --> 00:05:57,630
+And perhaps the most intuitive thing we can do
+
+129
+00:05:57,630 --> 00:06:00,720
+is to simply check whether the label and the prediction
+
+130
+00:06:00,720 --> 00:06:01,930
+are equal.
+
+131
+00:06:01,930 --> 00:06:05,480
+If they match, then we'll incur no penalty, or no loss.
+
+132
+00:06:05,480 --> 00:06:09,130
+And if they differ, we'll incur a loss equal to 1.
+
+133
+00:06:09,130 --> 00:06:13,040
+And this is what we call by the 0-1 loss.
+
+134
+00:06:13,040 --> 00:06:15,490
+So let's see what this looks like visually.
+
+135
+00:06:15,490 --> 00:06:18,706
+And to do this, we need to introduce some notation.
+
+136
+00:06:18,706 --> 00:06:20,330
+Remember that we're defining our labels
+
+137
+00:06:20,330 --> 00:06:22,920
+to be either negative 1 or 1.
+
+138
+00:06:22,920 --> 00:06:24,870
+Additionally, our predicted label
+
+139
+00:06:24,870 --> 00:06:28,650
+is determined by the sine of w transpose x.
+
+140
+00:06:28,650 --> 00:06:31,840
+Hence, if our prediction matches the true label,
+
+141
+00:06:31,840 --> 00:06:36,160
+then either y is positive and w transpose x is positive.
+
+142
+00:06:36,160 --> 00:06:41,030
+Or y is negative and w transpose x is negative.
+
+143
+00:06:41,030 --> 00:06:44,300
+In both cases, the product of y times w
+
+144
+00:06:44,300 --> 00:06:47,220
+transpose x will be positive.
+
+145
+00:06:47,220 --> 00:06:50,830
+In contrast, when the true and predicted labels don't match,
+
+146
+00:06:50,830 --> 00:06:54,260
+this product must be negative.
+
+147
+00:06:54,260 --> 00:06:57,080
+So we can define z to equal this product.
+
+148
+00:06:57,080 --> 00:06:59,850
+And when z is positive, we have a good prediction.
+
+149
+00:06:59,850 --> 00:07:03,790
+And when z is negative, we have a bad prediction.
+
+150
+00:07:03,790 --> 00:07:07,760
+Having defined z, we can now visualize the 0-1 loss, which
+
+151
+00:07:07,760 --> 00:07:09,430
+looks like a step function.
+
+152
+00:07:09,430 --> 00:07:12,790
+Whenever z is greater than 0, we incur no loss.
+
+153
+00:07:12,790 --> 00:07:17,984
+And whenever z is negative, we incur a constant loss of 1.
+
+154
+00:07:17,984 --> 00:07:19,900
+So now we seem to have all the pieces in place
+
+155
+00:07:19,900 --> 00:07:21,240
+to learn a model.
+
+156
+00:07:21,240 --> 00:07:24,560
+Specifically, as before, we're making a linear assumption
+
+157
+00:07:24,560 --> 00:07:27,370
+using the sign of a dot product as our prediction.
+
+158
+00:07:27,370 --> 00:07:31,640
+And we're using the 0-1 loss to evaluate these predictions.
+
+159
+00:07:31,640 --> 00:07:33,530
+So given a set of end training points,
+
+160
+00:07:33,530 --> 00:07:35,170
+we then want to find a parameter vector
+
+161
+00:07:35,170 --> 00:07:40,430
+w that minimizes the 0-1 loss over our training points.
+
+162
+00:07:40,430 --> 00:07:43,810
+Unfortunately, this is not a convex optimization problem
+
+163
+00:07:43,810 --> 00:07:46,750
+as a 0-1 loss is not a convex function.
+
+164
+00:07:46,750 --> 00:07:49,490
+And thus, this is a hard problem to solve.
+
+165
+00:07:49,490 --> 00:07:53,160
+But all hope isn't lost, because instead of using the 0-1 loss
+
+166
+00:07:53,160 --> 00:07:56,160
+in our optimization problem, we can use a surrogate loss that
+
+167
+00:07:56,160 --> 00:08:00,592
+is convex and also provides a good approximation to 0-1 loss.
+
+168
+00:08:00,592 --> 00:08:02,300
+There are many potential surrogate losses
+
+169
+00:08:02,300 --> 00:08:03,840
+that we can choose from.
+
+170
+00:08:03,840 --> 00:08:07,410
+For instance, the hinge loss is used to define the SVM model.
+
+171
+00:08:07,410 --> 00:08:10,760
+The exponential loss is used to describe the Adaboost model.
+
+172
+00:08:10,760 --> 00:08:13,660
+And the logistic loss is used to define the logistic regression
+
+173
+00:08:13,660 --> 00:08:14,160
+model.
+
+174
+00:08:14,160 --> 00:08:17,010
+
+
+175
+00:08:17,010 --> 00:08:19,660
+In particular, we'll focus on logistic regression
+
+176
+00:08:19,660 --> 00:08:23,250
+and on the logistic or log loss.
+
+177
+00:08:23,250 --> 00:08:26,240
+By replacing the 0-1 loss with the logistic loss
+
+178
+00:08:26,240 --> 00:08:28,150
+in the previous optimization problem,
+
+179
+00:08:28,150 --> 00:08:30,880
+we can now define the logistic regression optimization
+
+180
+00:08:30,880 --> 00:08:32,570
+problem.
+
+181
+00:08:32,570 --> 00:08:34,090
+The goal in logistic regression is
+
+182
+00:08:34,090 --> 00:08:36,150
+to find a linear model that minimizes
+
+183
+00:08:36,150 --> 00:08:40,440
+the sum of the logistic losses over the training points.
+
+184
+00:08:40,440 --> 00:08:42,330
+Unlike linear regression, this problem
+
+185
+00:08:42,330 --> 00:08:44,070
+has no closed form solution.
+
+186
+00:08:44,070 --> 00:08:46,690
+But it is a convex optimization problem.
+
+187
+00:08:46,690 --> 00:08:48,200
+And as a result, a standard method
+
+188
+00:08:48,200 --> 00:08:52,180
+for solving logistic regression is via gradient descent.
+
+189
+00:08:52,180 --> 00:08:53,980
+We use the same high level update rule
+
+190
+00:08:53,980 --> 00:08:55,840
+as we did for linear regression.
+
+191
+00:08:55,840 --> 00:08:57,490
+But of course, the form of the gradient
+
+192
+00:08:57,490 --> 00:09:01,104
+is different because we're using a different loss function.
+
+193
+00:09:01,104 --> 00:09:02,520
+The specific form of the update is
+
+194
+00:09:02,520 --> 00:09:05,730
+shown on the bottom right of the slide.
+
+195
+00:09:05,730 --> 00:09:07,870
+Finally, similar to ridge regression,
+
+196
+00:09:07,870 --> 00:09:11,850
+we can use a regularized version of logistic regression.
+
+197
+00:09:11,850 --> 00:09:13,510
+In this regularized version, we're
+
+198
+00:09:13,510 --> 00:09:15,290
+trading off between two terms.
+
+199
+00:09:15,290 --> 00:09:17,780
+The first is the log loss on the training data.
+
+200
+00:09:17,780 --> 00:09:20,850
+And the second is the model complexity.
+
+201
+00:09:20,850 --> 00:09:22,390
+As in the case of ridge regression,
+
+202
+00:09:22,390 --> 00:09:25,410
+we introduce a user specified hyper parameter, lambda,
+
+203
+00:09:25,410 --> 00:09:28,600
+to determine the trade-off between these two terms.
+
+204
+00:09:28,600 --> 00:09:29,100
+
+

@@ -1,0 +1,68 @@
+0
+00:00:00,000 --> 00:00:01,330
+
+
+1
+00:00:01,330 --> 00:00:03,730
+Let's look at a real world example.
+
+2
+00:00:03,730 --> 00:00:06,630
+Here's a graph of ages of students that are actually
+
+3
+00:00:06,630 --> 00:00:08,720
+taking this course.
+
+4
+00:00:08,720 --> 00:00:10,820
+On the x-axis, we have ages.
+
+5
+00:00:10,820 --> 00:00:14,020
+And on the y-axis, we have account of students.
+
+6
+00:00:14,020 --> 00:00:16,211
+So what's wrong with this data?
+
+7
+00:00:16,211 --> 00:00:17,710
+Well, if we look very closely, we'll
+
+8
+00:00:17,710 --> 00:00:24,290
+see that we have 109 students that are under the age of five.
+
+9
+00:00:24,290 --> 00:00:31,240
+And we have 26 students that are over the age of 100.
+
+10
+00:00:31,240 --> 00:00:33,180
+The problem here is that this data
+
+11
+00:00:33,180 --> 00:00:36,480
+is based on self-reported ages.
+
+12
+00:00:36,480 --> 00:00:38,150
+So if we were to just blindly import
+
+13
+00:00:38,150 --> 00:00:41,860
+this data into an analytics pipeline and try to process it,
+
+14
+00:00:41,860 --> 00:00:44,550
+we'd run into a number of significant problems
+
+15
+00:00:44,550 --> 00:00:45,867
+and challenges.
+
+16
+00:00:45,867 --> 00:00:46,367
+
+

@@ -1,0 +1,128 @@
+0
+00:00:00,000 --> 00:00:01,090
+
+
+1
+00:00:01,090 --> 00:00:02,780
+We begin with data gathering.
+
+2
+00:00:02,780 --> 00:00:05,500
+How does the data actually enter the system?
+
+3
+00:00:05,500 --> 00:00:08,210
+This is part of the experimentation or observation
+
+4
+00:00:08,210 --> 00:00:10,060
+or collection process.
+
+5
+00:00:10,060 --> 00:00:12,490
+It can be a source of problems, including
+
+6
+00:00:12,490 --> 00:00:14,800
+issues around manual entry of information
+
+7
+00:00:14,800 --> 00:00:18,220
+versus automated data entry.
+
+8
+00:00:18,220 --> 00:00:21,520
+It can be due to approximations or surrogates,
+
+9
+00:00:21,520 --> 00:00:23,140
+maybe constraints in the software
+
+10
+00:00:23,140 --> 00:00:24,810
+or constraints in the hardware.
+
+11
+00:00:24,810 --> 00:00:27,110
+It can be due to a lack of uniform standards
+
+12
+00:00:27,110 --> 00:00:29,110
+for content and formats.
+
+13
+00:00:29,110 --> 00:00:31,920
+It can be due to parallel data entry.
+
+14
+00:00:31,920 --> 00:00:33,110
+This causes duplicates.
+
+15
+00:00:33,110 --> 00:00:36,480
+Or it can be due to measurement or sensor errors.
+
+16
+00:00:36,480 --> 00:00:39,350
+Some potential solutions to the data gathering problem
+
+17
+00:00:39,350 --> 00:00:40,920
+are to be preemptive.
+
+18
+00:00:40,920 --> 00:00:43,210
+Design a good process architecture that
+
+19
+00:00:43,210 --> 00:00:45,380
+builds in integrity checks.
+
+20
+00:00:45,380 --> 00:00:48,510
+Design good process management that rewards accurate
+
+21
+00:00:48,510 --> 00:00:51,790
+data entry, sharing and stewards.
+
+22
+00:00:51,790 --> 00:00:55,750
+These are the people who are responsible for data entry.
+
+23
+00:00:55,750 --> 00:00:58,580
+Also, consider being retrospective.
+
+24
+00:00:58,580 --> 00:01:00,650
+The cleaning focus should focus on things
+
+25
+00:01:00,650 --> 00:01:03,540
+like duplicate removal, or merging and purging
+
+26
+00:01:03,540 --> 00:01:07,270
+bad information, or performing tasks like name and address
+
+27
+00:01:07,270 --> 00:01:10,660
+matching, or field value standardization.
+
+28
+00:01:10,660 --> 00:01:13,290
+Also, think about a diagnostic focus--
+
+29
+00:01:13,290 --> 00:01:15,360
+automating the detection of problems
+
+30
+00:01:15,360 --> 00:01:17,633
+during the data gathering phase.
+
+31
+00:01:17,633 --> 00:01:18,133
+
+

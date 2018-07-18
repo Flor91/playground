@@ -1,0 +1,612 @@
+0
+00:00:00,000 --> 00:00:04,100
+
+
+1
+00:00:04,100 --> 00:00:05,710
+In this segment, we'll talk about how
+
+2
+00:00:05,710 --> 00:00:09,030
+we can deal with categorical data when training a model.
+
+3
+00:00:09,030 --> 00:00:12,077
+In particular, we'll introduce one-hot encoding,
+
+4
+00:00:12,077 --> 00:00:13,910
+which is a standard technique for converting
+
+5
+00:00:13,910 --> 00:00:16,990
+categorical features into numerical ones.
+
+6
+00:00:16,990 --> 00:00:18,480
+Recall the optimization problem we
+
+7
+00:00:18,480 --> 00:00:20,980
+solved for logistic regression.
+
+8
+00:00:20,980 --> 00:00:23,700
+And notice that the data points appear in the optimization
+
+9
+00:00:23,700 --> 00:00:25,530
+in the form of dot products.
+
+10
+00:00:25,530 --> 00:00:27,950
+And thus, when training a logistic regression model,
+
+11
+00:00:27,950 --> 00:00:30,970
+we assume that the features are numerical.
+
+12
+00:00:30,970 --> 00:00:33,120
+In fact, many learning models assume
+
+13
+00:00:33,120 --> 00:00:35,730
+that all features used to represent an observation
+
+14
+00:00:35,730 --> 00:00:37,850
+are numeric.
+
+15
+00:00:37,850 --> 00:00:40,850
+In practice, our raw data is sometimes numeric.
+
+16
+00:00:40,850 --> 00:00:42,570
+And examples include images being
+
+17
+00:00:42,570 --> 00:00:46,150
+represented via pixels or user ratings represented
+
+18
+00:00:46,150 --> 00:00:48,560
+as integer scores.
+
+19
+00:00:48,560 --> 00:00:50,340
+But in many other cases, the raw data
+
+20
+00:00:50,340 --> 00:00:53,280
+is not numeric, which can be problematic,
+
+21
+00:00:53,280 --> 00:00:55,890
+given the assumptions of many learning methods.
+
+22
+00:00:55,890 --> 00:00:59,080
+For instance, data is often represented via text,
+
+23
+00:00:59,080 --> 00:01:01,350
+as is the case with web hypertext,
+
+24
+00:01:01,350 --> 00:01:04,910
+emails, or genomic sequencing data.
+
+25
+00:01:04,910 --> 00:01:07,140
+As another example, let's consider the problem
+
+26
+00:01:07,140 --> 00:01:09,280
+of clickthrough rate prediction.
+
+27
+00:01:09,280 --> 00:01:11,590
+As we've previously discussed, in this problem
+
+28
+00:01:11,590 --> 00:01:15,160
+we work with features describing a user, an advertiser,
+
+29
+00:01:15,160 --> 00:01:17,730
+and a publisher, and many relevant features
+
+30
+00:01:17,730 --> 00:01:19,350
+will be non-numeric.
+
+31
+00:01:19,350 --> 00:01:21,320
+So for instance, non-numeric features
+
+32
+00:01:21,320 --> 00:01:24,750
+such as gender, nationality, and occupation
+
+33
+00:01:24,750 --> 00:01:26,820
+could be relevant for a user.
+
+34
+00:01:26,820 --> 00:01:29,330
+Descriptive non-numeric features for both advertisers
+
+35
+00:01:29,330 --> 00:01:33,000
+and publishers include their industry and their location.
+
+36
+00:01:33,000 --> 00:01:35,200
+And finally, we want to include features
+
+37
+00:01:35,200 --> 00:01:37,500
+specific to the particular ad and publisher
+
+38
+00:01:37,500 --> 00:01:40,170
+site under consideration, and the text and the language
+
+39
+00:01:40,170 --> 00:01:43,540
+of the ad and the publisher site are both useful features,
+
+40
+00:01:43,540 --> 00:01:48,970
+as is the target demographic for both the ad and the site.
+
+41
+00:01:48,970 --> 00:01:50,890
+So what do we do when our data is non-numeric,
+
+42
+00:01:50,890 --> 00:01:53,160
+as it so often is the case?
+
+43
+00:01:53,160 --> 00:01:55,440
+The first option is to simply restrict ourselves
+
+44
+00:01:55,440 --> 00:01:58,790
+to methods that natively support non-numeric features.
+
+45
+00:01:58,790 --> 00:02:01,400
+And it is the case that some useful learning methods,
+
+46
+00:02:01,400 --> 00:02:04,750
+in particular, decision trees and ensembles of trees,
+
+47
+00:02:04,750 --> 00:02:07,520
+naturally support non-numeric features.
+
+48
+00:02:07,520 --> 00:02:11,370
+However, this approach severely limits our options.
+
+49
+00:02:11,370 --> 00:02:14,510
+A second approach is to convert non-numeric features
+
+50
+00:02:14,510 --> 00:02:18,150
+to numeric ones, which allows us a wide range of learning
+
+51
+00:02:18,150 --> 00:02:19,854
+methods to choose from.
+
+52
+00:02:19,854 --> 00:02:22,270
+The question, of course, though, is how we can effectively
+
+53
+00:02:22,270 --> 00:02:25,020
+perform this conversion.
+
+54
+00:02:25,020 --> 00:02:26,760
+Before answering this question, let's
+
+55
+00:02:26,760 --> 00:02:29,360
+talk about the two main types of non-numeric features
+
+56
+00:02:29,360 --> 00:02:30,920
+that we encounter.
+
+57
+00:02:30,920 --> 00:02:33,390
+First, we have categorical features.
+
+58
+00:02:33,390 --> 00:02:36,220
+These are features that contain two or more categories,
+
+59
+00:02:36,220 --> 00:02:39,020
+and these categories have no intrinsic ordering.
+
+60
+00:02:39,020 --> 00:02:41,560
+So, for example, consider a country feature
+
+61
+00:02:41,560 --> 00:02:46,330
+with three categories, Argentina, USA, and France.
+
+62
+00:02:46,330 --> 00:02:48,450
+Although people may have a lot of national pride,
+
+63
+00:02:48,450 --> 00:02:50,900
+there's no underlying ordering or ranking
+
+64
+00:02:50,900 --> 00:02:52,270
+of these three categories.
+
+65
+00:02:52,270 --> 00:02:54,330
+And hence, the country feature is an example
+
+66
+00:02:54,330 --> 00:02:56,410
+of a categorical feature.
+
+67
+00:02:56,410 --> 00:02:58,160
+Other examples of categorical features
+
+68
+00:02:58,160 --> 00:03:02,240
+include gender, occupation, and language.
+
+69
+00:03:02,240 --> 00:03:04,800
+The second common class of non-numeric features
+
+70
+00:03:04,800 --> 00:03:06,600
+are ordinal features.
+
+71
+00:03:06,600 --> 00:03:09,680
+Ordinal features, again, have two or more categories.
+
+72
+00:03:09,680 --> 00:03:11,470
+But here, these categories do contain
+
+73
+00:03:11,470 --> 00:03:13,410
+some ranking information but only
+
+74
+00:03:13,410 --> 00:03:15,545
+relative ordering information.
+
+75
+00:03:15,545 --> 00:03:16,920
+And these types of features often
+
+76
+00:03:16,920 --> 00:03:19,160
+arise in survey questions.
+
+77
+00:03:19,160 --> 00:03:21,540
+For instance, consider a survey question
+
+78
+00:03:21,540 --> 00:03:23,450
+that asks someone to rate their health
+
+79
+00:03:23,450 --> 00:03:27,210
+as poor, reasonable, good, or excellent.
+
+80
+00:03:27,210 --> 00:03:29,610
+From this question, we could define a health feature
+
+81
+00:03:29,610 --> 00:03:31,130
+with four categories.
+
+82
+00:03:31,130 --> 00:03:33,040
+And these four categories can be ranked,
+
+83
+00:03:33,040 --> 00:03:36,420
+with excellent being the best and poor being the worst.
+
+84
+00:03:36,420 --> 00:03:39,310
+However, there's not necessarily a consistent spacing
+
+85
+00:03:39,310 --> 00:03:41,010
+between these categories.
+
+86
+00:03:41,010 --> 00:03:45,697
+Thus the help feature is an example of an ordinal feature.
+
+87
+00:03:45,697 --> 00:03:47,280
+Now that we have a basic understanding
+
+88
+00:03:47,280 --> 00:03:49,310
+of the main types of non-numeric features,
+
+89
+00:03:49,310 --> 00:03:51,790
+let's consider one seemingly reasonable strategy
+
+90
+00:03:51,790 --> 00:03:55,310
+for converting non-numeric features to numeric ones.
+
+91
+00:03:55,310 --> 00:03:58,250
+Specifically, we could represent a non-numeric feature
+
+92
+00:03:58,250 --> 00:04:01,910
+with a single numeric feature by representing each category
+
+93
+00:04:01,910 --> 00:04:04,180
+with a distinct number.
+
+94
+00:04:04,180 --> 00:04:07,100
+So let's look at an example of how the strategy might work.
+
+95
+00:04:07,100 --> 00:04:09,540
+And to do that, we'll go back to our health feature, where
+
+96
+00:04:09,540 --> 00:04:13,640
+we have four health categories ranging from poor to excellent.
+
+97
+00:04:13,640 --> 00:04:15,140
+According to this strategy, we would
+
+98
+00:04:15,140 --> 00:04:17,250
+assign each of the four categories
+
+99
+00:04:17,250 --> 00:04:21,380
+to integer values ranging from 1 to 4.
+
+100
+00:04:21,380 --> 00:04:24,780
+At first glance, this seems like a reasonable strategy,
+
+101
+00:04:24,780 --> 00:04:27,200
+and, in fact, using a single numerical feature
+
+102
+00:04:27,200 --> 00:04:30,770
+does preserve the ordering for ordinal features.
+
+103
+00:04:30,770 --> 00:04:32,920
+However, doing this introduces a notion
+
+104
+00:04:32,920 --> 00:04:35,180
+of closeness between the ordinal categories that
+
+105
+00:04:35,180 --> 00:04:37,070
+didn't previously exist.
+
+106
+00:04:37,070 --> 00:04:40,210
+So, for instance, since the "good" category is represented
+
+107
+00:04:40,210 --> 00:04:44,190
+by 3, and the "poor" category is represented by 1,
+
+108
+00:04:44,190 --> 00:04:46,410
+this numerical representation implies
+
+109
+00:04:46,410 --> 00:04:50,460
+that the distance between good and poor equals 2, 3 minus 1.
+
+110
+00:04:50,460 --> 00:04:54,210
+Similarly, the distance between excellent and poor
+
+111
+00:04:54,210 --> 00:04:56,600
+is 3, or 4 minus 1.
+
+112
+00:04:56,600 --> 00:04:58,170
+This type of distance information
+
+113
+00:04:58,170 --> 00:05:00,710
+didn't exist in our initial representation
+
+114
+00:05:00,710 --> 00:05:03,730
+of health categories.
+
+115
+00:05:03,730 --> 00:05:05,280
+This becomes an even bigger issue
+
+116
+00:05:05,280 --> 00:05:08,730
+when applying this strategy on categorical features.
+
+117
+00:05:08,730 --> 00:05:11,400
+So let's go back to our country feature example,
+
+118
+00:05:11,400 --> 00:05:15,240
+where our three categories are Argentina, France, and USA.
+
+119
+00:05:15,240 --> 00:05:18,210
+According to the proposed strategy,
+
+120
+00:05:18,210 --> 00:05:20,850
+we would assign integer values to each category,
+
+121
+00:05:20,850 --> 00:05:24,340
+for instance, defining Argentina as 1, France as 2,
+
+122
+00:05:24,340 --> 00:05:26,650
+and USA as 3.
+
+123
+00:05:26,650 --> 00:05:28,590
+But this mapping introduces relationships
+
+124
+00:05:28,590 --> 00:05:31,800
+between these categories that don't otherwise exist.
+
+125
+00:05:31,800 --> 00:05:33,770
+Our particular choice implies that France
+
+126
+00:05:33,770 --> 00:05:35,784
+is in between the other two countries,
+
+127
+00:05:35,784 --> 00:05:37,450
+even though the original categories have
+
+128
+00:05:37,450 --> 00:05:40,400
+no intrinsic ordering.
+
+129
+00:05:40,400 --> 00:05:42,950
+So as we've seen, using a single numeric feature
+
+130
+00:05:42,950 --> 00:05:45,520
+is not such a good idea, as it introduces
+
+131
+00:05:45,520 --> 00:05:48,280
+spurious relationships between the categories.
+
+132
+00:05:48,280 --> 00:05:51,630
+To get around this issue, we can use a different strategy
+
+133
+00:05:51,630 --> 00:05:53,310
+called one-hot encoding.
+
+134
+00:05:53,310 --> 00:05:56,330
+In this strategy, we create a separate dummy variable
+
+135
+00:05:56,330 --> 00:05:59,040
+for each category.
+
+136
+00:05:59,040 --> 00:06:01,440
+Going back to the country feature example,
+
+137
+00:06:01,440 --> 00:06:04,660
+since we have three categories, the one-hot encoding strategy
+
+138
+00:06:04,660 --> 00:06:08,470
+would create three new binary dummy features.
+
+139
+00:06:08,470 --> 00:06:12,200
+For instance, the first feature could correspond to Argentina,
+
+140
+00:06:12,200 --> 00:06:14,510
+the second feature could correspond to France,
+
+141
+00:06:14,510 --> 00:06:17,450
+and the third one to USA.
+
+142
+00:06:17,450 --> 00:06:20,420
+If the original categorical feature is Argentina,
+
+143
+00:06:20,420 --> 00:06:23,340
+we'd set the first binary feature to 1 and the other two
+
+144
+00:06:23,340 --> 00:06:25,460
+binary features to 0.
+
+145
+00:06:25,460 --> 00:06:28,540
+And more generally, we set exactly one of these binary
+
+146
+00:06:28,540 --> 00:06:32,020
+features equal to 1, depending on the value of the underlying
+
+147
+00:06:32,020 --> 00:06:34,440
+categorical feature.
+
+148
+00:06:34,440 --> 00:06:36,880
+By creating separate features for each category,
+
+149
+00:06:36,880 --> 00:06:39,330
+we don't introduce any spurious relationships,
+
+150
+00:06:39,330 --> 00:06:41,930
+and this strategy works well both for categorical and
+
+151
+00:06:41,930 --> 00:06:43,767
+ordinal features.
+
+152
+00:06:43,767 --> 00:06:44,267
+
+

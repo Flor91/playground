@@ -1,0 +1,24 @@
+0
+00:00:00,000 --> 00:00:11,670
+
+
+1
+00:00:11,670 --> 00:00:14,730
+In this lecture, I'll talk about the big data problem,
+
+2
+00:00:14,730 --> 00:00:18,230
+the hardware for big data, how we distribute work,
+
+3
+00:00:18,230 --> 00:00:21,100
+how we handle failures and slow machines,
+
+4
+00:00:21,100 --> 00:00:24,640
+how we can use MapReduce to handle complex jobs,
+
+5
+00:00:24,640 --> 00:00:26,990
+and Apache Spark.
+

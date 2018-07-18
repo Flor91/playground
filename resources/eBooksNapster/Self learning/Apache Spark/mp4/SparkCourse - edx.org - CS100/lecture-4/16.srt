@@ -1,0 +1,44 @@
+0
+00:00:00,000 --> 00:00:01,050
+
+
+1
+00:00:01,050 --> 00:00:04,420
+So in summary, when you write a Spark program,
+
+2
+00:00:04,420 --> 00:00:08,090
+use the master parameter to specify the number of workers.
+
+3
+00:00:08,090 --> 00:00:10,380
+When you create an RDD, you can specify
+
+4
+00:00:10,380 --> 00:00:12,540
+the number of partitions for that RDD,
+
+5
+00:00:12,540 --> 00:00:15,220
+and Spark will automatically create that RDD
+
+6
+00:00:15,220 --> 00:00:18,070
+spread across the workers.
+
+7
+00:00:18,070 --> 00:00:22,280
+When you perform transformations and actions that use functions,
+
+8
+00:00:22,280 --> 00:00:24,800
+Spark will automatically push a closure containing
+
+9
+00:00:24,800 --> 00:00:28,967
+that function to the workers so that it can run at the workers.
+
+10
+00:00:28,967 --> 00:00:29,467
+
+

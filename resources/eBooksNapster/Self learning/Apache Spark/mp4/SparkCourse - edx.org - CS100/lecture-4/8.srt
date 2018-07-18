@@ -1,0 +1,188 @@
+0
+00:00:00,000 --> 00:00:01,210
+
+
+1
+00:00:01,210 --> 00:00:03,970
+Spark actions cause Spark to execute the recipe
+
+2
+00:00:03,970 --> 00:00:06,690
+to transform the source through the mechanism for getting
+
+3
+00:00:06,690 --> 00:00:08,920
+results out of Spark.
+
+4
+00:00:08,920 --> 00:00:11,980
+Here are four Spark actions.
+
+5
+00:00:11,980 --> 00:00:13,720
+The first action is reduce.
+
+6
+00:00:13,720 --> 00:00:17,250
+Reduce aggregates a data set element using a function.
+
+7
+00:00:17,250 --> 00:00:20,980
+That function takes two arguments and returns one.
+
+8
+00:00:20,980 --> 00:00:23,990
+It has to be commutative and associative so that it can be
+
+9
+00:00:23,990 --> 00:00:27,310
+computed correctly in parallel.
+
+10
+00:00:27,310 --> 00:00:31,300
+The take action returns an array with the first n elements.
+
+11
+00:00:31,300 --> 00:00:35,110
+And the collect action returns all of the elements of the RDD
+
+12
+00:00:35,110 --> 00:00:38,750
+as an array, so you have to make sure that all of that data
+
+13
+00:00:38,750 --> 00:00:41,410
+will fit in the driver program.
+
+14
+00:00:41,410 --> 00:00:45,750
+Takeordered returns n elements ordered in ascending order
+
+15
+00:00:45,750 --> 00:00:48,980
+or as specified by the optional key function.
+
+16
+00:00:48,980 --> 00:00:51,260
+So let's look at some examples.
+
+17
+00:00:51,260 --> 00:00:55,450
+We start with parallelizing a list, one two three,
+
+18
+00:00:55,450 --> 00:00:58,930
+and then we use the reduce action.
+
+19
+00:00:58,930 --> 00:01:03,120
+We pass in a lambda function that will multiply the two
+
+20
+00:01:03,120 --> 00:01:04,800
+elements together.
+
+21
+00:01:04,800 --> 00:01:07,410
+So this will multiply all of the elements of the lists
+
+22
+00:01:07,410 --> 00:01:11,080
+together to produce a single value, the value 6.
+
+23
+00:01:11,080 --> 00:01:12,650
+1 times 2 times 3.
+
+24
+00:01:12,650 --> 00:01:15,230
+
+
+25
+00:01:15,230 --> 00:01:20,530
+The take action will return the first two elements of the rdd.
+
+26
+00:01:20,530 --> 00:01:23,460
+So in this case it returns one and two
+
+27
+00:01:23,460 --> 00:01:26,940
+as a list at the driver.
+
+28
+00:01:26,940 --> 00:01:31,120
+Collect returns all of the elements of the rdd
+
+29
+00:01:31,120 --> 00:01:33,340
+as a list at the driver.
+
+30
+00:01:33,340 --> 00:01:35,680
+So in this case that's one, two, three.
+
+31
+00:01:35,680 --> 00:01:37,490
+And again, always be careful when using
+
+32
+00:01:37,490 --> 00:01:40,090
+collect to make sure that the results will actually
+
+33
+00:01:40,090 --> 00:01:41,820
+fit in the driver's memory.
+
+34
+00:01:41,820 --> 00:01:45,610
+
+
+35
+00:01:45,610 --> 00:01:50,820
+Here we apply the parallelize option
+
+36
+00:01:50,820 --> 00:01:54,860
+to the list five, three, one, two.
+
+37
+00:01:54,860 --> 00:01:59,650
+This returns an rdd containing five, three, one, and two.
+
+38
+00:01:59,650 --> 00:02:03,990
+We then use takeordered to take the first three elements.
+
+39
+00:02:03,990 --> 00:02:06,360
+We pass in a key function that will
+
+40
+00:02:06,360 --> 00:02:09,030
+multiply an element by minus 1.
+
+41
+00:02:09,030 --> 00:02:11,560
+So instead of takeordered returning the first three
+
+42
+00:02:11,560 --> 00:02:14,310
+elements in increasing value, it will
+
+43
+00:02:14,310 --> 00:02:16,690
+return the decreasing value.
+
+44
+00:02:16,690 --> 00:02:19,760
+And so we'll get back five, three, and two
+
+45
+00:02:19,760 --> 00:02:21,900
+as a list at the driver.
+
+46
+00:02:21,900 --> 00:02:22,400
+
+

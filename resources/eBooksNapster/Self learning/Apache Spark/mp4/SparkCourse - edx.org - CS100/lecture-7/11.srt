@@ -1,0 +1,208 @@
+0
+00:00:00,000 --> 00:00:01,070
+
+
+1
+00:00:01,070 --> 00:00:04,040
+Data quality constraints are a way of capturing many data
+
+2
+00:00:04,040 --> 00:00:05,344
+quality problems.
+
+3
+00:00:05,344 --> 00:00:06,760
+For example, we can use the schema
+
+4
+00:00:06,760 --> 00:00:10,560
+static constraints-- say, for example, nulls are not allowed,
+
+5
+00:00:10,560 --> 00:00:14,290
+or specifying the field domains, or specifying constraints
+
+6
+00:00:14,290 --> 00:00:16,500
+on foreign keys.
+
+7
+00:00:16,500 --> 00:00:18,590
+But many other data quality problems
+
+8
+00:00:18,590 --> 00:00:20,590
+are due to problems in the workflow.
+
+9
+00:00:20,590 --> 00:00:23,350
+These, we can capture with dynamic constraints--
+
+10
+00:00:23,350 --> 00:00:26,120
+for example, saying that all orders above $200
+
+11
+00:00:26,120 --> 00:00:28,670
+are processed by biller number 2.
+
+12
+00:00:28,670 --> 00:00:30,230
+But data quality constraints often
+
+13
+00:00:30,230 --> 00:00:33,470
+follow an 80-20 rule, where a few constraints capture
+
+14
+00:00:33,470 --> 00:00:36,160
+most cases, but we need thousands of constraints
+
+15
+00:00:36,160 --> 00:00:39,100
+to capture the last few cases.
+
+16
+00:00:39,100 --> 00:00:40,270
+Constraints are measurable.
+
+17
+00:00:40,270 --> 00:00:43,181
+So maybe this is a way of getting towards data quality
+
+18
+00:00:43,181 --> 00:00:43,680
+metrics.
+
+19
+00:00:43,680 --> 00:00:46,900
+
+
+20
+00:00:46,900 --> 00:00:48,350
+In terms of data quality metrics,
+
+21
+00:00:48,350 --> 00:00:50,600
+we want a measurable quantity-- something
+
+22
+00:00:50,600 --> 00:00:53,314
+that indicates what is wrong and how we can improve.
+
+23
+00:00:53,314 --> 00:00:54,730
+Now, the challenge here is that we
+
+24
+00:00:54,730 --> 00:00:57,200
+have to realize that data quality is a messy problem.
+
+25
+00:00:57,200 --> 00:00:59,820
+And there's no set of numbers that's going to be perfect.
+
+26
+00:00:59,820 --> 00:01:02,040
+But we want metrics that are directionally correct,
+
+27
+00:01:02,040 --> 00:01:04,900
+and improve as we use our data.
+
+28
+00:01:04,900 --> 00:01:08,600
+Examples of types of metrics are static and dynamic constraints,
+
+29
+00:01:08,600 --> 00:01:12,180
+or operational and diagnostic metrics.
+
+30
+00:01:12,180 --> 00:01:14,839
+Now, there's a very large number of possible metrics
+
+31
+00:01:14,839 --> 00:01:15,630
+that we could have.
+
+32
+00:01:15,630 --> 00:01:20,380
+We want to choose the most important ones.
+
+33
+00:01:20,380 --> 00:01:23,230
+So examples of data quality metrics that we could consider
+
+34
+00:01:23,230 --> 00:01:25,330
+are conformance to schema.
+
+35
+00:01:25,330 --> 00:01:29,160
+We can evaluate our constraints on a snapshot of our database.
+
+36
+00:01:29,160 --> 00:01:31,150
+Or, conformance to business rules.
+
+37
+00:01:31,150 --> 00:01:33,280
+We can evaluate our constraints every time
+
+38
+00:01:33,280 --> 00:01:35,860
+the database changes.
+
+39
+00:01:35,860 --> 00:01:37,040
+Accuracy.
+
+40
+00:01:37,040 --> 00:01:39,890
+We can either performer a very expensive inventory,
+
+41
+00:01:39,890 --> 00:01:42,190
+or, alternatively, we could track complaints.
+
+42
+00:01:42,190 --> 00:01:44,650
+That's sort of a proxy metric.
+
+43
+00:01:44,650 --> 00:01:48,706
+Another alternative is to periodically audit our data set
+
+44
+00:01:48,706 --> 00:01:50,080
+and see if the samples match what
+
+45
+00:01:50,080 --> 00:01:52,700
+we expect in terms of accuracy.
+
+46
+00:01:52,700 --> 00:01:54,550
+There are other data quality metric issues,
+
+47
+00:01:54,550 --> 00:01:57,260
+like accessibility or interpretability.
+
+48
+00:01:57,260 --> 00:02:00,570
+We can also have glitches in our analysis that we want to track.
+
+49
+00:02:00,570 --> 00:02:02,950
+Or we could have metrics around successful completion
+
+50
+00:02:02,950 --> 00:02:04,867
+of the end-to-end process.
+
+51
+00:02:04,867 --> 00:02:05,367
+
+

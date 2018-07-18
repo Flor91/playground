@@ -1,0 +1,208 @@
+0
+00:00:00,000 --> 00:00:01,420
+
+
+1
+00:00:01,420 --> 00:00:03,900
+Recall that we've talked about two key data management
+
+2
+00:00:03,900 --> 00:00:04,890
+concepts.
+
+3
+00:00:04,890 --> 00:00:06,390
+The first being a data model, which
+
+4
+00:00:06,390 --> 00:00:09,080
+is a collection of concepts for describing data.
+
+5
+00:00:09,080 --> 00:00:11,450
+The second is a schema, which provides
+
+6
+00:00:11,450 --> 00:00:13,970
+a description of the particular collection of the data using
+
+7
+00:00:13,970 --> 00:00:16,560
+a given data model.
+
+8
+00:00:16,560 --> 00:00:21,310
+Now, conventional wisdom is that only 20% of data is structured.
+
+9
+00:00:21,310 --> 00:00:23,050
+And even this number is decreasing
+
+10
+00:00:23,050 --> 00:00:26,050
+because of the rise of consumer applications, enterprise
+
+11
+00:00:26,050 --> 00:00:27,980
+search, and media applications.
+
+12
+00:00:27,980 --> 00:00:30,600
+All of these generate data that is primarily
+
+13
+00:00:30,600 --> 00:00:34,710
+semi-structured or unstructured.
+
+14
+00:00:34,710 --> 00:00:37,030
+In this lecture, we will look at structured data
+
+15
+00:00:37,030 --> 00:00:39,280
+where we have a specific specified
+
+16
+00:00:39,280 --> 00:00:41,610
+schema that we start with.
+
+17
+00:00:41,610 --> 00:00:43,635
+And then we look at the data itself.
+
+18
+00:00:43,635 --> 00:00:46,960
+
+
+19
+00:00:46,960 --> 00:00:50,920
+In a relational database, we have the following definitions.
+
+20
+00:00:50,920 --> 00:00:54,340
+First of all, a relational database is a set of relations.
+
+21
+00:00:54,340 --> 00:00:57,480
+And there are two parts to a relation-- a schema that
+
+22
+00:00:57,480 --> 00:00:59,250
+specifies the name of the relation
+
+23
+00:00:59,250 --> 00:01:01,380
+plus each column's name and type.
+
+24
+00:01:01,380 --> 00:01:06,680
+So here we have a schema for a relation called Students.
+
+25
+00:01:06,680 --> 00:01:14,490
+And it consists of columns of a sid name, email, age, and GPA.
+
+26
+00:01:14,490 --> 00:01:17,390
+And each of those columns has an associated type.
+
+27
+00:01:17,390 --> 00:01:20,540
+For example, the name is type String.
+
+28
+00:01:20,540 --> 00:01:23,370
+The GPA is type Real.
+
+29
+00:01:23,370 --> 00:01:26,070
+The second part to a relation is an instance.
+
+30
+00:01:26,070 --> 00:01:28,830
+And this is the actual data at any given time.
+
+31
+00:01:28,830 --> 00:01:30,660
+And this has two characteristics.
+
+32
+00:01:30,660 --> 00:01:33,190
+The first is the cardinality or the number of rows.
+
+33
+00:01:33,190 --> 00:01:35,480
+And the second is the degree or number
+
+34
+00:01:35,480 --> 00:01:37,150
+of fields in that instance.
+
+35
+00:01:37,150 --> 00:01:39,790
+
+
+36
+00:01:39,790 --> 00:01:42,980
+Now, we can add to our key data management concepts
+
+37
+00:01:42,980 --> 00:01:45,940
+a third concept, which is a relational data model.
+
+38
+00:01:45,940 --> 00:01:48,440
+And this is the most used data model.
+
+39
+00:01:48,440 --> 00:01:52,030
+A relation is a table with rows and columns.
+
+40
+00:01:52,030 --> 00:01:54,370
+And every relation has a schema that defines
+
+41
+00:01:54,370 --> 00:01:55,775
+the fields in the columns.
+
+42
+00:01:55,775 --> 00:01:58,980
+
+
+43
+00:01:58,980 --> 00:02:01,950
+The database is a large, organized collection of data.
+
+44
+00:02:01,950 --> 00:02:05,470
+And transactions are used to modify that data.
+
+45
+00:02:05,470 --> 00:02:09,539
+Databases model real world, like enterprises.
+
+46
+00:02:09,539 --> 00:02:12,200
+And so we have things like entities,
+
+47
+00:02:12,200 --> 00:02:16,070
+such as teams and games, and relationships in a database.
+
+48
+00:02:16,070 --> 00:02:19,462
+So we can say, for example, the entity A
+
+49
+00:02:19,462 --> 00:02:24,110
+plays against the entity B in the World Cup,
+
+50
+00:02:24,110 --> 00:02:26,820
+where "plays against" is the relationship.
+
+51
+00:02:26,820 --> 00:02:27,466
+
+

@@ -1,0 +1,16 @@
+0
+00:00:00,000 --> 00:00:01,280
+
+
+1
+00:00:01,280 --> 00:00:04,030
+In today's lecture, I'll talk about what data science is,
+
+2
+00:00:04,030 --> 00:00:07,740
+I'll talk about how we perform data science, how we perform
+
+3
+00:00:07,740 --> 00:00:12,300
+data preparation, and the roles that we have in data science.
+

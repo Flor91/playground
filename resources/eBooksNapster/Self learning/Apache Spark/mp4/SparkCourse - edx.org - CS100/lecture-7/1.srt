@@ -1,0 +1,28 @@
+0
+00:00:00,000 --> 00:00:03,010
+
+
+1
+00:00:03,010 --> 00:00:07,010
+In this lecture I will cover the data cleaning problem, the data
+
+2
+00:00:07,010 --> 00:00:12,220
+quality problem and sources and the data quality continuum,
+
+3
+00:00:12,220 --> 00:00:15,740
+data gathering, delivery, storage, retrieval, mining
+
+4
+00:00:15,740 --> 00:00:20,530
+and analysis, constraints around data quality and data quality
+
+5
+00:00:20,530 --> 00:00:23,930
+metrics, and data integration.
+
+6
+00:00:23,930 --> 00:00:24,667
+
+

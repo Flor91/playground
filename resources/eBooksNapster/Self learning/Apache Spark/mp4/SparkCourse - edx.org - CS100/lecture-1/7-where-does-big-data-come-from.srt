@@ -1,0 +1,464 @@
+0
+00:00:00,000 --> 00:00:01,080
+
+
+1
+00:00:01,080 --> 00:00:04,170
+Let's look at some of the sources of big data.
+
+2
+00:00:04,170 --> 00:00:06,700
+Much of what we do occurs online,
+
+3
+00:00:06,700 --> 00:00:10,570
+and potentially we could record every click, so every website
+
+4
+00:00:10,570 --> 00:00:14,210
+that you click on, every ad you view, every billing event,
+
+5
+00:00:14,210 --> 00:00:17,070
+every fast-forward or pause while you're watching a video,
+
+6
+00:00:17,070 --> 00:00:19,180
+like for example this course video.
+
+7
+00:00:19,180 --> 00:00:21,560
+Every request that's made from a client
+
+8
+00:00:21,560 --> 00:00:24,850
+to a server, every transaction, every network
+
+9
+00:00:24,850 --> 00:00:26,550
+message, and every fault.
+
+10
+00:00:26,550 --> 00:00:30,030
+Anything that occurs online potentially could be recorded.
+
+11
+00:00:30,030 --> 00:00:33,120
+And in fact a lot of it is recorded, but very little of it
+
+12
+00:00:33,120 --> 00:00:34,610
+actually gets analyzed, and that's
+
+13
+00:00:34,610 --> 00:00:37,320
+why I have a picture of an iceberg on this slide,
+
+14
+00:00:37,320 --> 00:00:40,050
+because a phenomenal amount of data is collected
+
+15
+00:00:40,050 --> 00:00:43,870
+but only a tiny amount of that data is analyzed.
+
+16
+00:00:43,870 --> 00:00:46,890
+Another source of big data is the users.
+
+17
+00:00:46,890 --> 00:00:49,090
+User-generated content.
+
+18
+00:00:49,090 --> 00:00:52,040
+And this is a big source on the web and an even larger growing
+
+19
+00:00:52,040 --> 00:00:54,770
+source from mobile devices.
+
+20
+00:00:54,770 --> 00:00:59,090
+So every post that you make on Facebook or every picture
+
+21
+00:00:59,090 --> 00:01:02,400
+you send on Instagram or every review
+
+22
+00:01:02,400 --> 00:01:05,349
+that you write for Yelp or TripAdvisor or every tweet
+
+23
+00:01:05,349 --> 00:01:08,860
+you send on Twitter or video that you post to YouTube.
+
+24
+00:01:08,860 --> 00:01:11,970
+Now individually this user-generated content
+
+25
+00:01:11,970 --> 00:01:15,240
+is not very large, but taken across the billions
+
+26
+00:01:15,240 --> 00:01:20,140
+of internet users, it's a massive amount of data.
+
+27
+00:01:20,140 --> 00:01:22,230
+Another source of big data is health
+
+28
+00:01:22,230 --> 00:01:23,890
+and scientific computing.
+
+29
+00:01:23,890 --> 00:01:26,140
+So here on the left we have a graph
+
+30
+00:01:26,140 --> 00:01:29,300
+showing various repositories-- Wikipedia,
+
+31
+00:01:29,300 --> 00:01:32,190
+the Library of Congress, tweets per year,
+
+32
+00:01:32,190 --> 00:01:34,750
+and the Large Hadron Collider.
+
+33
+00:01:34,750 --> 00:01:38,440
+It generates more data in a year than all the other data
+
+34
+00:01:38,440 --> 00:01:41,220
+sources combined.
+
+35
+00:01:41,220 --> 00:01:47,310
+In the middle we have genome sequencing data.
+
+36
+00:01:47,310 --> 00:01:50,560
+Sequencing data, the cost of performing sequencing,
+
+37
+00:01:50,560 --> 00:01:54,810
+is dropping exponentially, much faster than Moore's Law,
+
+38
+00:01:54,810 --> 00:01:59,260
+so as result we're collecting more sequencing data than ever
+
+39
+00:01:59,260 --> 00:01:59,760
+before.
+
+40
+00:01:59,760 --> 00:02:01,343
+And so you see the graph in the middle
+
+41
+00:02:01,343 --> 00:02:03,900
+shows exponential growth in the amount of sequencing data
+
+42
+00:02:03,900 --> 00:02:04,510
+that we have.
+
+43
+00:02:04,510 --> 00:02:07,080
+
+
+44
+00:02:07,080 --> 00:02:11,130
+Graphs are also an interesting source of big data.
+
+45
+00:02:11,130 --> 00:02:13,470
+These graphs include things like social networks,
+
+46
+00:02:13,470 --> 00:02:16,220
+telecommunication networks, computer networks,
+
+47
+00:02:16,220 --> 00:02:18,060
+road networks, and collaborations
+
+48
+00:02:18,060 --> 00:02:19,170
+or relationships.
+
+49
+00:02:19,170 --> 00:02:21,650
+And some of these graphs can be absolutely enormous.
+
+50
+00:02:21,650 --> 00:02:23,900
+Think about Facebook's user graph.
+
+51
+00:02:23,900 --> 00:02:25,900
+In fact, later on in this course we'll
+
+52
+00:02:25,900 --> 00:02:27,650
+look at a picture of the user graph.
+
+53
+00:02:27,650 --> 00:02:30,350
+
+
+54
+00:02:30,350 --> 00:02:34,440
+Another source of big data is log files.
+
+55
+00:02:34,440 --> 00:02:36,250
+These are files that are generated
+
+56
+00:02:36,250 --> 00:02:38,880
+by servers around the internet.
+
+57
+00:02:38,880 --> 00:02:41,400
+So here's an example of an Apache web server log,
+
+58
+00:02:41,400 --> 00:02:44,320
+and it records every click.
+
+59
+00:02:44,320 --> 00:02:48,050
+So every time your web browser makes a request
+
+60
+00:02:48,050 --> 00:02:51,332
+to a web server, that gets recorded in the log file.
+
+61
+00:02:51,332 --> 00:02:53,040
+And later on in this class we're actually
+
+62
+00:02:53,040 --> 00:02:55,120
+going to look at a log file and you're
+
+63
+00:02:55,120 --> 00:02:59,340
+going to perform some analysis on it using Spark.
+
+64
+00:02:59,340 --> 00:03:02,990
+Here's an example of a machine log file,
+
+65
+00:03:02,990 --> 00:03:05,520
+and there are hundreds of millions of machines out there.
+
+66
+00:03:05,520 --> 00:03:07,660
+Each machine is generating a log file
+
+67
+00:03:07,660 --> 00:03:09,770
+like this of the applications that run
+
+68
+00:03:09,770 --> 00:03:12,050
+or any errors that occur in those applications
+
+69
+00:03:12,050 --> 00:03:15,552
+or in the operating system or in the operating system processes.
+
+70
+00:03:15,552 --> 00:03:16,510
+All that gets recorded.
+
+71
+00:03:16,510 --> 00:03:19,020
+
+
+72
+00:03:19,020 --> 00:03:21,610
+But an even bigger source of data
+
+73
+00:03:21,610 --> 00:03:24,910
+potentially is the internet of things.
+
+74
+00:03:24,910 --> 00:03:27,870
+Here's an example of an internet of things device.
+
+75
+00:03:27,870 --> 00:03:29,750
+And typically an internet of things device
+
+76
+00:03:29,750 --> 00:03:32,710
+has a processor, a little bit of memory,
+
+77
+00:03:32,710 --> 00:03:34,850
+and communications capability.
+
+78
+00:03:34,850 --> 00:03:37,730
+It also some sensors and sometimes and actuators.
+
+79
+00:03:37,730 --> 00:03:40,150
+So here at Berkeley, one of the research projects
+
+80
+00:03:40,150 --> 00:03:41,956
+built the internet of things device
+
+81
+00:03:41,956 --> 00:03:43,330
+you see in the upper right, which
+
+82
+00:03:43,330 --> 00:03:45,370
+is a little sensor mode that measures
+
+83
+00:03:45,370 --> 00:03:47,160
+humidity and temperature.
+
+84
+00:03:47,160 --> 00:03:49,010
+And they put those into the Redwood forests
+
+85
+00:03:49,010 --> 00:03:52,450
+we have here in California at different heights in a Redwood
+
+86
+00:03:52,450 --> 00:03:53,430
+tree.
+
+87
+00:03:53,430 --> 00:03:55,330
+Now taken individually, each sensor
+
+88
+00:03:55,330 --> 00:03:57,442
+generates a very small amount of data,
+
+89
+00:03:57,442 --> 00:03:58,900
+but imagine the amount of data they
+
+90
+00:03:58,900 --> 00:04:03,900
+gets generated from an entire forest full of these sensors.
+
+91
+00:04:03,900 --> 00:04:06,250
+Here's another example of an internet of things
+
+92
+00:04:06,250 --> 00:04:08,360
+device, an RFID tag.
+
+93
+00:04:08,360 --> 00:04:11,220
+This is a California FasTrak Electronic Toll Collection
+
+94
+00:04:11,220 --> 00:04:12,250
+transponder.
+
+95
+00:04:12,250 --> 00:04:15,940
+We use it here in California to pay our tolls on the highways.
+
+96
+00:04:15,940 --> 00:04:17,764
+But it's also used to collect data that's
+
+97
+00:04:17,764 --> 00:04:19,430
+used for traffic reporting, because they
+
+98
+00:04:19,430 --> 00:04:21,920
+put sensors that measure these transponders
+
+99
+00:04:21,920 --> 00:04:24,870
+all over the highways.
+
+100
+00:04:24,870 --> 00:04:26,940
+Now what we do all we have big data?
+
+101
+00:04:26,940 --> 00:04:28,510
+So let's say we have crowd sourcing.
+
+102
+00:04:28,510 --> 00:04:33,000
+We have lots of users that are collaborating to provide data.
+
+103
+00:04:33,000 --> 00:04:36,610
+We combine that with a physical terrain model and sensors
+
+104
+00:04:36,610 --> 00:04:39,160
+which could either be road highway sensors that
+
+105
+00:04:39,160 --> 00:04:41,120
+are embedded in the roadway or they
+
+106
+00:04:41,120 --> 00:04:42,970
+could be individual users' phones
+
+107
+00:04:42,970 --> 00:04:44,930
+running mapping applications.
+
+108
+00:04:44,930 --> 00:04:47,172
+We then assimilate together all of that data
+
+109
+00:04:47,172 --> 00:04:48,880
+and we can produce a picture like the one
+
+110
+00:04:48,880 --> 00:04:50,540
+you see here at the bottom.
+
+111
+00:04:50,540 --> 00:04:53,020
+This is a map of the city of Berkeley showing
+
+112
+00:04:53,020 --> 00:04:55,630
+the traffic in the city and what's
+
+113
+00:04:55,630 --> 00:04:59,380
+interesting is in without seeing the underlying physical model
+
+114
+00:04:59,380 --> 00:05:03,440
+you could see what the major arteries and traffic ways are
+
+115
+00:05:03,440 --> 00:05:05,380
+in our city.
+

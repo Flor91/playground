@@ -1,0 +1,152 @@
+0
+00:00:00,000 --> 00:00:00,499
+
+
+1
+00:00:00,499 --> 00:00:02,450
+Some of the traditional analysis tools
+
+2
+00:00:02,450 --> 00:00:05,670
+that we use include Unix shell commands, Pandas,
+
+3
+00:00:05,670 --> 00:00:08,800
+and R. One of the things that all of these tools
+
+4
+00:00:08,800 --> 00:00:13,410
+have in common is they all run on a single machine.
+
+5
+00:00:13,410 --> 00:00:16,510
+The big data problem means that data is growing faster
+
+6
+00:00:16,510 --> 00:00:18,310
+than computation speeds.
+
+7
+00:00:18,310 --> 00:00:20,240
+We have many different sources of data
+
+8
+00:00:20,240 --> 00:00:23,420
+and those sources of data are growing, web, mobile,
+
+9
+00:00:23,420 --> 00:00:24,620
+scientific.
+
+10
+00:00:24,620 --> 00:00:26,270
+Storage is getting cheaper.
+
+11
+00:00:26,270 --> 00:00:28,530
+This means people are saving more data.
+
+12
+00:00:28,530 --> 00:00:31,620
+And the size of storage is doubling every 18 months.
+
+13
+00:00:31,620 --> 00:00:34,100
+So we can save even more data.
+
+14
+00:00:34,100 --> 00:00:36,750
+But CPUs are not increasing in speed.
+
+15
+00:00:36,750 --> 00:00:38,660
+And we have many storage bottlenecks
+
+16
+00:00:38,660 --> 00:00:43,150
+getting data in and out of this massive storage.
+
+17
+00:00:43,150 --> 00:00:47,100
+Some examples of big data include Facebook's daily logs.
+
+18
+00:00:47,100 --> 00:00:49,960
+They're 60 terabytes in size.
+
+19
+00:00:49,960 --> 00:00:54,180
+Every day, they collect 60 terabytes worth of data.
+
+20
+00:00:54,180 --> 00:00:58,090
+The 1,000 genomes project has 200 terabytes
+
+21
+00:00:58,090 --> 00:01:00,590
+of human genome data.
+
+22
+00:01:00,590 --> 00:01:03,540
+Google's web index is estimated to be larger
+
+23
+00:01:03,540 --> 00:01:08,100
+than 10 petabytes of data.
+
+24
+00:01:08,100 --> 00:01:09,690
+Now, driving all of this is the fact
+
+25
+00:01:09,690 --> 00:01:12,100
+that storage has really dropped in cost.
+
+26
+00:01:12,100 --> 00:01:15,540
+A one terabyte disk is only $35.
+
+27
+00:01:15,540 --> 00:01:19,680
+But it can take three hours to read the data from the disk
+
+28
+00:01:19,680 --> 00:01:21,040
+or write it to the disk.
+
+29
+00:01:21,040 --> 00:01:23,680
+
+
+30
+00:01:23,680 --> 00:01:26,860
+The big data problem means that a single machine can no longer
+
+31
+00:01:26,860 --> 00:01:30,980
+process or even hold all of the data that we want to analyze.
+
+32
+00:01:30,980 --> 00:01:33,850
+The only solution we have is to distribute the data
+
+33
+00:01:33,850 --> 00:01:37,180
+over large clusters.
+
+34
+00:01:37,180 --> 00:01:40,790
+Here's an example of a large cluster, one of Google's data
+
+35
+00:01:40,790 --> 00:01:45,010
+center that contains tens of thousands of machines.
+
+36
+00:01:45,010 --> 00:01:48,167
+How do we program this thing?
+
+37
+00:01:48,167 --> 00:01:48,667
+
+

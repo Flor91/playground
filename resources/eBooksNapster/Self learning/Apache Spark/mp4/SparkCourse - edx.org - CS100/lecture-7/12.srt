@@ -1,0 +1,240 @@
+0
+00:00:00,000 --> 00:00:00,990
+
+
+1
+00:00:00,990 --> 00:00:03,000
+You should use a multi-disciplinary approach
+
+2
+00:00:03,000 --> 00:00:05,680
+when attacking data quality problems because no one
+
+3
+00:00:05,680 --> 00:00:08,290
+approach will solve all of the problems.
+
+4
+00:00:08,290 --> 00:00:10,540
+As an example of some of the disciplines that you want
+
+5
+00:00:10,540 --> 00:00:13,470
+to use, they include process management--
+
+6
+00:00:13,470 --> 00:00:16,010
+ensuring that you have the proper procedures.
+
+7
+00:00:16,010 --> 00:00:18,070
+Statistics-- focusing on analysis
+
+8
+00:00:18,070 --> 00:00:21,480
+that you can find and repair anomalies in the data.
+
+9
+00:00:21,480 --> 00:00:23,332
+Database management techniques, so you
+
+10
+00:00:23,332 --> 00:00:26,300
+can focus on relationships to ensure consistency.
+
+11
+00:00:26,300 --> 00:00:29,400
+And metadata and domain expertise-- what does this data
+
+12
+00:00:29,400 --> 00:00:32,700
+mean, or how do you interpret this data?
+
+13
+00:00:32,700 --> 00:00:34,670
+The data quality issues could also
+
+14
+00:00:34,670 --> 00:00:37,159
+be introduced during data integration
+
+15
+00:00:37,159 --> 00:00:38,950
+when you're combining data sets that you've
+
+16
+00:00:38,950 --> 00:00:42,200
+acquired or collected across departments.
+
+17
+00:00:42,200 --> 00:00:44,980
+This is a very common source of problems
+
+18
+00:00:44,980 --> 00:00:47,510
+because oftentimes you have heterogeneous data.
+
+19
+00:00:47,510 --> 00:00:49,490
+There might not be a common key, or there
+
+20
+00:00:49,490 --> 00:00:51,301
+may be different field formats.
+
+21
+00:00:51,301 --> 00:00:53,550
+In this case, you may have to apply a technique called
+
+22
+00:00:53,550 --> 00:00:55,576
+approximate matching.
+
+23
+00:00:55,576 --> 00:00:57,200
+There may also be different definitions
+
+24
+00:00:57,200 --> 00:00:58,770
+of what is a customer.
+
+25
+00:00:58,770 --> 00:01:01,010
+In one data set, it may be an account.
+
+26
+00:01:01,010 --> 00:01:03,010
+In another data set, it might be an individual.
+
+27
+00:01:03,010 --> 00:01:05,920
+And in the third data set, it might be a family.
+
+28
+00:01:05,920 --> 00:01:08,090
+Time synchronization can also be a problem
+
+29
+00:01:08,090 --> 00:01:09,740
+during data integration.
+
+30
+00:01:09,740 --> 00:01:12,310
+Does the data relate to the same time periods,
+
+31
+00:01:12,310 --> 00:01:14,970
+or are the time windows compatible?
+
+32
+00:01:14,970 --> 00:01:16,820
+Another integration challenge is when
+
+33
+00:01:16,820 --> 00:01:18,680
+you have legacy data, data that's
+
+34
+00:01:18,680 --> 00:01:20,320
+coming from different spreadsheets
+
+35
+00:01:20,320 --> 00:01:25,840
+and different formats, or files with ad hoc structures.
+
+36
+00:01:25,840 --> 00:01:28,400
+A challenge that we have during data integration
+
+37
+00:01:28,400 --> 00:01:32,150
+is duplicate record detection, or DeDup.
+
+38
+00:01:32,150 --> 00:01:35,990
+Examples are resolving multiple different entries,
+
+39
+00:01:35,990 --> 00:01:39,910
+identifying what is an appropriate entity
+
+40
+00:01:39,910 --> 00:01:43,720
+or a matching entity, or determining
+
+41
+00:01:43,720 --> 00:01:47,060
+which references are correct, or which object
+
+42
+00:01:47,060 --> 00:01:49,550
+ID should be consolidated.
+
+43
+00:01:49,550 --> 00:01:52,240
+Or removing duplicates by merging or purging
+
+44
+00:01:52,240 --> 00:01:54,750
+values in the data set, or linking together
+
+45
+00:01:54,750 --> 00:01:57,910
+records spanning across different data sources,
+
+46
+00:01:57,910 --> 00:01:59,570
+or performing approximate matches,
+
+47
+00:01:59,570 --> 00:02:03,740
+where we accept fuzziness instead of an exact match.
+
+48
+00:02:03,740 --> 00:02:05,810
+Or householding-- this is a special case where
+
+49
+00:02:05,810 --> 00:02:08,250
+we try to determine things like, are different people
+
+50
+00:02:08,250 --> 00:02:11,500
+in the same household?
+
+51
+00:02:11,500 --> 00:02:14,940
+Here's an example of entity resolution.
+
+52
+00:02:14,940 --> 00:02:16,630
+These are two listings that we scraped
+
+53
+00:02:16,630 --> 00:02:19,880
+from Google and from Amazon.
+
+54
+00:02:19,880 --> 00:02:22,140
+Are these two listings the same product?
+
+55
+00:02:22,140 --> 00:02:23,820
+They appear very similar.
+
+56
+00:02:23,820 --> 00:02:26,800
+In fact, they are the same product.
+
+57
+00:02:26,800 --> 00:02:29,470
+In the lab, you'll look at an algorithmic approach
+
+58
+00:02:29,470 --> 00:02:31,867
+to doing entity resolution.
+
+59
+00:02:31,867 --> 00:02:32,367
+
+

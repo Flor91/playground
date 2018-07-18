@@ -1,0 +1,704 @@
+0
+00:00:00,000 --> 00:00:02,870
+
+
+1
+00:00:02,870 --> 00:00:05,520
+In this segment, we'll discuss how OHE features can
+
+2
+00:00:05,520 --> 00:00:07,680
+be high dimensional, which can lead both
+
+3
+00:00:07,680 --> 00:00:10,844
+to statistical and computational challenges.
+
+4
+00:00:10,844 --> 00:00:12,260
+We'll then introduce the technique
+
+5
+00:00:12,260 --> 00:00:13,990
+of feature hashing, which can be used
+
+6
+00:00:13,990 --> 00:00:16,850
+to reduce the dimensionality of OHE features.
+
+7
+00:00:16,850 --> 00:00:19,290
+In previous segments, we discussed the technique
+
+8
+00:00:19,290 --> 00:00:21,910
+of One-Hot-Encoding, to convert categorical features
+
+9
+00:00:21,910 --> 00:00:23,780
+into numeric ones.
+
+10
+00:00:23,780 --> 00:00:26,840
+This technique creates a dummy feature for each category,
+
+11
+00:00:26,840 --> 00:00:28,830
+and by doing so we avoid introducing
+
+12
+00:00:28,830 --> 00:00:32,660
+spurious relationships in our numeric representation.
+
+13
+00:00:32,660 --> 00:00:35,360
+However, a consequence of OHE features
+
+14
+00:00:35,360 --> 00:00:37,880
+is that they drastically increase the dimensionality
+
+15
+00:00:37,880 --> 00:00:40,850
+of our data, as the number of features in an OHE
+
+16
+00:00:40,850 --> 00:00:43,860
+representation equals the total number of categories
+
+17
+00:00:43,860 --> 00:00:45,960
+in our data.
+
+18
+00:00:45,960 --> 00:00:48,480
+This is a major issue in the context of clickthrough rate
+
+19
+00:00:48,480 --> 00:00:51,050
+prediction, as our initial user, ad,
+
+20
+00:00:51,050 --> 00:00:55,870
+and publisher features include many names and a lot of text.
+
+21
+00:00:55,870 --> 00:00:57,895
+OHE features can be problematic whenever
+
+22
+00:00:57,895 --> 00:01:00,080
+we're working with text data.
+
+23
+00:01:00,080 --> 00:01:03,140
+For instance, as we discussed earlier in the course,
+
+24
+00:01:03,140 --> 00:01:05,630
+we often use a bag of words representation
+
+25
+00:01:05,630 --> 00:01:09,620
+to represent documents with a vocabulary of words.
+
+26
+00:01:09,620 --> 00:01:12,650
+There are over one million words in the English language alone,
+
+27
+00:01:12,650 --> 00:01:14,300
+and thus the size of our vocabulary
+
+28
+00:01:14,300 --> 00:01:16,930
+can be quite large, resulting in high dimensional
+
+29
+00:01:16,930 --> 00:01:18,660
+representation.
+
+30
+00:01:18,660 --> 00:01:20,500
+Additionally, we sometimes would like
+
+31
+00:01:20,500 --> 00:01:23,390
+to create a richer representation of our text data
+
+32
+00:01:23,390 --> 00:01:26,040
+by considering all pairs of adjacent words,
+
+33
+00:01:26,040 --> 00:01:28,910
+using a so-called bigram representation.
+
+34
+00:01:28,910 --> 00:01:31,360
+This bigram representation is similar in spirit
+
+35
+00:01:31,360 --> 00:01:33,910
+to the idea of quadratic features discussed earlier
+
+36
+00:01:33,910 --> 00:01:35,550
+in the course.
+
+37
+00:01:35,550 --> 00:01:37,560
+Bigram representations of text documents
+
+38
+00:01:37,560 --> 00:01:39,435
+result in even larger feature dimensionality.
+
+39
+00:01:39,435 --> 00:01:42,090
+
+
+40
+00:01:42,090 --> 00:01:44,060
+High dimensionality features can cause
+
+41
+00:01:44,060 --> 00:01:47,520
+problems, both statistically and computational.
+
+42
+00:01:47,520 --> 00:01:50,460
+Statistically, we typically need more observations
+
+43
+00:01:50,460 --> 00:01:52,570
+when we are learning with more features.
+
+44
+00:01:52,570 --> 00:01:54,970
+And even though we usually have many observations
+
+45
+00:01:54,970 --> 00:01:57,290
+in large scale settings, it is still harder
+
+46
+00:01:57,290 --> 00:02:00,390
+to learn models with more features.
+
+47
+00:02:00,390 --> 00:02:02,870
+Computationally, larger feature vectors
+
+48
+00:02:02,870 --> 00:02:05,390
+require increased storage and computation,
+
+49
+00:02:05,390 --> 00:02:08,570
+with communication in particular being the bottleneck.
+
+50
+00:02:08,570 --> 00:02:11,010
+For instance, when training linear models
+
+51
+00:02:11,010 --> 00:02:13,644
+we're learning d dimensional parameter vectors.
+
+52
+00:02:13,644 --> 00:02:15,310
+And when training with gradient descent,
+
+53
+00:02:15,310 --> 00:02:17,410
+we need to communicate the current parameter
+
+54
+00:02:17,410 --> 00:02:19,570
+factor after each iteration.
+
+55
+00:02:19,570 --> 00:02:24,090
+For large d, this can become an expensive process.
+
+56
+00:02:24,090 --> 00:02:25,860
+Given these issues, it would be nice
+
+57
+00:02:25,860 --> 00:02:29,190
+if we could reduce the dimension of our OHE features.
+
+58
+00:02:29,190 --> 00:02:31,150
+The first idea that we might have
+
+59
+00:02:31,150 --> 00:02:33,670
+is to simply discard rare features.
+
+60
+00:02:33,670 --> 00:02:36,680
+For instance, in a bag of word representation,
+
+61
+00:02:36,680 --> 00:02:39,330
+we could remove words that appear very infrequently
+
+62
+00:02:39,330 --> 00:02:41,250
+throughout our training set.
+
+63
+00:02:41,250 --> 00:02:45,860
+However, infrequent features are not necessarily uninformative,
+
+64
+00:02:45,860 --> 00:02:48,070
+and this approach might lead us to throw out
+
+65
+00:02:48,070 --> 00:02:50,020
+useful information.
+
+66
+00:02:50,020 --> 00:02:52,900
+Additionally, even if we discard rare features,
+
+67
+00:02:52,900 --> 00:02:55,860
+we still must first compute the full OHE features,
+
+68
+00:02:55,860 --> 00:02:59,430
+and creating the OHE dictionary can be particularly expensive.
+
+69
+00:02:59,430 --> 00:03:02,500
+
+
+70
+00:03:02,500 --> 00:03:04,620
+Feature hashing provides an alternative method
+
+71
+00:03:04,620 --> 00:03:07,860
+for reducing the dimension of OHE features.
+
+72
+00:03:07,860 --> 00:03:09,930
+By using hashing principles, we can
+
+73
+00:03:09,930 --> 00:03:12,550
+create a lower dimensional feature representation
+
+74
+00:03:12,550 --> 00:03:16,920
+and completely skip the process of creating an OHE dictionary.
+
+75
+00:03:16,920 --> 00:03:19,930
+Feature hashing preserves the sparsity of OHE features,
+
+76
+00:03:19,930 --> 00:03:23,540
+and is motivated by theoretical arguments.
+
+77
+00:03:23,540 --> 00:03:26,190
+It's also worth noting that the feature hashing can
+
+78
+00:03:26,190 --> 00:03:28,180
+be interpreted as an unsupervised learning
+
+79
+00:03:28,180 --> 00:03:31,310
+method, which is performed as a pre-processing step
+
+80
+00:03:31,310 --> 00:03:35,420
+for a downstream supervised learning task.
+
+81
+00:03:35,420 --> 00:03:37,960
+Now, let's talk more about feature hashing.
+
+82
+00:03:37,960 --> 00:03:40,280
+Hashing is a rich area of computer science,
+
+83
+00:03:40,280 --> 00:03:41,970
+with hash tables being an important data
+
+84
+00:03:41,970 --> 00:03:44,980
+structure for data lookup, and with hash functions having
+
+85
+00:03:44,980 --> 00:03:47,720
+applications in cryptography.
+
+86
+00:03:47,720 --> 00:03:49,450
+We won't discuss these details here,
+
+87
+00:03:49,450 --> 00:03:51,920
+but we'll simply note that hash tables have a fixed
+
+88
+00:03:51,920 --> 00:03:55,200
+number of buckets, and that hash functions map an object to one
+
+89
+00:03:55,200 --> 00:03:57,430
+of these m buckets.
+
+90
+00:03:57,430 --> 00:03:59,130
+In particular, hash functions are
+
+91
+00:03:59,130 --> 00:04:01,670
+designed to efficiently compute this mapping
+
+92
+00:04:01,670 --> 00:04:06,120
+and to distribute objects fairly evenly across buckets.
+
+93
+00:04:06,120 --> 00:04:08,050
+In the context of feature hashing,
+
+94
+00:04:08,050 --> 00:04:10,490
+each feature category is an object,
+
+95
+00:04:10,490 --> 00:04:13,960
+and we have fewer buckets than feature categories.
+
+96
+00:04:13,960 --> 00:04:16,190
+So in contrast to the OHE dictionary,
+
+97
+00:04:16,190 --> 00:04:19,310
+which is a one to one mapping between feature categories
+
+98
+00:04:19,310 --> 00:04:23,170
+and dummy features, feature hashing uses a many to one
+
+99
+00:04:23,170 --> 00:04:26,640
+mapping between feature categories and buckets.
+
+100
+00:04:26,640 --> 00:04:28,540
+In other words, different categories
+
+101
+00:04:28,540 --> 00:04:32,170
+are bound to collide or map to the same bucket.
+
+102
+00:04:32,170 --> 00:04:36,910
+These bucket indices are what we define as our hashed features.
+
+103
+00:04:36,910 --> 00:04:38,760
+So now let's consider a concrete example
+
+104
+00:04:38,760 --> 00:04:41,270
+to understand how feature hashing works.
+
+105
+00:04:41,270 --> 00:04:43,300
+We'll use the same categorical animal data
+
+106
+00:04:43,300 --> 00:04:45,430
+set that we did earlier, which involves
+
+107
+00:04:45,430 --> 00:04:48,700
+three categories, animal, color, and diet,
+
+108
+00:04:48,700 --> 00:04:52,580
+in seven total feature categories.
+
+109
+00:04:52,580 --> 00:04:56,190
+Suppose the number of buckets equals m equals 4,
+
+110
+00:04:56,190 --> 00:04:59,010
+and that we've already selected a hash function to map future
+
+111
+00:04:59,010 --> 00:05:01,330
+categories to buckets.
+
+112
+00:05:01,330 --> 00:05:02,886
+If we consider the first data point,
+
+113
+00:05:02,886 --> 00:05:05,130
+A1, we see that the hash function
+
+114
+00:05:05,130 --> 00:05:08,860
+maps the two-pole animal, comma, mouse, to bucket three,
+
+115
+00:05:08,860 --> 00:05:13,910
+and it maps the two-poll pull color, black, to bucket two.
+
+116
+00:05:13,910 --> 00:05:15,630
+Since we have four buckets total,
+
+117
+00:05:15,630 --> 00:05:19,050
+this leads to a feature vector of length 4 for A1,
+
+118
+00:05:19,050 --> 00:05:24,320
+with the second and third hashed features equal to one.
+
+119
+00:05:24,320 --> 00:05:27,720
+We can do something similar with the second data point, A2,
+
+120
+00:05:27,720 --> 00:05:30,720
+and we see that the two poles, animal, comma, cat,
+
+121
+00:05:30,720 --> 00:05:34,690
+and color, comma, tabby, both map to bucket 0.
+
+122
+00:05:34,690 --> 00:05:37,530
+This is an example of a hash collision.
+
+123
+00:05:37,530 --> 00:05:40,370
+The mapping of the two-pole diet, comma, mouse,
+
+124
+00:05:40,370 --> 00:05:42,660
+shows yet another example of a collision,
+
+125
+00:05:42,660 --> 00:05:45,380
+as the two-pole color, comma, black previously
+
+126
+00:05:45,380 --> 00:05:47,990
+mapped to bucket two, as well.
+
+127
+00:05:47,990 --> 00:05:50,110
+Overall, this means that we represent
+
+128
+00:05:50,110 --> 00:05:54,140
+A2 with the following four dimensional vector.
+
+129
+00:05:54,140 --> 00:05:57,480
+Note here that we have a value of 2 in Feature 0,
+
+130
+00:05:57,480 --> 00:05:59,860
+which is due to the fact that two of the categorical
+
+131
+00:05:59,860 --> 00:06:03,970
+features for A2 both map to bucket 0.
+
+132
+00:06:03,970 --> 00:06:06,520
+We also see a value of 1 in feature two.
+
+133
+00:06:06,520 --> 00:06:09,100
+
+
+134
+00:06:09,100 --> 00:06:11,350
+We can go through the same exercise for the third data
+
+135
+00:06:11,350 --> 00:06:13,990
+point, A3, to obtain its hash feature representation.
+
+136
+00:06:13,990 --> 00:06:16,890
+
+
+137
+00:06:16,890 --> 00:06:19,660
+As we saw in this toy example, when we have more feature
+
+138
+00:06:19,660 --> 00:06:23,330
+categories than we have buckets, we're bound to have collisions.
+
+139
+00:06:23,330 --> 00:06:25,170
+And thus, arbitrary feature categories
+
+140
+00:06:25,170 --> 00:06:26,850
+will be grouped together.
+
+141
+00:06:26,850 --> 00:06:29,710
+It turns out that in spite of the slightly strange behavior,
+
+142
+00:06:29,710 --> 00:06:32,730
+feature hashing has nice theoretical properties.
+
+143
+00:06:32,730 --> 00:06:34,910
+In particular, many learning methods
+
+144
+00:06:34,910 --> 00:06:37,480
+can be interpreted as relying on training data
+
+145
+00:06:37,480 --> 00:06:40,140
+only in terms of pairwise inner products between the data
+
+146
+00:06:40,140 --> 00:06:41,300
+points.
+
+147
+00:06:41,300 --> 00:06:43,910
+In the context of OHE features, if we're
+
+148
+00:06:43,910 --> 00:06:46,820
+going to approximate these OHE features with a more
+
+149
+00:06:46,820 --> 00:06:49,320
+compact feature representation, then we
+
+150
+00:06:49,320 --> 00:06:51,470
+want this compact feature representation
+
+151
+00:06:51,470 --> 00:06:54,340
+to do a good job of approximating inner products
+
+152
+00:06:54,340 --> 00:06:57,210
+computed on OHE features.
+
+153
+00:06:57,210 --> 00:06:59,720
+And it turns out that under certain conditions,
+
+154
+00:06:59,720 --> 00:07:01,765
+hashed features lead to good approximations
+
+155
+00:07:01,765 --> 00:07:03,390
+of these inner products, theoretically.
+
+156
+00:07:03,390 --> 00:07:06,160
+
+
+157
+00:07:06,160 --> 00:07:09,040
+Moreover, hashed features have been used in practice
+
+158
+00:07:09,040 --> 00:07:11,190
+and have resulted in good practical performance
+
+159
+00:07:11,190 --> 00:07:14,400
+on various text classification tasks.
+
+160
+00:07:14,400 --> 00:07:17,710
+And so in summary, hash features are a reasonable alternative
+
+161
+00:07:17,710 --> 00:07:20,520
+to OHE features.
+
+162
+00:07:20,520 --> 00:07:22,200
+Hash features can also be computed
+
+163
+00:07:22,200 --> 00:07:24,530
+in a fairly straightforward fashion in a distributed
+
+164
+00:07:24,530 --> 00:07:25,830
+setting.
+
+165
+00:07:25,830 --> 00:07:27,730
+Once we've decided on a hash function,
+
+166
+00:07:27,730 --> 00:07:30,840
+we first need to apply this function to the raw data.
+
+167
+00:07:30,840 --> 00:07:34,340
+This is a local computation requiring no communication,
+
+168
+00:07:34,340 --> 00:07:37,520
+and hash functions are generally fast and computable.
+
+169
+00:07:37,520 --> 00:07:39,360
+As shown in the Spark code snippet,
+
+170
+00:07:39,360 --> 00:07:43,460
+this step can be written by a single map expression.
+
+171
+00:07:43,460 --> 00:07:46,000
+In the second step, we can store hashed features
+
+172
+00:07:46,000 --> 00:07:49,280
+in a sparse representation, in order to save storage space
+
+173
+00:07:49,280 --> 00:07:52,110
+and reduce the computational burden in subsequent steps
+
+174
+00:07:52,110 --> 00:07:53,580
+of our pipeline.
+
+175
+00:07:53,580 --> 00:07:57,530
+This step can also be expressed as a single map operation.
+

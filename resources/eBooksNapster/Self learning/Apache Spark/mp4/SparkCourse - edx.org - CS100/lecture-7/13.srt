@@ -1,0 +1,220 @@
+0
+00:00:00,000 --> 00:00:01,250
+
+
+1
+00:00:01,250 --> 00:00:04,490
+Let's look at some more examples of data integration.
+
+2
+00:00:04,490 --> 00:00:07,100
+So here's a dedup example from Bing Shopping,
+
+3
+00:00:07,100 --> 00:00:10,480
+and we can see we have two products here, Apple iPad 2s.
+
+4
+00:00:10,480 --> 00:00:13,382
+And it turns out these are actually the same product,
+
+5
+00:00:13,382 --> 00:00:15,840
+but they haven't been merged together when we see the list,
+
+6
+00:00:15,840 --> 00:00:20,250
+even though they should actually be merged together.
+
+7
+00:00:20,250 --> 00:00:23,930
+Another example is to take your data sets
+
+8
+00:00:23,930 --> 00:00:26,230
+and convert the entries in the data sets
+
+9
+00:00:26,230 --> 00:00:27,960
+into a canonical form.
+
+10
+00:00:27,960 --> 00:00:30,230
+The example here is the US Postal Service
+
+11
+00:00:30,230 --> 00:00:33,790
+provides guidelines for canonicalizing mailing
+
+12
+00:00:33,790 --> 00:00:34,680
+addresses.
+
+13
+00:00:34,680 --> 00:00:37,550
+By converting a mailing address to a canonical form,
+
+14
+00:00:37,550 --> 00:00:40,850
+we can try and determine whether two addresses are actually
+
+15
+00:00:40,850 --> 00:00:43,140
+the same address.
+
+16
+00:00:43,140 --> 00:00:46,200
+In general, we can apply very sophisticated techniques
+
+17
+00:00:46,200 --> 00:00:48,300
+during the data integration process
+
+18
+00:00:48,300 --> 00:00:50,800
+to detect duplicates or other problems.
+
+19
+00:00:50,800 --> 00:00:53,070
+We can use evidence from multiple fields,
+
+20
+00:00:53,070 --> 00:00:56,010
+both as positive examples that two things
+
+21
+00:00:56,010 --> 00:00:58,460
+are identical or negative examples
+
+22
+00:00:58,460 --> 00:01:00,000
+that they are separate.
+
+23
+00:01:00,000 --> 00:01:01,970
+We can also use evidence from linkage patterns
+
+24
+00:01:01,970 --> 00:01:03,940
+with other records, and we can apply
+
+25
+00:01:03,940 --> 00:01:06,284
+clustering-based approaches.
+
+26
+00:01:06,284 --> 00:01:08,200
+Again, there are more sophisticated techniques
+
+27
+00:01:08,200 --> 00:01:10,452
+that we can apply here.
+
+28
+00:01:10,452 --> 00:01:12,160
+But there are lots of additional problems
+
+29
+00:01:12,160 --> 00:01:14,940
+that we can run into during the integration process.
+
+30
+00:01:14,940 --> 00:01:20,330
+Are things stored as addresses, or as number, street, and city?
+
+31
+00:01:20,330 --> 00:01:21,980
+What are the units that are used?
+
+32
+00:01:21,980 --> 00:01:24,070
+And how do we deal with merging together
+
+33
+00:01:24,070 --> 00:01:26,270
+two data sets that have different units
+
+34
+00:01:26,270 --> 00:01:29,041
+or different constraints, both static and dynamic?
+
+35
+00:01:29,041 --> 00:01:30,790
+Or how do we deal with the fact that there
+
+36
+00:01:30,790 --> 00:01:33,680
+may be multiple versions that we're trying to combine,
+
+37
+00:01:33,680 --> 00:01:36,580
+or a schema that may have changed over time?
+
+38
+00:01:36,580 --> 00:01:39,350
+Or dealing with other metadata in addition to the data
+
+39
+00:01:39,350 --> 00:01:41,310
+that we're trying to merge?
+
+40
+00:01:41,310 --> 00:01:44,830
+All of these are issues that we have to worry about.
+
+41
+00:01:44,830 --> 00:01:48,050
+Now, in terms of solutions to the data integration problem,
+
+42
+00:01:48,050 --> 00:01:50,550
+there are commercial tools based on a significant body
+
+43
+00:01:50,550 --> 00:01:52,561
+of research in data integration.
+
+44
+00:01:52,561 --> 00:01:54,060
+And there are many tools for dealing
+
+45
+00:01:54,060 --> 00:01:57,380
+with problems such as address matching or schema mapping
+
+46
+00:01:57,380 --> 00:01:59,050
+that you can use.
+
+47
+00:01:59,050 --> 00:02:01,630
+There are also data browsing and exploration tools
+
+48
+00:02:01,630 --> 00:02:02,735
+that you can use.
+
+49
+00:02:02,735 --> 00:02:05,110
+These can help you identify the many hidden problems that
+
+50
+00:02:05,110 --> 00:02:07,840
+may happen when you're trying to merge together
+
+51
+00:02:07,840 --> 00:02:10,770
+or integrate in new data.
+
+52
+00:02:10,770 --> 00:02:14,260
+You can also view the before and after results and see,
+
+53
+00:02:14,260 --> 00:02:16,880
+did you get the intended results when you
+
+54
+00:02:16,880 --> 00:02:20,110
+integrated in a new data set?
+

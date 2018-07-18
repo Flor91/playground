@@ -1,0 +1,96 @@
+0
+00:00:00,000 --> 00:00:01,180
+
+
+1
+00:00:01,180 --> 00:00:05,130
+We can specify a join over two tables as follows.
+
+2
+00:00:05,130 --> 00:00:08,039
+We have the table Enrolled E and Students S.
+
+3
+00:00:08,039 --> 00:00:10,590
+And we perform the following query.
+
+4
+00:00:10,590 --> 00:00:17,620
+SELECT S.name and E.cid FROM Students S and Enrolled E WHERE
+
+5
+00:00:17,620 --> 00:00:21,045
+S.sid equals E.sid.
+
+6
+00:00:21,045 --> 00:00:22,920
+Now, the first that the system is going to do
+
+7
+00:00:22,920 --> 00:00:26,840
+is to combine the two tables, S and E. It's
+
+8
+00:00:26,840 --> 00:00:30,400
+going to do this by performing a Cartesian product of the two
+
+9
+00:00:30,400 --> 00:00:31,550
+tables.
+
+10
+00:00:31,550 --> 00:00:33,900
+It'll do this by taking all the rows from E
+
+11
+00:00:33,900 --> 00:00:36,890
+and combining them with all of the rows from S.
+
+12
+00:00:36,890 --> 00:00:40,730
+And we will end up with the following table.
+
+13
+00:00:40,730 --> 00:00:43,190
+The next step is to use the WHERE
+
+14
+00:00:43,190 --> 00:00:46,110
+clause to select matching rows.
+
+15
+00:00:46,110 --> 00:00:50,620
+So in this case, it's where S.sid equals E.sid.
+
+16
+00:00:50,620 --> 00:00:53,640
+And we can see that there are two rows.
+
+17
+00:00:53,640 --> 00:00:56,670
+The next step is to filter columns
+
+18
+00:00:56,670 --> 00:00:58,810
+using the SELECT clause.
+
+19
+00:00:58,810 --> 00:01:04,700
+And the SELECT clause, here, is S.name and E.cid.
+
+20
+00:01:04,700 --> 00:01:08,830
+So now, we are able to return the result, which
+
+21
+00:01:08,830 --> 00:01:13,720
+is two tuples-- Jones and History 105 and Smith
+
+22
+00:01:13,720 --> 00:01:15,500
+and Physics 203.
+
+23
+00:01:15,500 --> 00:01:16,000
+
+

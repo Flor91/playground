@@ -1,0 +1,116 @@
+0
+00:00:00,000 --> 00:00:01,220
+
+
+1
+00:00:01,220 --> 00:00:04,260
+SQL provides support for multiple types of joins.
+
+2
+00:00:04,260 --> 00:00:08,340
+The type of the join controls how unmatched keys are handled.
+
+3
+00:00:08,340 --> 00:00:10,570
+Here we have an inner join, and it's
+
+4
+00:00:10,570 --> 00:00:14,370
+between two tables, students S, and enrolled E.
+
+5
+00:00:14,370 --> 00:00:16,530
+We can see in the table S, that there's
+
+6
+00:00:16,530 --> 00:00:18,460
+an unmatched key, brown.
+
+7
+00:00:18,460 --> 00:00:21,550
+And we can see in the table E, that there's an unmatched
+
+8
+00:00:21,550 --> 00:00:24,140
+key for English 10.
+
+9
+00:00:24,140 --> 00:00:26,520
+When producing the result, an inner join
+
+10
+00:00:26,520 --> 00:00:29,790
+will not include any tuples for which there's not a matching
+
+11
+00:00:29,790 --> 00:00:32,350
+key in the other relation.
+
+12
+00:00:32,350 --> 00:00:35,520
+
+
+13
+00:00:35,520 --> 00:00:39,540
+The second type that we want to look at is a left outer join.
+
+14
+00:00:39,540 --> 00:00:44,650
+With a left outer join, if a key appears in the left table,
+
+15
+00:00:44,650 --> 00:00:48,870
+in this case, students S, but not in the right table,
+
+16
+00:00:48,870 --> 00:00:51,980
+in this case, enrolled E, then the key
+
+17
+00:00:51,980 --> 00:00:55,630
+is included, but with the value null.
+
+18
+00:00:55,630 --> 00:00:59,150
+So in this case, brown appears in the result,
+
+19
+00:00:59,150 --> 00:01:01,110
+but with a class ID that's null.
+
+20
+00:01:01,110 --> 00:01:03,850
+
+
+21
+00:01:03,850 --> 00:01:06,390
+The third and last case that we can look at
+
+22
+00:01:06,390 --> 00:01:08,520
+is a right outer join.
+
+23
+00:01:08,520 --> 00:01:12,950
+With a right outer join, if a key appears in the right table,
+
+24
+00:01:12,950 --> 00:01:16,580
+in this case, enrolled E, but not in the left table,
+
+25
+00:01:16,580 --> 00:01:19,760
+in this case, students S, then the key
+
+26
+00:01:19,760 --> 00:01:22,970
+is included, but with the value null.
+
+27
+00:01:22,970 --> 00:01:27,410
+So in this case, English 10 is included as the class ID,
+
+28
+00:01:27,410 --> 00:01:30,200
+but the name is null.
+

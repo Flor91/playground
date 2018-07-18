@@ -1,0 +1,260 @@
+0
+00:00:00,000 --> 00:00:01,140
+
+
+1
+00:00:01,140 --> 00:00:03,040
+Let's look at another cautionary tale
+
+2
+00:00:03,040 --> 00:00:05,880
+around performing data science.
+
+3
+00:00:05,880 --> 00:00:09,280
+So in 2014, Princeton University researchers
+
+4
+00:00:09,280 --> 00:00:12,000
+published a paper titled, "An Epidemiological
+
+5
+00:00:12,000 --> 00:00:14,930
+Modeling of Online Social Network Dynamics."
+
+6
+00:00:14,930 --> 00:00:18,540
+The paper made quite a splash, because the last sentence
+
+7
+00:00:18,540 --> 00:00:21,980
+of the abstract was, quote, "extrapolating the best fit
+
+8
+00:00:21,980 --> 00:00:24,870
+model into the future predicts a rapid decline
+
+9
+00:00:24,870 --> 00:00:27,670
+in Facebook activity in the next few years."
+
+10
+00:00:27,670 --> 00:00:28,930
+Wow.
+
+11
+00:00:28,930 --> 00:00:30,860
+They're predicting that Facebook as we
+
+12
+00:00:30,860 --> 00:00:34,350
+know it won't exist anymore in just a few years.
+
+13
+00:00:34,350 --> 00:00:37,820
+How did they come to this conclusion?
+
+14
+00:00:37,820 --> 00:00:41,880
+They looked at Google Trends searches for Myspace.
+
+15
+00:00:41,880 --> 00:00:44,420
+And here on the left you see two different graphs
+
+16
+00:00:44,420 --> 00:00:47,950
+showing the results of the prevalence of Google Trends
+
+17
+00:00:47,950 --> 00:00:50,320
+searches over time and can see that there's
+
+18
+00:00:50,320 --> 00:00:54,700
+a peak in 2008, followed by a decline in the searches.
+
+19
+00:00:54,700 --> 00:00:58,290
+They fitted two different models to this decline
+
+20
+00:00:58,290 --> 00:01:01,260
+and then repeated that same process
+
+21
+00:01:01,260 --> 00:01:04,500
+with Google Trends searches for Facebook.
+
+22
+00:01:04,500 --> 00:01:11,650
+So here, you see the trends peak in 2012, followed by a decline.
+
+23
+00:01:11,650 --> 00:01:14,190
+They use that to then apply the same model
+
+24
+00:01:14,190 --> 00:01:18,160
+that they had derived from Myspace to predict
+
+25
+00:01:18,160 --> 00:01:22,060
+the future number of trends for Facebook.
+
+26
+00:01:22,060 --> 00:01:24,530
+And they arrive at the conclusion
+
+27
+00:01:24,530 --> 00:01:28,380
+that since there are going to be no more searches for Facebook
+
+28
+00:01:28,380 --> 00:01:30,320
+in just a few years, there'll be no more
+
+29
+00:01:30,320 --> 00:01:33,320
+Facebook in just a few years.
+
+30
+00:01:33,320 --> 00:01:36,180
+So Facebook researchers saw this, and they had to respond,
+
+31
+00:01:36,180 --> 00:01:40,060
+of course, firmly tongue in cheek.
+
+32
+00:01:40,060 --> 00:01:43,510
+And they put the following blog post with the following
+
+33
+00:01:43,510 --> 00:01:46,910
+conclusion, which is "in keeping with the scientific principle
+
+34
+00:01:46,910 --> 00:01:50,830
+'correlation equals causation,' our research unequivocally
+
+35
+00:01:50,830 --> 00:01:53,610
+demonstrated that Princeton may be in danger of disappearing
+
+36
+00:01:53,610 --> 00:01:54,950
+entirely."
+
+37
+00:01:54,950 --> 00:01:58,010
+So how did they arrive at this conclusion?
+
+38
+00:01:58,010 --> 00:02:01,190
+They looked at the proportion of total page likes
+
+39
+00:02:01,190 --> 00:02:04,410
+for Princeton, Harvard, and Yale.
+
+40
+00:02:04,410 --> 00:02:04,910
+In The.
+
+41
+00:02:04,910 --> 00:02:07,060
+Graph on the bottom, we can see that there's
+
+42
+00:02:07,060 --> 00:02:11,180
+a steady increase in total page lakes for Yale,
+
+43
+00:02:11,180 --> 00:02:14,520
+with a slight decrease in 2014.
+
+44
+00:02:14,520 --> 00:02:19,560
+Harvard shows substantial growth up until about 2012,
+
+45
+00:02:19,560 --> 00:02:22,370
+and then there's a declining trend.
+
+46
+00:02:22,370 --> 00:02:27,720
+But Princeton shows a sharp decline from 2009 to 2010,
+
+47
+00:02:27,720 --> 00:02:31,060
+with a slight recovery from 2010 to 2014,
+
+48
+00:02:31,060 --> 00:02:32,235
+and then a slight decline.
+
+49
+00:02:32,235 --> 00:02:36,000
+
+
+50
+00:02:36,000 --> 00:02:39,100
+Looking at this Princeton search trends,
+
+51
+00:02:39,100 --> 00:02:41,190
+they extrapolate that this trend suggests
+
+52
+00:02:41,190 --> 00:02:43,690
+that Princeton will have only half of its current enrollment
+
+53
+00:02:43,690 --> 00:02:45,060
+by 2018.
+
+54
+00:02:45,060 --> 00:02:48,690
+And by 2021, it will have no students at all.
+
+55
+00:02:48,690 --> 00:02:50,160
+Now, of course, since all of this
+
+56
+00:02:50,160 --> 00:02:52,100
+was tongue in cheek in terms of the response,
+
+57
+00:02:52,100 --> 00:02:54,180
+they went further.
+
+58
+00:02:54,180 --> 00:02:56,400
+And they say, "While we're concerned for Princeton
+
+59
+00:02:56,400 --> 00:02:58,129
+University, we are even more concerned
+
+60
+00:02:58,129 --> 00:03:00,670
+about the fate of the planet, because Google Trends for 'air'
+
+61
+00:03:00,670 --> 00:03:02,250
+have also been climbing steadily,
+
+62
+00:03:02,250 --> 00:03:04,680
+and our projection show that by the year 2060,
+
+63
+00:03:04,680 --> 00:03:07,250
+there we know air left at all."
+
+64
+00:03:07,250 --> 00:03:12,940
+And they produce this graph of interest over time in air.
+

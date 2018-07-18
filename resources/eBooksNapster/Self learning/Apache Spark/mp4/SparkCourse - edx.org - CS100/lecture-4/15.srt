@@ -1,0 +1,232 @@
+0
+00:00:00,000 --> 00:00:01,470
+
+
+1
+00:00:01,470 --> 00:00:03,910
+Accumulators are variables that could only be added
+
+2
+00:00:03,910 --> 00:00:06,000
+to by an associative operation.
+
+3
+00:00:06,000 --> 00:00:08,870
+They're used to very efficiently implement parallel counters
+
+4
+00:00:08,870 --> 00:00:12,130
+and sums, and only the driver can read an accumulator's
+
+5
+00:00:12,130 --> 00:00:14,730
+values, not the tasks.
+
+6
+00:00:14,730 --> 00:00:16,190
+Here's an example.
+
+7
+00:00:16,190 --> 00:00:20,490
+We create an accumulator and set the value to zero.
+
+8
+00:00:20,490 --> 00:00:25,610
+We then take an rdd, consisting of one, two, three, and four,
+
+9
+00:00:25,610 --> 00:00:29,005
+and we're going to run a for each function against it, that
+
+10
+00:00:29,005 --> 00:00:31,850
+will apply the function to each of those elements.
+
+11
+00:00:31,850 --> 00:00:33,310
+And it'll do that at the workers.
+
+12
+00:00:33,310 --> 00:00:36,650
+The function we define is to take the accumulator
+
+13
+00:00:36,650 --> 00:00:40,950
+and add the value to that accumulator.
+
+14
+00:00:40,950 --> 00:00:43,630
+When we run this, we can then see
+
+15
+00:00:43,630 --> 00:00:46,730
+that the value of the accumulator will be 10.
+
+16
+00:00:46,730 --> 00:00:51,800
+Because at each worker, we will add the value of the element.
+
+17
+00:00:51,800 --> 00:00:54,180
+In this case, we start with one at the first worker,
+
+18
+00:00:54,180 --> 00:00:56,630
+two at the second worker, three at the third worker,
+
+19
+00:00:56,630 --> 00:00:58,880
+and four at the fourth worker.
+
+20
+00:00:58,880 --> 00:01:03,480
+Each of those adds up to 10.
+
+21
+00:01:03,480 --> 00:01:04,950
+Here's an example where we're going
+
+22
+00:01:04,950 --> 00:01:08,360
+to count empty lines in a file.
+
+23
+00:01:08,360 --> 00:01:13,560
+So we start by creating an rdd from that text file.
+
+24
+00:01:13,560 --> 00:01:20,520
+And we have an accumulator that is set to zero.
+
+25
+00:01:20,520 --> 00:01:23,910
+Now, we're going to extract call signs from that file,
+
+26
+00:01:23,910 --> 00:01:29,020
+and we're going to reference the accumulator blank lines.
+
+27
+00:01:29,020 --> 00:01:31,180
+And if the line is empty, we're going
+
+28
+00:01:31,180 --> 00:01:33,240
+to add 1 to that accumulator.
+
+29
+00:01:33,240 --> 00:01:35,360
+Otherwise, we're going to return the value
+
+30
+00:01:35,360 --> 00:01:37,900
+of splitting that line.
+
+31
+00:01:37,900 --> 00:01:43,410
+Now we can take and create a new rdd call signs by flat mapping
+
+32
+00:01:43,410 --> 00:01:50,800
+that file rdd that we created by passing in the rdd function,
+
+33
+00:01:50,800 --> 00:01:51,795
+extract call signs.
+
+34
+00:01:51,795 --> 00:01:54,760
+
+
+35
+00:01:54,760 --> 00:01:59,130
+Each time extract call signs runs against an element,
+
+36
+00:01:59,130 --> 00:02:01,750
+if the element is blank, it's going to add one.
+
+37
+00:02:01,750 --> 00:02:05,380
+If it's not, it'll return the value of splitting the line.
+
+38
+00:02:05,380 --> 00:02:08,669
+Flat map will then turn that into separate elements.
+
+39
+00:02:08,669 --> 00:02:12,990
+At the end, we can print out the accumulator at the driver
+
+40
+00:02:12,990 --> 00:02:15,540
+blank lines, and we'll see what the value is.
+
+41
+00:02:15,540 --> 00:02:19,360
+
+
+42
+00:02:19,360 --> 00:02:23,810
+Now, tasks at workers cannot access an accumulator's value.
+
+43
+00:02:23,810 --> 00:02:27,950
+Task C accumulators as write only variables.
+
+44
+00:02:27,950 --> 00:02:31,820
+And accumulators can be used in actions or in transformations.
+
+45
+00:02:31,820 --> 00:02:35,090
+In an action, each tasks update to the accumulator
+
+46
+00:02:35,090 --> 00:02:38,760
+is guaranteed by spark to only be applied once.
+
+47
+00:02:38,760 --> 00:02:40,850
+When you perform transformations,
+
+48
+00:02:40,850 --> 00:02:43,430
+there's no guarantee because a transformation
+
+49
+00:02:43,430 --> 00:02:45,720
+might have to be run multiple times
+
+50
+00:02:45,720 --> 00:02:49,560
+if there are slow nodes or a node fails.
+
+51
+00:02:49,560 --> 00:02:52,010
+So you should only use accumulators
+
+52
+00:02:52,010 --> 00:02:56,720
+for debugging purposes when you have transformations.
+
+53
+00:02:56,720 --> 00:02:59,430
+Accumulators support the types integers,
+
+54
+00:02:59,430 --> 00:03:03,610
+double, long, and float, and you can also create accumulators
+
+55
+00:03:03,610 --> 00:03:04,810
+with custom types.
+
+56
+00:03:04,810 --> 00:03:08,267
+We use one of those in one of the labs.
+
+57
+00:03:08,267 --> 00:03:08,767
+
+

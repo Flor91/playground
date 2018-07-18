@@ -1,0 +1,96 @@
+0
+00:00:00,000 --> 00:00:01,090
+
+
+1
+00:00:01,090 --> 00:00:03,620
+Data quality issues could also be introduced
+
+2
+00:00:03,620 --> 00:00:06,060
+during data delivery-- for example,
+
+3
+00:00:06,060 --> 00:00:08,290
+destroying, mutilating information
+
+4
+00:00:08,290 --> 00:00:10,310
+through bad preprocessing.
+
+5
+00:00:10,310 --> 00:00:12,800
+As examples, inappropriate aggregation
+
+6
+00:00:12,800 --> 00:00:17,010
+or incorrectly converting null values into default values.
+
+7
+00:00:17,010 --> 00:00:18,770
+It can also happen due to the loss
+
+8
+00:00:18,770 --> 00:00:22,000
+of data-- say from a buffer overflow or transmission
+
+9
+00:00:22,000 --> 00:00:25,420
+problem, or a lack of integrity checks.
+
+10
+00:00:25,420 --> 00:00:28,070
+Potential solutions to the data delivery problem
+
+11
+00:00:28,070 --> 00:00:30,930
+are to build reliable transmission protocols.
+
+12
+00:00:30,930 --> 00:00:33,700
+Use a relay server to store data and verify it
+
+13
+00:00:33,700 --> 00:00:36,350
+before it's inserted into the data set.
+
+14
+00:00:36,350 --> 00:00:40,570
+Use checksums or a verification parser for verification.
+
+15
+00:00:40,570 --> 00:00:43,940
+Determine does the uploaded file actually fit
+
+16
+00:00:43,940 --> 00:00:45,820
+the expected pattern?
+
+17
+00:00:45,820 --> 00:00:47,360
+Examine the relationships.
+
+18
+00:00:47,360 --> 00:00:49,440
+These are the dependencies between data streams
+
+19
+00:00:49,440 --> 00:00:51,440
+and preprocessing steps.
+
+20
+00:00:51,440 --> 00:00:53,790
+And ask your data supplier to provide you
+
+21
+00:00:53,790 --> 00:00:56,050
+with a commitment around the quality of data
+
+22
+00:00:56,050 --> 00:00:57,668
+that they're providing.
+
+23
+00:00:57,668 --> 00:00:58,167
+
+

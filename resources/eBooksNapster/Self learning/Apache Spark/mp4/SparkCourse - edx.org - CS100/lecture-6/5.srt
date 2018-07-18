@@ -1,0 +1,80 @@
+0
+00:00:00,000 --> 00:00:01,060
+
+
+1
+00:00:01,060 --> 00:00:03,810
+The structured query language, or SQL,
+
+2
+00:00:03,810 --> 00:00:06,610
+is a language for relational databases.
+
+3
+00:00:06,610 --> 00:00:10,500
+It's supported in pi spark by data frames.
+
+4
+00:00:10,500 --> 00:00:13,080
+And some of functionality that's SQL provides
+
+5
+00:00:13,080 --> 00:00:16,690
+is the ability to create, modify, and delete relations,
+
+6
+00:00:16,690 --> 00:00:19,220
+to add, modify, and remove tuples,
+
+7
+00:00:19,220 --> 00:00:23,180
+and to specify queries to find tuples matching criteria.
+
+8
+00:00:23,180 --> 00:00:26,110
+Let's look at this last functionality item,
+
+9
+00:00:26,110 --> 00:00:28,679
+specifying queries to find tuples that
+
+10
+00:00:28,679 --> 00:00:29,845
+match a particular criteria.
+
+11
+00:00:29,845 --> 00:00:33,160
+
+
+12
+00:00:33,160 --> 00:00:36,550
+Single table queries are very straightforward in SQL.
+
+13
+00:00:36,550 --> 00:00:39,060
+To find all 18-year-old students,
+
+14
+00:00:39,060 --> 00:00:43,080
+we can write a select star from students s,
+
+15
+00:00:43,080 --> 00:00:46,250
+where s.age equals 18.
+
+16
+00:00:46,250 --> 00:00:48,530
+If we just want to find the names and logins,
+
+17
+00:00:48,530 --> 00:00:52,340
+we would write instead, select s.name comma, select,
+
+18
+00:00:52,340 --> 00:00:58,533
+.login from students s, where s.age equals 18.
+
+19
+00:00:58,533 --> 00:00:59,033
+
+

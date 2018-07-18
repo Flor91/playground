@@ -1,0 +1,72 @@
+0
+00:00:00,000 --> 00:00:01,270
+
+
+1
+00:00:01,270 --> 00:00:04,570
+Here's an example of a system log file from a machine.
+
+2
+00:00:04,570 --> 00:00:07,540
+And you can see that there are multiple applications running
+
+3
+00:00:07,540 --> 00:00:08,830
+on this machine.
+
+4
+00:00:08,830 --> 00:00:11,655
+And you can also see some of the system operations
+
+5
+00:00:11,655 --> 00:00:13,860
+that are happening on this machine.
+
+6
+00:00:13,860 --> 00:00:17,270
+Now, we can collect these types of files from many machines
+
+7
+00:00:17,270 --> 00:00:19,810
+and then check them for unusual events, like disk
+
+8
+00:00:19,810 --> 00:00:22,880
+errors, network congestion, or security attacks.
+
+9
+00:00:22,880 --> 00:00:25,440
+We can also monitor the resources on the machines
+
+10
+00:00:25,440 --> 00:00:27,340
+from these files, looking at things
+
+11
+00:00:27,340 --> 00:00:30,510
+like the network, the memory, the disc, the CPU,
+
+12
+00:00:30,510 --> 00:00:32,240
+or application queues.
+
+13
+00:00:32,240 --> 00:00:33,740
+We can take all of that information,
+
+14
+00:00:33,740 --> 00:00:36,140
+and we can visualize it with a dashboard.
+
+15
+00:00:36,140 --> 00:00:38,230
+So for example, here us a dashboard
+
+16
+00:00:38,230 --> 00:00:42,200
+from Splunk, which provides a free version of its Enterprise
+
+17
+00:00:42,200 --> 00:00:46,710
+software that you can download and try with your own data.
+

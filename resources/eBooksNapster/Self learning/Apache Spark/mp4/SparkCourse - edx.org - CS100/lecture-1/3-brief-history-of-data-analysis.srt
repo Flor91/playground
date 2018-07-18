@@ -1,0 +1,140 @@
+0
+00:00:00,000 --> 00:00:01,680
+
+
+1
+00:00:01,680 --> 00:00:05,470
+This is a brief history of data analysis.
+
+2
+00:00:05,470 --> 00:00:08,280
+In the 1930s, Fisher proposed a design
+
+3
+00:00:08,280 --> 00:00:12,530
+of experiments along with his statistical tests ANOVA,
+
+4
+00:00:12,530 --> 00:00:14,490
+and Fisher's exact tests.
+
+5
+00:00:14,490 --> 00:00:16,950
+He's also credited with the quotation,
+
+6
+00:00:16,950 --> 00:00:19,510
+"Correlation does not imply causation."
+
+7
+00:00:19,510 --> 00:00:22,840
+This is ironic given that Fisher was a lifelong pipe smoker,
+
+8
+00:00:22,840 --> 00:00:26,200
+and derided studies that showed any link between smoking
+
+9
+00:00:26,200 --> 00:00:27,980
+and cancer.
+
+10
+00:00:27,980 --> 00:00:29,930
+In the later 1930s, Demming proposed
+
+11
+00:00:29,930 --> 00:00:35,110
+the idea of quality control using statistical sampling.
+
+12
+00:00:35,110 --> 00:00:37,640
+Luhn, in the '50s, proposed the idea
+
+13
+00:00:37,640 --> 00:00:40,350
+of using indexing and information retrieval
+
+14
+00:00:40,350 --> 00:00:44,060
+methods with text data for the purposes of business
+
+15
+00:00:44,060 --> 00:00:45,720
+intelligence.
+
+16
+00:00:45,720 --> 00:00:50,230
+And Tukey, in 1977, wrote the book, Exploratory Data
+
+17
+00:00:50,230 --> 00:00:51,500
+Analysis.
+
+18
+00:00:51,500 --> 00:00:54,870
+This led to the development of the S and S+ languages,
+
+19
+00:00:54,870 --> 00:00:58,680
+along with a language you've perhaps heard of, R.
+
+20
+00:00:58,680 --> 00:01:03,230
+Dresner is a modern business intelligence proponent.
+
+21
+00:01:03,230 --> 00:01:06,940
+And in 1997, Mitchell wrote the Machine Learning book that
+
+22
+00:01:06,940 --> 00:01:09,436
+is still a bestseller today.
+
+23
+00:01:09,436 --> 00:01:13,740
+In 1996, two Stanford Ph.D. Graduate students
+
+24
+00:01:13,740 --> 00:01:18,470
+wrote a prototype search engine which ultimately led to Google.
+
+25
+00:01:18,470 --> 00:01:23,570
+And Microsoft, in 2007, released a data-driven science ebook
+
+26
+00:01:23,570 --> 00:01:24,935
+titled The Fourth Paradigm.
+
+27
+00:01:24,935 --> 00:01:27,860
+
+
+28
+00:01:27,860 --> 00:01:32,160
+Norvig proposed the unreasonable effectiveness of data.
+
+29
+00:01:32,160 --> 00:01:37,140
+The idea that multiple small models and lots of data
+
+30
+00:01:37,140 --> 00:01:43,410
+is much more effective than building very complex models.
+
+31
+00:01:43,410 --> 00:01:46,170
+And The Economist in 2010 published
+
+32
+00:01:46,170 --> 00:01:49,090
+an issue titled "The Data Deluge," ground
+
+33
+00:01:49,090 --> 00:01:52,250
+the exponential growth in data volume.
+
+34
+00:01:52,250 --> 00:01:52,866
+
+

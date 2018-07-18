@@ -1,0 +1,188 @@
+0
+00:00:00,000 --> 00:00:00,930
+
+
+1
+00:00:00,930 --> 00:00:03,326
+What if we have a really large document?
+
+2
+00:00:03,326 --> 00:00:05,920
+Well, one approach is to take that document
+
+3
+00:00:05,920 --> 00:00:10,220
+and to split up into different partitions.
+
+4
+00:00:10,220 --> 00:00:13,730
+We can then process those partitions individually
+
+5
+00:00:13,730 --> 00:00:17,360
+using the same approach that we just used on a single machine
+
+6
+00:00:17,360 --> 00:00:18,669
+for a small document.
+
+7
+00:00:18,669 --> 00:00:19,960
+So here, we have four machines.
+
+8
+00:00:19,960 --> 00:00:22,250
+And we've taken our document and divided it up
+
+9
+00:00:22,250 --> 00:00:23,850
+into four partitions.
+
+10
+00:00:23,850 --> 00:00:28,820
+Each machine only computes the word occurrence
+
+11
+00:00:28,820 --> 00:00:32,840
+for that machine's partition of the document.
+
+12
+00:00:32,840 --> 00:00:35,740
+And then, once we're done, on the fifth machine,
+
+13
+00:00:35,740 --> 00:00:38,600
+we combine all of the results.
+
+14
+00:00:38,600 --> 00:00:41,070
+But what's the problem with this type of approach if we
+
+15
+00:00:41,070 --> 00:00:43,810
+have a really large document?
+
+16
+00:00:43,810 --> 00:00:46,130
+Well, the problem is all of the results
+
+17
+00:00:46,130 --> 00:00:48,430
+have to fit in one machine.
+
+18
+00:00:48,430 --> 00:00:51,720
+So now, machine five has to be really, really large
+
+19
+00:00:51,720 --> 00:00:53,770
+if we have a really, really large document
+
+20
+00:00:53,770 --> 00:00:56,840
+that we start with that has lots and lots of words.
+
+21
+00:00:56,840 --> 00:00:59,030
+So that's not a good approach.
+
+22
+00:00:59,030 --> 00:01:01,440
+Another alternative you might think of doing
+
+23
+00:01:01,440 --> 00:01:04,580
+would be to try and add layers of aggregation.
+
+24
+00:01:04,580 --> 00:01:07,580
+So machines one and two combine their results.
+
+25
+00:01:07,580 --> 00:01:10,460
+And machines three and four combine their results.
+
+26
+00:01:10,460 --> 00:01:12,680
+But ultimately, all of the results
+
+27
+00:01:12,680 --> 00:01:15,130
+still have to fit on one machine.
+
+28
+00:01:15,130 --> 00:01:16,930
+So this approach won't work either
+
+29
+00:01:16,930 --> 00:01:20,430
+for a really, really large document.
+
+30
+00:01:20,430 --> 00:01:23,650
+Instead, we could use Divide and Conquer.
+
+31
+00:01:23,650 --> 00:01:25,770
+So we're going to take our document,
+
+32
+00:01:25,770 --> 00:01:29,080
+partition it, and process it individually on machines one
+
+33
+00:01:29,080 --> 00:01:30,610
+through four.
+
+34
+00:01:30,610 --> 00:01:34,200
+And then, all of the machines will send their value
+
+35
+00:01:34,200 --> 00:01:37,580
+for their counts for I to one machine,
+
+36
+00:01:37,580 --> 00:01:40,924
+and their counts for do to one machine, and so on.
+
+37
+00:01:40,924 --> 00:01:42,590
+And we can do this for all of the words.
+
+38
+00:01:42,590 --> 00:01:45,540
+Partition everything across the machines.
+
+39
+00:01:45,540 --> 00:01:48,560
+And in fact, these could be the same machines one through four
+
+40
+00:01:48,560 --> 00:01:50,460
+that we used already.
+
+41
+00:01:50,460 --> 00:01:54,100
+Now, our result is also partitioned
+
+42
+00:01:54,100 --> 00:01:57,490
+across multiple machines.
+
+43
+00:01:57,490 --> 00:02:03,510
+This first step of counting all of the words is a Map.
+
+44
+00:02:03,510 --> 00:02:07,200
+Combining all of those results is a Reduce.
+
+45
+00:02:07,200 --> 00:02:10,370
+And this is what Google wrote about in 2004
+
+46
+00:02:10,370 --> 00:02:12,680
+in a research paper.
+

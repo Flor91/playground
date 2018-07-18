@@ -1,0 +1,204 @@
+0
+00:00:00,000 --> 00:00:01,240
+
+
+1
+00:00:01,240 --> 00:00:04,730
+Looking at file performance when we're using compression,
+
+2
+00:00:04,730 --> 00:00:07,130
+here we have a table that shows the performance
+
+3
+00:00:07,130 --> 00:00:09,940
+when using the Scala and Java languages.
+
+4
+00:00:09,940 --> 00:00:15,500
+The upper table shows a binary file, that 787 megabyte file.
+
+5
+00:00:15,500 --> 00:00:20,429
+The lower table shows the text file, 626 megabytes in size.
+
+6
+00:00:20,429 --> 00:00:21,970
+Now, for each of these files, we look
+
+7
+00:00:21,970 --> 00:00:26,070
+at performance for raw I/O, versus using
+
+8
+00:00:26,070 --> 00:00:30,140
+LZ4 with the fast setting, versus using Gzip
+
+9
+00:00:30,140 --> 00:00:33,150
+with different levels of compression.
+
+10
+00:00:33,150 --> 00:00:34,950
+Now, the first thing that we can observe
+
+11
+00:00:34,950 --> 00:00:37,600
+when we look at this table is that write times are
+
+12
+00:00:37,600 --> 00:00:39,890
+much larger than read times.
+
+13
+00:00:39,890 --> 00:00:43,090
+That is, it takes much longer to write a compressed file
+
+14
+00:00:43,090 --> 00:00:45,760
+than to read a compressed file.
+
+15
+00:00:45,760 --> 00:00:47,870
+The second observation we can make
+
+16
+00:00:47,870 --> 00:00:51,000
+is that there's a large range of compression times.
+
+17
+00:00:51,000 --> 00:00:54,690
+So Gzip level one only takes 14 seconds to write,
+
+18
+00:00:54,690 --> 00:00:59,640
+whereas Gzip level six takes 75 seconds to write.
+
+19
+00:00:59,640 --> 00:01:02,010
+The next observation we can make is
+
+20
+00:01:02,010 --> 00:01:07,190
+that different compression schemes, LZ4 versus Gzip,
+
+21
+00:01:07,190 --> 00:01:08,370
+also have different times.
+
+22
+00:01:08,370 --> 00:01:11,680
+So it's only four seconds for LZ4 compression,
+
+23
+00:01:11,680 --> 00:01:16,240
+which is less than even Gzip level one compression.
+
+24
+00:01:16,240 --> 00:01:19,160
+The next observation is that there's a very small range
+
+25
+00:01:19,160 --> 00:01:21,080
+of compressed file sizes.
+
+26
+00:01:21,080 --> 00:01:25,980
+Ranging from 328 megabytes to 286,
+
+27
+00:01:25,980 --> 00:01:29,170
+is only a 15% range of compression,
+
+28
+00:01:29,170 --> 00:01:32,650
+even though the time varies from 14 seconds to 75 seconds
+
+29
+00:01:32,650 --> 00:01:34,985
+to write, and they have the same read times.
+
+30
+00:01:34,985 --> 00:01:37,570
+
+
+31
+00:01:37,570 --> 00:01:39,770
+We also observe that binary I/O is still
+
+32
+00:01:39,770 --> 00:01:45,370
+much faster than text-based I/O, so four seconds for LZ4 verses
+
+33
+00:01:45,370 --> 00:01:51,590
+24 seconds for LZ4 with a text file.
+
+34
+00:01:51,590 --> 00:01:53,200
+The same thing for reading.
+
+35
+00:01:53,200 --> 00:01:55,780
+Reading is much faster with a binary file,
+
+36
+00:01:55,780 --> 00:01:59,050
+2 seconds versus 22 seconds for the text file.
+
+37
+00:01:59,050 --> 00:02:02,750
+
+
+38
+00:02:02,750 --> 00:02:04,920
+Another interesting observation is
+
+39
+00:02:04,920 --> 00:02:08,750
+that LZ4 compression is very close to the raw I/O speed.
+
+40
+00:02:08,750 --> 00:02:12,400
+So only four seconds for writing versus a range of one
+
+41
+00:02:12,400 --> 00:02:15,210
+to six seconds for writing the raw file.
+
+42
+00:02:15,210 --> 00:02:17,490
+The same thing is true for doing reading.
+
+43
+00:02:17,490 --> 00:02:19,840
+Reading is only two seconds using
+
+44
+00:02:19,840 --> 00:02:24,960
+LZ4, verses one to six seconds for the binary file.
+
+45
+00:02:24,960 --> 00:02:28,860
+In summary, uncompressed read and write times are comparable.
+
+46
+00:02:28,860 --> 00:02:32,550
+Binary I/O is much faster than text I/O.
+
+47
+00:02:32,550 --> 00:02:36,390
+And compressed reads are much faster than compressed writes.
+
+48
+00:02:36,390 --> 00:02:40,550
+Using LZ4, in this case, is better than using Gzip.
+
+49
+00:02:40,550 --> 00:02:44,900
+And LZ4 compression times approach the raw I/O times.
+
+50
+00:02:44,900 --> 00:02:45,400
+
+

@@ -1,0 +1,120 @@
+0
+00:00:00,000 --> 00:00:01,210
+
+
+1
+00:00:01,210 --> 00:00:04,059
+Semi-structured tabular data is one of the most common data
+
+2
+00:00:04,059 --> 00:00:05,470
+formats.
+
+3
+00:00:05,470 --> 00:00:07,990
+A table is a collection of rows and columns.
+
+4
+00:00:07,990 --> 00:00:11,100
+Each row has an index, and each column has a name.
+
+5
+00:00:11,100 --> 00:00:14,330
+A cell is specified by an index name pair.
+
+6
+00:00:14,330 --> 00:00:16,740
+And a cell may or may not have a value.
+
+7
+00:00:16,740 --> 00:00:20,780
+The type of a cell is inferred from its value.
+
+8
+00:00:20,780 --> 00:00:23,240
+Here's an example of tabular data.
+
+9
+00:00:23,240 --> 00:00:25,620
+This is Fortune 500 companies.
+
+10
+00:00:25,620 --> 00:00:28,230
+These are the top 500 US closely held
+
+11
+00:00:28,230 --> 00:00:31,060
+and public corporations by gross revenue.
+
+12
+00:00:31,060 --> 00:00:33,780
+What you can see from this table is that there are different
+
+13
+00:00:33,780 --> 00:00:38,330
+columns,-- for example, rank, company name, revenue--
+
+14
+00:00:38,330 --> 00:00:41,550
+and there are different rows for each company that's in this
+
+15
+00:00:41,550 --> 00:00:43,400
+tabular data.
+
+16
+00:00:43,400 --> 00:00:46,950
+Now, we can take and export this data as a comma separated value
+
+17
+00:00:46,950 --> 00:00:48,620
+file.
+
+18
+00:00:48,620 --> 00:00:50,700
+That file looks like this.
+
+19
+00:00:50,700 --> 00:00:52,860
+And it consists of a header row that
+
+20
+00:00:52,860 --> 00:00:57,220
+consists of the columns separated by commas, the column
+
+21
+00:00:57,220 --> 00:01:02,010
+names, and then rows consisting of values
+
+22
+00:01:02,010 --> 00:01:05,640
+for each one of those columns separated by commas.
+
+23
+00:01:05,640 --> 00:01:08,220
+Each company is on a different row.
+
+24
+00:01:08,220 --> 00:01:10,500
+Here's a different exported file.
+
+25
+00:01:10,500 --> 00:01:12,810
+This is from a protein data bank.
+
+26
+00:01:12,810 --> 00:01:15,160
+And here the format is different.
+
+27
+00:01:15,160 --> 00:01:20,070
+The format is the first column of a line is the field
+
+28
+00:01:20,070 --> 00:01:22,850
+name followed by values.
+
+29
+00:01:22,850 --> 00:01:26,660
+And field names can be repeated on multiple lines.
+

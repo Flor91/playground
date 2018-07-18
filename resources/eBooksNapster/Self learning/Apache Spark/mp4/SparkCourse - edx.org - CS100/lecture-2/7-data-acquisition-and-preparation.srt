@@ -1,0 +1,412 @@
+0
+00:00:00,000 --> 00:00:01,500
+
+
+1
+00:00:01,500 --> 00:00:05,620
+So let's focus on the hacking skills portion of what we think
+
+2
+00:00:05,620 --> 00:00:07,860
+is data science.
+
+3
+00:00:07,860 --> 00:00:10,880
+The big picture here is that we have many different data
+
+4
+00:00:10,880 --> 00:00:11,699
+sources.
+
+5
+00:00:11,699 --> 00:00:13,990
+Like here on the left, we have an application database,
+
+6
+00:00:13,990 --> 00:00:16,441
+we have files, we have logs.
+
+7
+00:00:16,441 --> 00:00:18,440
+And we want to get that into our data warehouse,
+
+8
+00:00:18,440 --> 00:00:20,290
+where we can perform data science
+
+9
+00:00:20,290 --> 00:00:22,040
+and generate our data products, business
+
+10
+00:00:22,040 --> 00:00:24,140
+intelligence, and analytics.
+
+11
+00:00:24,140 --> 00:00:27,410
+This process of getting our raw data into our data warehouse
+
+12
+00:00:27,410 --> 00:00:32,020
+is called ETL, or extract, transform, and load.
+
+13
+00:00:32,020 --> 00:00:36,460
+The data acquisition preparation process, this ETL process,
+
+14
+00:00:36,460 --> 00:00:40,280
+consists of extracting data from some sources,
+
+15
+00:00:40,280 --> 00:00:44,230
+loading data into a sink, and transforming that data
+
+16
+00:00:44,230 --> 00:00:48,430
+either at the source, sink, or in some staging area.
+
+17
+00:00:48,430 --> 00:00:52,320
+Now sources include things like files, databases, logs,
+
+18
+00:00:52,320 --> 00:00:54,910
+websites, distributed file systems.
+
+19
+00:00:54,910 --> 00:00:58,510
+And sinks include things like languages, evaluation
+
+20
+00:00:58,510 --> 00:01:03,550
+and analysis environments, data stores, files, distributed file
+
+21
+00:01:03,550 --> 00:01:06,120
+systems, and databases.
+
+22
+00:01:06,120 --> 00:01:10,250
+Data acquisition and preparation consists of multiple phases.
+
+23
+00:01:10,250 --> 00:01:11,644
+We have to characterize the data,
+
+24
+00:01:11,644 --> 00:01:13,310
+then we have to clean the data, and then
+
+25
+00:01:13,310 --> 00:01:15,810
+we have to integrate the data into our system
+
+26
+00:01:15,810 --> 00:01:18,762
+and along with existing data that we have.
+
+27
+00:01:18,762 --> 00:01:20,220
+We have to do this very efficiently
+
+28
+00:01:20,220 --> 00:01:22,454
+in terms of space and time.
+
+29
+00:01:22,454 --> 00:01:23,870
+That is, for transferring the data
+
+30
+00:01:23,870 --> 00:01:29,610
+from one source or sink or preparation point to another,
+
+31
+00:01:29,610 --> 00:01:32,430
+that process involves serializing and deserializing
+
+32
+00:01:32,430 --> 00:01:32,930
+the data.
+
+33
+00:01:32,930 --> 00:01:35,240
+When we read it from a file into memory,
+
+34
+00:01:35,240 --> 00:01:37,180
+that's a very expensive operation.
+
+35
+00:01:37,180 --> 00:01:39,660
+The same for writing it back to a file,
+
+36
+00:01:39,660 --> 00:01:42,570
+and the same for reading it in from the network,
+
+37
+00:01:42,570 --> 00:01:44,280
+or writing it out to the network.
+
+38
+00:01:44,280 --> 00:01:46,880
+
+
+39
+00:01:46,880 --> 00:01:50,260
+Now we create pipelines, or workflows,
+
+40
+00:01:50,260 --> 00:01:52,710
+that consist of many stages.
+
+41
+00:01:52,710 --> 00:01:54,930
+So here's a transformation pipeline
+
+42
+00:01:54,930 --> 00:01:57,830
+that takes us from a data science file that
+
+43
+00:01:57,830 --> 00:02:01,610
+contains a bunch of information, to a mail message that
+
+44
+00:02:01,610 --> 00:02:05,180
+contains a count of the characters, words,
+
+45
+00:02:05,180 --> 00:02:06,670
+and lines in that file.
+
+46
+00:02:06,670 --> 00:02:09,930
+We do this using a set of Unix pipes and filters.
+
+47
+00:02:09,930 --> 00:02:13,380
+So we start by concatenating the file.
+
+48
+00:02:13,380 --> 00:02:16,015
+We pipe it into the word count program.
+
+49
+00:02:16,015 --> 00:02:19,520
+The word count program determines the characters,
+
+50
+00:02:19,520 --> 00:02:23,140
+the words, and the lines, and then we pipe that result
+
+51
+00:02:23,140 --> 00:02:26,050
+into the mail program which sends a message to someone
+
+52
+00:02:26,050 --> 00:02:27,745
+with the subject, word count.
+
+53
+00:02:27,745 --> 00:02:30,090
+Now if we're using this workflow more than once,
+
+54
+00:02:30,090 --> 00:02:30,950
+we can schedule it.
+
+55
+00:02:30,950 --> 00:02:32,510
+And that scheduling could either be
+
+56
+00:02:32,510 --> 00:02:35,340
+done time-based or event-based.
+
+57
+00:02:35,340 --> 00:02:38,370
+So every hour, we could run this pipeline.
+
+58
+00:02:38,370 --> 00:02:41,680
+Or we could only run the pipeline
+
+59
+00:02:41,680 --> 00:02:44,920
+when someone updates the data science file.
+
+60
+00:02:44,920 --> 00:02:47,950
+Another alternative is to use a publish-subscribe model
+
+61
+00:02:47,950 --> 00:02:49,580
+to register interest.
+
+62
+00:02:49,580 --> 00:02:52,557
+So for example, a Twitter feed is where
+
+63
+00:02:52,557 --> 00:02:53,640
+we do something like that.
+
+64
+00:02:53,640 --> 00:02:56,500
+You subscribe or follow someone, and then
+
+65
+00:02:56,500 --> 00:02:59,430
+you only get updates when they make changes,
+
+66
+00:02:59,430 --> 00:03:01,820
+when they post content.
+
+67
+00:03:01,820 --> 00:03:04,650
+Now recording the execution of a workflow
+
+68
+00:03:04,650 --> 00:03:08,660
+is known as capturing its lineage or provenance.
+
+69
+00:03:08,660 --> 00:03:11,440
+So given this workflow that I have here,
+
+70
+00:03:11,440 --> 00:03:14,150
+anybody can now take this workflow
+
+71
+00:03:14,150 --> 00:03:16,900
+and determine the words in a file
+
+72
+00:03:16,900 --> 00:03:19,140
+and have that mailed to someone.
+
+73
+00:03:19,140 --> 00:03:21,195
+Now Spark's Resilient Distributed Data
+
+74
+00:03:21,195 --> 00:03:24,300
+sets capture this lineage for you automatically.
+
+75
+00:03:24,300 --> 00:03:26,950
+And we'll learn more about that next week.
+
+76
+00:03:26,950 --> 00:03:29,480
+
+
+77
+00:03:29,480 --> 00:03:32,390
+There are many impediments to collaboration.
+
+78
+00:03:32,390 --> 00:03:34,630
+The diversity of tools and programming and scripting
+
+79
+00:03:34,630 --> 00:03:37,500
+languages that we have makes it very hard to share.
+
+80
+00:03:37,500 --> 00:03:40,780
+I use Python, you use Java.
+
+81
+00:03:40,780 --> 00:03:45,400
+How do we share a Python script with someone who uses Java?
+
+82
+00:03:45,400 --> 00:03:47,530
+It's not very easy to do that.
+
+83
+00:03:47,530 --> 00:03:49,050
+Also it's very difficult, sometimes,
+
+84
+00:03:49,050 --> 00:03:51,560
+to find a script or a result that someone else has already
+
+85
+00:03:51,560 --> 00:03:52,920
+computed.
+
+86
+00:03:52,920 --> 00:03:55,660
+It's much simpler to just write the program from scratch.
+
+87
+00:03:55,660 --> 00:03:58,520
+So an interesting question is, how could we fix this problem?
+
+88
+00:03:58,520 --> 00:04:00,880
+Create a library or repository where
+
+89
+00:04:00,880 --> 00:04:03,185
+we could store these scripts and store these results,
+
+90
+00:04:03,185 --> 00:04:06,100
+and make it very easy for people to search and find
+
+91
+00:04:06,100 --> 00:04:08,500
+a particular script or result.
+
+92
+00:04:08,500 --> 00:04:10,370
+But complicating this, really, is the view
+
+93
+00:04:10,370 --> 00:04:12,930
+that most analysis work that we do is throw-away.
+
+94
+00:04:12,930 --> 00:04:14,936
+We do it once and never again.
+
+95
+00:04:14,936 --> 00:04:16,060
+But that's not really true.
+
+96
+00:04:16,060 --> 00:04:18,163
+Oftentimes you'll perform an analysis,
+
+97
+00:04:18,163 --> 00:04:19,579
+then six months later, you'll want
+
+98
+00:04:19,579 --> 00:04:23,310
+to perform the same analysis to see how things have changed.
+
+99
+00:04:23,310 --> 00:04:24,210
+What do you do?
+
+100
+00:04:24,210 --> 00:04:26,820
+You write the script from scratch all over again.
+
+101
+00:04:26,820 --> 00:04:28,867
+Not really a very good approach.
+
+102
+00:04:28,867 --> 00:04:29,367
+
+

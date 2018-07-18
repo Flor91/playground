@@ -1,0 +1,100 @@
+0
+00:00:00,000 --> 00:00:01,320
+
+
+1
+00:00:01,320 --> 00:00:04,820
+Joseph Rhine was a parapsychologist in the 1950s.
+
+2
+00:00:04,820 --> 00:00:06,980
+He performed the following experiment.
+
+3
+00:00:06,980 --> 00:00:11,280
+He had subjects guess whether 10 hidden cards were red or blue.
+
+4
+00:00:11,280 --> 00:00:13,730
+He found that about one person in 1,000
+
+5
+00:00:13,730 --> 00:00:16,110
+had extrasensory perception.
+
+6
+00:00:16,110 --> 00:00:20,310
+They could correctly guess the color of all 10 cards.
+
+7
+00:00:20,310 --> 00:00:21,990
+They called back these psychic subjects
+
+8
+00:00:21,990 --> 00:00:23,540
+and had them repeat the test.
+
+9
+00:00:23,540 --> 00:00:25,230
+They all failed.
+
+10
+00:00:25,230 --> 00:00:27,400
+He concluded that the act of telling psychics
+
+11
+00:00:27,400 --> 00:00:31,380
+that they have psychic abilities causes them to lose it.
+
+12
+00:00:31,380 --> 00:00:34,380
+So what was wrong with his conclusion?
+
+13
+00:00:34,380 --> 00:00:37,670
+While it is the case that correlation does not
+
+14
+00:00:37,670 --> 00:00:41,490
+imply causation, that's not the problem here.
+
+15
+00:00:41,490 --> 00:00:45,720
+The real problem is, think about how many combinations
+
+16
+00:00:45,720 --> 00:00:49,850
+there are red and blue cards of length 10.
+
+17
+00:00:49,850 --> 00:00:55,410
+There's 2 the 10th power, or 1,024 combinations.
+
+18
+00:00:55,410 --> 00:01:00,230
+So there's a 0.98 probability that at least one subject
+
+19
+00:01:00,230 --> 00:01:04,040
+in 1,000 will guess correctly, which
+
+20
+00:01:04,040 --> 00:01:05,772
+is exactly what he observed.
+
+21
+00:01:05,772 --> 00:01:07,230
+And if you bring that subject back,
+
+22
+00:01:07,230 --> 00:01:10,740
+it's extremely unlikely-- very low probability--
+
+23
+00:01:10,740 --> 00:01:14,600
+that they'd be able to repeat that same observation.
+
+24
+00:01:14,600 --> 00:01:15,267
+
+

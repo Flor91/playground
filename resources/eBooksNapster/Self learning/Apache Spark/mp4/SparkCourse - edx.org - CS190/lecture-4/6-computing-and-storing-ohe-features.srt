@@ -1,0 +1,492 @@
+0
+00:00:00,000 --> 00:00:02,740
+
+
+1
+00:00:02,740 --> 00:00:05,090
+In this segment, we'll go through an example of how
+
+2
+00:00:05,090 --> 00:00:08,790
+to compute one-hot encoded, or OHE features,
+
+3
+00:00:08,790 --> 00:00:10,880
+and we'll then discuss how to efficiently store
+
+4
+00:00:10,880 --> 00:00:13,020
+these OHE features.
+
+5
+00:00:13,020 --> 00:00:15,290
+Consider a categorical animal data set
+
+6
+00:00:15,290 --> 00:00:17,440
+comprised of three features.
+
+7
+00:00:17,440 --> 00:00:20,430
+The first is the type of animal, and the categories here
+
+8
+00:00:20,430 --> 00:00:22,930
+are bear, cat, and mouse.
+
+9
+00:00:22,930 --> 00:00:24,770
+The second is the animal's color,
+
+10
+00:00:24,770 --> 00:00:27,560
+and the categories are black and tabby.
+
+11
+00:00:27,560 --> 00:00:29,770
+The third feature is the animal's diet,
+
+12
+00:00:29,770 --> 00:00:33,000
+and the categories are mouse and salmon.
+
+13
+00:00:33,000 --> 00:00:35,112
+Note that this third feature is optional,
+
+14
+00:00:35,112 --> 00:00:36,820
+meaning that some observations won't have
+
+15
+00:00:36,820 --> 00:00:38,800
+any value for this feature.
+
+16
+00:00:38,800 --> 00:00:40,640
+And also note that the category "mouse"
+
+17
+00:00:40,640 --> 00:00:43,300
+appears in two features, in particular, the animal
+
+18
+00:00:43,300 --> 00:00:46,000
+and the diet feature.
+
+19
+00:00:46,000 --> 00:00:47,910
+Now let's look at the data set itself,
+
+20
+00:00:47,910 --> 00:00:49,750
+which is three observations.
+
+21
+00:00:49,750 --> 00:00:53,210
+The first observation, A1, is a black mouse
+
+22
+00:00:53,210 --> 00:00:55,180
+that has no value for the diet feature,
+
+23
+00:00:55,180 --> 00:00:57,530
+as indicated by the dash.
+
+24
+00:00:57,530 --> 00:01:00,210
+The second observation is a tabby cat
+
+25
+00:01:00,210 --> 00:01:03,560
+whose diet consists of mice.
+
+26
+00:01:03,560 --> 00:01:07,140
+The third feature is a black bear that eats salmon.
+
+27
+00:01:07,140 --> 00:01:09,740
+So our question is how can we compute OHE features
+
+28
+00:01:09,740 --> 00:01:12,660
+from the data set.
+
+29
+00:01:12,660 --> 00:01:15,570
+Creating OHE features is a two-step process
+
+30
+00:01:15,570 --> 00:01:19,410
+where the first step involves creating an OHE dictionary.
+
+31
+00:01:19,410 --> 00:01:20,970
+In particular, recall that we have
+
+32
+00:01:20,970 --> 00:01:23,940
+three categorical features, with the first feature having three
+
+33
+00:01:23,940 --> 00:01:26,950
+categories, and the second two features each having
+
+34
+00:01:26,950 --> 00:01:28,450
+two categories.
+
+35
+00:01:28,450 --> 00:01:30,710
+So in total, there are seven distinct categories
+
+36
+00:01:30,710 --> 00:01:32,830
+across these three features.
+
+37
+00:01:32,830 --> 00:01:35,290
+And thus we need seven binary dummy variables
+
+38
+00:01:35,290 --> 00:01:38,460
+to represent them using a one-hot encoding.
+
+39
+00:01:38,460 --> 00:01:40,300
+And note that the mouse category is
+
+40
+00:01:40,300 --> 00:01:45,180
+distinct for the animal and the diet features.
+
+41
+00:01:45,180 --> 00:01:47,540
+So our first goal is to create a dictionary that
+
+42
+00:01:47,540 --> 00:01:50,590
+maps each category to a dummy feature.
+
+43
+00:01:50,590 --> 00:01:53,820
+We have seven categories and seven dummy variables,
+
+44
+00:01:53,820 --> 00:01:56,916
+and we want to create a one-to-one mapping.
+
+45
+00:01:56,916 --> 00:02:00,200
+We describe each category is a tuple containing the feature
+
+46
+00:02:00,200 --> 00:02:03,840
+name and the categorical value.
+
+47
+00:02:03,840 --> 00:02:06,919
+So a tuple, animal, bear, is one such category,
+
+48
+00:02:06,919 --> 00:02:10,540
+and we can map it to the dummy variable 0.
+
+49
+00:02:10,540 --> 00:02:13,620
+Similarly, we can map the tuple animal, cat
+
+50
+00:02:13,620 --> 00:02:17,140
+to the dummy variable 1.
+
+51
+00:02:17,140 --> 00:02:19,060
+And we can perform a similar process
+
+52
+00:02:19,060 --> 00:02:21,390
+for all of the other categories.
+
+53
+00:02:21,390 --> 00:02:23,310
+And note that by defining each category
+
+54
+00:02:23,310 --> 00:02:27,680
+as a tuple, the tuples animal, mouse and diet,
+
+55
+00:02:27,680 --> 00:02:29,534
+mouse are treated distinctly, which
+
+56
+00:02:29,534 --> 00:02:30,700
+is what we want to be doing.
+
+57
+00:02:30,700 --> 00:02:33,440
+
+
+58
+00:02:33,440 --> 00:02:37,890
+Now we have our OHE dictionary, we can create OHE features.
+
+59
+00:02:37,890 --> 00:02:40,840
+To do this, we simply map each non-numeric feature
+
+60
+00:02:40,840 --> 00:02:43,290
+to its binary dummy feature.
+
+61
+00:02:43,290 --> 00:02:47,310
+So for instance, the numeric representation of A1
+
+62
+00:02:47,310 --> 00:02:51,460
+is 0, 0, 1, 1, 0, 0, 0.
+
+63
+00:02:51,460 --> 00:02:54,620
+Let's see how we arrive at this representation.
+
+64
+00:02:54,620 --> 00:02:58,310
+We see that A1's animal feature equals mouse.
+
+65
+00:02:58,310 --> 00:03:00,730
+And in our OHE dictionary, this corresponds
+
+66
+00:03:00,730 --> 00:03:03,400
+to the tuple animal, mouse.
+
+67
+00:03:03,400 --> 00:03:05,930
+And our dictionary tells us that this tuple corresponds
+
+68
+00:03:05,930 --> 00:03:09,200
+to the dummy feature 2.
+
+69
+00:03:09,200 --> 00:03:14,310
+As a result, we can set the second feature equal to 1.
+
+70
+00:03:14,310 --> 00:03:17,170
+And note that we're cutting starting from 0
+
+71
+00:03:17,170 --> 00:03:20,710
+or using a zero-based numbering system.
+
+72
+00:03:20,710 --> 00:03:23,680
+Similarly, A1's color feature is black.
+
+73
+00:03:23,680 --> 00:03:26,310
+So again, we look up in our OHE dictionary,
+
+74
+00:03:26,310 --> 00:03:29,580
+and we see that this corresponds to dummy feature 3.
+
+75
+00:03:29,580 --> 00:03:32,480
+So as before, we can now set the corresponding dummy feature,
+
+76
+00:03:32,480 --> 00:03:34,540
+in this case feature 3, equal to 1.
+
+77
+00:03:34,540 --> 00:03:36,572
+
+
+78
+00:03:36,572 --> 00:03:38,530
+Now that we've walked through an example of how
+
+79
+00:03:38,530 --> 00:03:40,730
+to create OHE features, let's talk
+
+80
+00:03:40,730 --> 00:03:42,930
+about how we can store them.
+
+81
+00:03:42,930 --> 00:03:45,240
+Note that for a given categorical feature, at most
+
+82
+00:03:45,240 --> 00:03:48,720
+a single OHE dummy feature is non-zero.
+
+83
+00:03:48,720 --> 00:03:53,200
+In other words, most of our OHE features are equal to 0,
+
+84
+00:03:53,200 --> 00:03:56,640
+or our OHE features are sparse.
+
+85
+00:03:56,640 --> 00:03:58,900
+When storing OHE features, we can take
+
+86
+00:03:58,900 --> 00:04:01,780
+advantage of this sparsity.
+
+87
+00:04:01,780 --> 00:04:03,460
+The standard way to represent features
+
+88
+00:04:03,460 --> 00:04:07,010
+is via a dense representation, where we store all numbers
+
+89
+00:04:07,010 --> 00:04:08,950
+regardless of their value.
+
+90
+00:04:08,950 --> 00:04:10,990
+So for instance, in this example,
+
+91
+00:04:10,990 --> 00:04:13,140
+we would store each of the seven values
+
+92
+00:04:13,140 --> 00:04:17,260
+in A1's feature representation as a double.
+
+93
+00:04:17,260 --> 00:04:19,890
+However, an alternative way to store our features
+
+94
+00:04:19,890 --> 00:04:24,620
+is to store the indices and values for all non-zero entries
+
+95
+00:04:24,620 --> 00:04:28,320
+and assume that all other entries equal 0.
+
+96
+00:04:28,320 --> 00:04:30,710
+So back to our A1 example, this would
+
+97
+00:04:30,710 --> 00:04:33,830
+mean that we would store two tuples or a total of four
+
+98
+00:04:33,830 --> 00:04:35,000
+values.
+
+99
+00:04:35,000 --> 00:04:37,300
+In each of these tuples, the first component
+
+100
+00:04:37,300 --> 00:04:40,050
+is the feature index, and the second component
+
+101
+00:04:40,050 --> 00:04:41,560
+is the value of this feature.
+
+102
+00:04:41,560 --> 00:04:44,110
+
+
+103
+00:04:44,110 --> 00:04:47,020
+When our data is sparse, using a sparse representation
+
+104
+00:04:47,020 --> 00:04:49,400
+can lead to a dramatic savings, both in terms
+
+105
+00:04:49,400 --> 00:04:51,620
+of storage and computation.
+
+106
+00:04:51,620 --> 00:04:53,380
+So let's consider an example of storing
+
+107
+00:04:53,380 --> 00:04:56,420
+a data set with 10 million observations and 1,000
+
+108
+00:04:56,420 --> 00:04:57,210
+features.
+
+109
+00:04:57,210 --> 00:05:00,020
+And let's assume that on average, 1% of the features
+
+110
+00:05:00,020 --> 00:05:02,174
+are equal to 0.
+
+111
+00:05:02,174 --> 00:05:03,715
+In our standard dense representation,
+
+112
+00:05:03,715 --> 00:05:06,490
+we would store each number in this matrix using
+
+113
+00:05:06,490 --> 00:05:08,880
+a single double, and this leads to a total
+
+114
+00:05:08,880 --> 00:05:11,710
+of 80 gigabytes of storage.
+
+115
+00:05:11,710 --> 00:05:14,700
+In contrast, using a sparse representation,
+
+116
+00:05:14,700 --> 00:05:19,000
+we could represent each non-zero entry via two doubles, one
+
+117
+00:05:19,000 --> 00:05:21,780
+to store the value and the other to store the index
+
+118
+00:05:21,780 --> 00:05:25,080
+or location of this feature.
+
+119
+00:05:25,080 --> 00:05:29,500
+In our example, this would lead to a 50x savings in storage.
+
+120
+00:05:29,500 --> 00:05:33,030
+This more compact representation would also directly translate
+
+121
+00:05:33,030 --> 00:05:35,160
+into computational savings when performing
+
+122
+00:05:35,160 --> 00:05:39,260
+matrix operations, such as multiplies or inversions.
+

@@ -1,0 +1,768 @@
+0
+00:00:00,000 --> 00:00:03,617
+
+
+1
+00:00:03,617 --> 00:00:05,450
+In this segment, we'll talk about how we can
+
+2
+00:00:05,450 --> 00:00:08,080
+use probabilistic predictions.
+
+3
+00:00:08,080 --> 00:00:10,260
+We'll first talk about how we can incorporate domain
+
+4
+00:00:10,260 --> 00:00:13,550
+knowledge when thresholding our probabilities to generate
+
+5
+00:00:13,550 --> 00:00:15,400
+class predictions.
+
+6
+00:00:15,400 --> 00:00:18,010
+We'll then talk about how we might want to work directly
+
+7
+00:00:18,010 --> 00:00:21,340
+with probabilistic predictions and how in such cases,
+
+8
+00:00:21,340 --> 00:00:26,180
+logistic loss is an appropriate evaluation metric.
+
+9
+00:00:26,180 --> 00:00:28,040
+In the previous segment, we discussed
+
+10
+00:00:28,040 --> 00:00:30,100
+how we can convert probabilistic predictions
+
+11
+00:00:30,100 --> 00:00:33,090
+to class predictions by thresholding them.
+
+12
+00:00:33,090 --> 00:00:34,980
+If we look at our rain example, and if we
+
+13
+00:00:34,980 --> 00:00:39,080
+assume a threshold of 0.5, then a conditional probability
+
+14
+00:00:39,080 --> 00:00:43,270
+prediction of 0.05 would lead to a class prediction of y hat
+
+15
+00:00:43,270 --> 00:00:44,760
+equals 0.
+
+16
+00:00:44,760 --> 00:00:47,130
+And a conditional probability prediction of 0.9
+
+17
+00:00:47,130 --> 00:00:51,330
+would lead to a class prediction of y hat equals 1.
+
+18
+00:00:51,330 --> 00:00:54,580
+We also showed that in the context of logistic regression,
+
+19
+00:00:54,580 --> 00:00:57,920
+using a threshold value of 0.5 led to the same decision
+
+20
+00:00:57,920 --> 00:01:01,880
+boundary as simply looking at the sine of w transpose x,
+
+21
+00:01:01,880 --> 00:01:06,120
+or of a dot product between our model and our features.
+
+22
+00:01:06,120 --> 00:01:08,470
+But when we have access to fine-grained probabilistic
+
+23
+00:01:08,470 --> 00:01:10,170
+predictions, we don't necessarily
+
+24
+00:01:10,170 --> 00:01:12,930
+have to set our threshold to 0.5.
+
+25
+00:01:12,930 --> 00:01:16,200
+Let's consider a spam detection example to see this point.
+
+26
+00:01:16,200 --> 00:01:18,090
+And suppose that we have a trained model that
+
+27
+00:01:18,090 --> 00:01:19,820
+gives us conditional probabilities
+
+28
+00:01:19,820 --> 00:01:23,380
+that an email will be spam.
+
+29
+00:01:23,380 --> 00:01:26,790
+Now, imagine that we've made an incorrect spam prediction.
+
+30
+00:01:26,790 --> 00:01:29,630
+We can potentially make two types of mistakes.
+
+31
+00:01:29,630 --> 00:01:32,310
+The first type, which we call a false positive,
+
+32
+00:01:32,310 --> 00:01:36,600
+occurs when we classify a legitimate email as spam.
+
+33
+00:01:36,600 --> 00:01:39,670
+The second type, which we call a false negative,
+
+34
+00:01:39,670 --> 00:01:44,740
+occurs when we classify a spam email as a legitimate one.
+
+35
+00:01:44,740 --> 00:01:47,210
+In this application, it's reasonable to argue
+
+36
+00:01:47,210 --> 00:01:50,850
+that false positives are more harmful than false negatives.
+
+37
+00:01:50,850 --> 00:01:52,790
+In other words, users will likely
+
+38
+00:01:52,790 --> 00:01:55,520
+be more frustrated if an email from a close friend
+
+39
+00:01:55,520 --> 00:01:58,100
+gets lost in a spam filter than if a spam
+
+40
+00:01:58,100 --> 00:02:02,296
+email doesn't get filtered and shows up in their inbox.
+
+41
+00:02:02,296 --> 00:02:03,920
+These two types of errors are typically
+
+42
+00:02:03,920 --> 00:02:05,200
+at odds with each other.
+
+43
+00:02:05,200 --> 00:02:07,840
+Or, in other words, we often trade off one type of error
+
+44
+00:02:07,840 --> 00:02:09,560
+for the other.
+
+45
+00:02:09,560 --> 00:02:11,400
+In our spam application, we might
+
+46
+00:02:11,400 --> 00:02:14,640
+be willing to accept a few more false negatives in exchange
+
+47
+00:02:14,640 --> 00:02:17,870
+for reducing the number of false positives.
+
+48
+00:02:17,870 --> 00:02:19,820
+When working with probabilistic predictions,
+
+49
+00:02:19,820 --> 00:02:23,470
+we can make these trade-offs by adjusting our threshold.
+
+50
+00:02:23,470 --> 00:02:26,070
+Using a higher threshold leads to a classifier
+
+51
+00:02:26,070 --> 00:02:28,730
+that is more conservative in identifying an email as spam.
+
+52
+00:02:28,730 --> 00:02:31,430
+
+
+53
+00:02:31,430 --> 00:02:33,270
+Assuming we want to change our threshold,
+
+54
+00:02:33,270 --> 00:02:37,250
+how can we determine the best choice?
+
+55
+00:02:37,250 --> 00:02:40,600
+One natural way to do this is to use a ROC plot, which
+
+56
+00:02:40,600 --> 00:02:42,720
+visualizes the trade-offs we make
+
+57
+00:02:42,720 --> 00:02:44,470
+as we change our threshold.
+
+58
+00:02:44,470 --> 00:02:48,050
+In particular, a ROC plot focuses on two standard metrics
+
+59
+00:02:48,050 --> 00:02:50,400
+that are often at odds with one another, namely
+
+60
+00:02:50,400 --> 00:02:54,320
+the false positive rate, or FPR, and the true positive rate,
+
+61
+00:02:54,320 --> 00:02:55,920
+or TPR.
+
+62
+00:02:55,920 --> 00:02:57,420
+Using our spam detection application
+
+63
+00:02:57,420 --> 00:02:59,660
+as a running example, we can interpret
+
+64
+00:02:59,660 --> 00:03:01,980
+FPR as the percentage of legitimate emails
+
+65
+00:03:01,980 --> 00:03:04,680
+that are incorrectly predicted as spam.
+
+66
+00:03:04,680 --> 00:03:07,710
+And we can view TPR as the percentage of spam emails
+
+67
+00:03:07,710 --> 00:03:11,060
+that are correctly predicted as spam.
+
+68
+00:03:11,060 --> 00:03:16,010
+In an ideal world, we would have an FPR of 0 and a TPR of 1.
+
+69
+00:03:16,010 --> 00:03:19,160
+An FPR of 0 would mean that none of our legitimate emails
+
+70
+00:03:19,160 --> 00:03:21,500
+were incorrectly classified as spam.
+
+71
+00:03:21,500 --> 00:03:24,820
+And a TPR of 1 would mean that all spam emails were correctly
+
+72
+00:03:24,820 --> 00:03:27,030
+classified as spam.
+
+73
+00:03:27,030 --> 00:03:31,310
+Therefore, having both an FPR of 0 and a TPR of 1
+
+74
+00:03:31,310 --> 00:03:33,530
+would imply a perfect classifier.
+
+75
+00:03:33,530 --> 00:03:35,770
+In a ROC plot, this corresponds to being
+
+76
+00:03:35,770 --> 00:03:39,280
+on the top left of the plot.
+
+77
+00:03:39,280 --> 00:03:42,540
+As a second baseline, imagine that we flipped a fair coin
+
+78
+00:03:42,540 --> 00:03:45,560
+to generate each of our predictions, in which
+
+79
+00:03:45,560 --> 00:03:47,340
+case, on average, half of our emails
+
+80
+00:03:47,340 --> 00:03:51,060
+would be classified as spam, and half would be non-spam.
+
+81
+00:03:51,060 --> 00:03:56,330
+In this case, both the FPR and the TPR would equal 0.5 More
+
+82
+00:03:56,330 --> 00:03:58,614
+generally, we could flip a biased coin,
+
+83
+00:03:58,614 --> 00:04:00,280
+or, in other words, a coin that lands on
+
+84
+00:04:00,280 --> 00:04:03,670
+heads with some probability P. And in this case,
+
+85
+00:04:03,670 --> 00:04:05,990
+the dotted line in the ROC plot visualizes
+
+86
+00:04:05,990 --> 00:04:08,300
+the results of making these random predictions,
+
+87
+00:04:08,300 --> 00:04:10,820
+with each point on this dotted line corresponding
+
+88
+00:04:10,820 --> 00:04:14,410
+to a different value of p.
+
+89
+00:04:14,410 --> 00:04:16,370
+Now that we've established these baselines,
+
+90
+00:04:16,370 --> 00:04:19,857
+let's see how we can use a ROC plot to evaluate a classifier.
+
+91
+00:04:19,857 --> 00:04:21,690
+Imagine that we've trained a classifier that
+
+92
+00:04:21,690 --> 00:04:24,180
+returns probabilistic predictions, as in the case
+
+93
+00:04:24,180 --> 00:04:25,980
+of logistic regression.
+
+94
+00:04:25,980 --> 00:04:28,480
+Let's also assume that we're using a validation set
+
+95
+00:04:28,480 --> 00:04:30,980
+to find a good threshold.
+
+96
+00:04:30,980 --> 00:04:32,800
+Then we can use our classifier to generate
+
+97
+00:04:32,800 --> 00:04:35,330
+conditional probabilities for observations in our validation
+
+98
+00:04:35,330 --> 00:04:36,470
+set.
+
+99
+00:04:36,470 --> 00:04:38,160
+And once we have these probabilities,
+
+100
+00:04:38,160 --> 00:04:40,330
+we can generate a ROC plot by varying
+
+101
+00:04:40,330 --> 00:04:43,280
+the threshold we use to convert these probabilities to class
+
+102
+00:04:43,280 --> 00:04:46,540
+predictions, and computing FPR and TPR
+
+103
+00:04:46,540 --> 00:04:48,750
+at each of these thresholds.
+
+104
+00:04:48,750 --> 00:04:51,360
+Our threshold can range from 0 to 1,
+
+105
+00:04:51,360 --> 00:04:53,510
+and each point on the ROC plot corresponds
+
+106
+00:04:53,510 --> 00:04:56,310
+to a distinct threshold.
+
+107
+00:04:56,310 --> 00:05:00,240
+For instance, in one extreme, where our threshold equals 0,
+
+108
+00:05:00,240 --> 00:05:02,880
+we interpret all positive probability predictions
+
+109
+00:05:02,880 --> 00:05:04,100
+as being spam.
+
+110
+00:05:04,100 --> 00:05:05,660
+Or, in other words, we aggressively
+
+111
+00:05:05,660 --> 00:05:08,460
+predict everything to be spam.
+
+112
+00:05:08,460 --> 00:05:12,100
+By doing so, our TPR equals 1, which is good.
+
+113
+00:05:12,100 --> 00:05:16,630
+But our FPR is also equal to 1, which is bad.
+
+114
+00:05:16,630 --> 00:05:19,040
+In the other extreme, we can set our threshold
+
+115
+00:05:19,040 --> 00:05:22,850
+to equal 1, in which case we never classify anything
+
+116
+00:05:22,850 --> 00:05:24,100
+as spam.
+
+117
+00:05:24,100 --> 00:05:27,570
+In this conservative setting, we never have any false positives,
+
+118
+00:05:27,570 --> 00:05:30,950
+and thus our FPR is 0, which is a good thing.
+
+119
+00:05:30,950 --> 00:05:35,370
+But now our TPR is also 0, which is a bad thing.
+
+120
+00:05:35,370 --> 00:05:38,290
+And in practice, we trade off TPR and FPR
+
+121
+00:05:38,290 --> 00:05:41,270
+in an application-specific way.
+
+122
+00:05:41,270 --> 00:05:43,470
+For instance, in our spam application,
+
+123
+00:05:43,470 --> 00:05:46,100
+since we're particularly concerned about classifying
+
+124
+00:05:46,100 --> 00:05:48,760
+a legitimate email as spam, we might
+
+125
+00:05:48,760 --> 00:05:53,400
+be willing to tolerate at most a 10% false positive rate.
+
+126
+00:05:53,400 --> 00:05:54,910
+And with this constraint in mind,
+
+127
+00:05:54,910 --> 00:05:58,990
+we can then pick the threshold that maximizes the TPR, given
+
+128
+00:05:58,990 --> 00:06:01,500
+that FPR can be at most 10%.
+
+129
+00:06:01,500 --> 00:06:04,220
+We've seen that ROC plots are a powerful tool for choosing
+
+130
+00:06:04,220 --> 00:06:06,550
+the most appropriate threshold when we ultimately
+
+131
+00:06:06,550 --> 00:06:09,190
+need to make class predictions.
+
+132
+00:06:09,190 --> 00:06:11,400
+However, in some cases, we might not
+
+133
+00:06:11,400 --> 00:06:13,570
+want to make class predictions at all.
+
+134
+00:06:13,570 --> 00:06:16,600
+Instead, we might want to work directly with probabilities
+
+135
+00:06:16,600 --> 00:06:19,200
+as they provide more granular information.
+
+136
+00:06:19,200 --> 00:06:21,460
+For instance, let's go back to our clickthrough rate
+
+137
+00:06:21,460 --> 00:06:23,410
+prediction example.
+
+138
+00:06:23,410 --> 00:06:25,430
+As we know, click events are rare.
+
+139
+00:06:25,430 --> 00:06:28,440
+And as a result, our predicted click probabilities
+
+140
+00:06:28,440 --> 00:06:30,180
+will be uniformly low.
+
+141
+00:06:30,180 --> 00:06:32,390
+So unless we picked some very low threshold,
+
+142
+00:06:32,390 --> 00:06:34,400
+the vast majority of our class predictions
+
+143
+00:06:34,400 --> 00:06:37,410
+will all be y hat equals 0.
+
+144
+00:06:37,410 --> 00:06:39,630
+However, in this application, we're
+
+145
+00:06:39,630 --> 00:06:42,060
+not interested in the class prediction, but rather
+
+146
+00:06:42,060 --> 00:06:44,020
+the probabilities themselves.
+
+147
+00:06:44,020 --> 00:06:46,760
+We want to know which events are most likely to occur
+
+148
+00:06:46,760 --> 00:06:51,110
+and how much more likely certain events are relative to others.
+
+149
+00:06:51,110 --> 00:06:53,000
+We may also want to combine these predictions
+
+150
+00:06:53,000 --> 00:06:56,030
+with other information and thus don't want a threshold,
+
+151
+00:06:56,030 --> 00:07:00,210
+as we'll lose this fine-grained information by doing so.
+
+152
+00:07:00,210 --> 00:07:02,810
+In such cases, it makes sense to work directly
+
+153
+00:07:02,810 --> 00:07:05,950
+with the probabilities and to evaluate our predictive models
+
+154
+00:07:05,950 --> 00:07:08,200
+based on the quality of these probabilities
+
+155
+00:07:08,200 --> 00:07:11,200
+rather than on their class predictions.
+
+156
+00:07:11,200 --> 00:07:12,920
+In these cases, it makes sense to use
+
+157
+00:07:12,920 --> 00:07:18,107
+the logistic loss for evaluation rather than the 0-1 loss.
+
+158
+00:07:18,107 --> 00:07:19,690
+Let's take a look at the logistic loss
+
+159
+00:07:19,690 --> 00:07:23,580
+to better understand why this is the case.
+
+160
+00:07:23,580 --> 00:07:25,760
+Note that we initially introduced logistic loss
+
+161
+00:07:25,760 --> 00:07:27,550
+when assuming that the labels were either
+
+162
+00:07:27,550 --> 00:07:30,040
+equal to negative 1 or 1.
+
+163
+00:07:30,040 --> 00:07:32,410
+Here, however, we're using our new notation,
+
+164
+00:07:32,410 --> 00:07:35,040
+where the labels are either 0 or 1, which
+
+165
+00:07:35,040 --> 00:07:38,330
+makes the logistic loss easier to interpret.
+
+166
+00:07:38,330 --> 00:07:40,530
+With our new notation, the logistic loss
+
+167
+00:07:40,530 --> 00:07:43,460
+takes in two values as parameters.
+
+168
+00:07:43,460 --> 00:07:46,270
+The first parameter is the probabilistic prediction,
+
+169
+00:07:46,270 --> 00:07:48,830
+which is a number ranging from 0 to 1.
+
+170
+00:07:48,830 --> 00:07:50,700
+And the second is the true label,
+
+171
+00:07:50,700 --> 00:07:55,280
+which is a discrete value that either equals 0 or 1.
+
+172
+00:07:55,280 --> 00:07:58,380
+We can define the logistic loss with different expressions
+
+173
+00:07:58,380 --> 00:08:01,150
+depending on the value of y.
+
+174
+00:08:01,150 --> 00:08:04,350
+First, let's consider the case when y equals 1.
+
+175
+00:08:04,350 --> 00:08:07,080
+In this case, we want the predicted probability
+
+176
+00:08:07,080 --> 00:08:09,680
+to be as close to 1 as possible.
+
+177
+00:08:09,680 --> 00:08:12,040
+The blue line shows the behavior of a logistic loss
+
+178
+00:08:12,040 --> 00:08:12,940
+in this setting.
+
+179
+00:08:12,940 --> 00:08:15,940
+And, as we can see, we incur no loss or penalty
+
+180
+00:08:15,940 --> 00:08:18,360
+when the probability equals 1, and we
+
+181
+00:08:18,360 --> 00:08:21,200
+incur an increasingly large penalty as the probability
+
+182
+00:08:21,200 --> 00:08:24,050
+moves away from 1.
+
+183
+00:08:24,050 --> 00:08:27,220
+We see an analogous situation when y equals 0,
+
+184
+00:08:27,220 --> 00:08:31,600
+where the loss equals 0 if the predicted probability equals 0,
+
+185
+00:08:31,600 --> 00:08:34,450
+and we suffer an increasing penalty or loss
+
+186
+00:08:34,450 --> 00:08:37,750
+as the probability increases.
+
+187
+00:08:37,750 --> 00:08:40,830
+So in comparison to the 0-1 loss, which either returns
+
+188
+00:08:40,830 --> 00:08:43,229
+a penalty of 0 or 1, the log loss
+
+189
+00:08:43,229 --> 00:08:46,310
+is a more fine-grained metric for evaluating the accuracy
+
+190
+00:08:46,310 --> 00:08:48,433
+of probabilistic predictions.
+
+191
+00:08:48,433 --> 00:08:48,933
+
+

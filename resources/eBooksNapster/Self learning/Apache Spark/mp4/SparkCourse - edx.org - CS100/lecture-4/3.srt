@@ -1,0 +1,268 @@
+0
+00:00:00,000 --> 00:00:01,110
+
+
+1
+00:00:01,110 --> 00:00:03,990
+Resilient distributed datasets are the primary abstraction
+
+2
+00:00:03,990 --> 00:00:05,520
+in Spark.
+
+3
+00:00:05,520 --> 00:00:08,010
+They are immutable once you create an RDD.
+
+4
+00:00:08,010 --> 00:00:09,640
+You cannot change IT.
+
+5
+00:00:09,640 --> 00:00:11,270
+You can transform it.
+
+6
+00:00:11,270 --> 00:00:12,880
+You can perform actions on it.
+
+7
+00:00:12,880 --> 00:00:16,640
+But you cannot change an RDD once you construct it.
+
+8
+00:00:16,640 --> 00:00:19,040
+Spark tracks lineage information to enable
+
+9
+00:00:19,040 --> 00:00:22,140
+the efficient recomputation of any lost data
+
+10
+00:00:22,140 --> 00:00:25,960
+if a machine should fail or crash.
+
+11
+00:00:25,960 --> 00:00:28,710
+It also enables operations on collections
+
+12
+00:00:28,710 --> 00:00:30,630
+of elements in parallel.
+
+13
+00:00:30,630 --> 00:00:33,070
+Now you can construct RDDs by paralyzing
+
+14
+00:00:33,070 --> 00:00:36,120
+existent Python collections such as lists,
+
+15
+00:00:36,120 --> 00:00:38,670
+or by transforming an existing RDD,
+
+16
+00:00:38,670 --> 00:00:43,760
+or from files in HDFS, or any other storage system.
+
+17
+00:00:43,760 --> 00:00:46,290
+A programmer specifies the number of partitions for an RDD
+
+18
+00:00:46,290 --> 00:00:46,790
+.
+
+19
+00:00:46,790 --> 00:00:48,940
+And there's a default value that's
+
+20
+00:00:48,940 --> 00:00:51,420
+used if you don't specify the number that you
+
+21
+00:00:51,420 --> 00:00:53,480
+want to be used.
+
+22
+00:00:53,480 --> 00:00:55,100
+Here we have an example of an RDD
+
+23
+00:00:55,100 --> 00:00:57,270
+that's split into five partitions.
+
+24
+00:00:57,270 --> 00:01:00,020
+The more partitions that you split an RDD into,
+
+25
+00:01:00,020 --> 00:01:03,150
+the more opportunities you have for parallelism.
+
+26
+00:01:03,150 --> 00:01:05,390
+So this RDD is split into five.
+
+27
+00:01:05,390 --> 00:01:08,810
+And those are placed onto three worker machines.
+
+28
+00:01:08,810 --> 00:01:10,740
+Since there's only three worker machines,
+
+29
+00:01:10,740 --> 00:01:13,020
+some of the worker machines have two partitions,
+
+30
+00:01:13,020 --> 00:01:16,430
+and one has one partition.
+
+31
+00:01:16,430 --> 00:01:18,090
+There are two types of operations
+
+32
+00:01:18,090 --> 00:01:22,610
+you can perform on an RDD-- transformations and actions.
+
+33
+00:01:22,610 --> 00:01:25,420
+Transformations are lazily evaluated.
+
+34
+00:01:25,420 --> 00:01:28,620
+They're not computed immediately.
+
+35
+00:01:28,620 --> 00:01:33,020
+A transformed RDD is executed only when an action runs on it.
+
+36
+00:01:33,020 --> 00:01:39,360
+You can also persist, or cache, RDDs in memory or on disk.
+
+37
+00:01:39,360 --> 00:01:42,180
+To work with RDDs, you first create an RDD
+
+38
+00:01:42,180 --> 00:01:45,280
+from a data source, a file, or a list.
+
+39
+00:01:45,280 --> 00:01:48,350
+You then apply transformations to that RDD.
+
+40
+00:01:48,350 --> 00:01:50,940
+So examples are map and filter.
+
+41
+00:01:50,940 --> 00:01:53,380
+You then apply actions to that RDD.
+
+42
+00:01:53,380 --> 00:01:56,470
+Examples are collect and count.
+
+43
+00:01:56,470 --> 00:02:00,400
+So here we have a figure that shows starting with a list,
+
+44
+00:02:00,400 --> 00:02:02,617
+we parallelize that list.
+
+45
+00:02:02,617 --> 00:02:03,450
+That creates an RDD.
+
+46
+00:02:03,450 --> 00:02:08,560
+We then filter that RDD, creating a new filtered RDD.
+
+47
+00:02:08,560 --> 00:02:11,165
+Then we do a map transformation that maps
+
+48
+00:02:11,165 --> 00:02:14,060
+that RDD to a new mapped RDD.
+
+49
+00:02:14,060 --> 00:02:17,080
+And finally, we perform a collect action,
+
+50
+00:02:17,080 --> 00:02:20,180
+which now causes the parallelize, the filter,
+
+51
+00:02:20,180 --> 00:02:22,030
+and the map transformations to actually
+
+52
+00:02:22,030 --> 00:02:26,010
+be executed, and return a result back to the driver machine.
+
+53
+00:02:26,010 --> 00:02:29,140
+
+
+54
+00:02:29,140 --> 00:02:33,000
+Here are two reference URLs for working with Spark.
+
+55
+00:02:33,000 --> 00:02:35,050
+The first is a programming guide.
+
+56
+00:02:35,050 --> 00:02:37,981
+And the second is the PySpark API.
+
+57
+00:02:37,981 --> 00:02:39,730
+These are very good references when you're
+
+58
+00:02:39,730 --> 00:02:42,280
+developing Spark applications.
+
+59
+00:02:42,280 --> 00:02:44,750
+The programming guide gives you some best practices
+
+60
+00:02:44,750 --> 00:02:48,370
+and also cautions you against doing certain things.
+
+61
+00:02:48,370 --> 00:02:50,170
+The Python API is very useful if you're
+
+62
+00:02:50,170 --> 00:02:51,670
+wondering, is there a transformation
+
+63
+00:02:51,670 --> 00:02:54,850
+to do a particular operation, and also what are
+
+64
+00:02:54,850 --> 00:02:56,540
+the different parameters that a given
+
+65
+00:02:56,540 --> 00:02:59,500
+transformation or action takes.
+
+66
+00:02:59,500 --> 00:03:00,000
+
+

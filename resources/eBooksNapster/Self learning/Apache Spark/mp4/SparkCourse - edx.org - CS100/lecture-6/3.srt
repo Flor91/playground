@@ -1,0 +1,108 @@
+0
+00:00:00,000 --> 00:00:01,100
+
+
+1
+00:00:01,100 --> 00:00:03,990
+Here are some examples of large databases.
+
+2
+00:00:03,990 --> 00:00:06,760
+The United States Internal Revenue Service
+
+3
+00:00:06,760 --> 00:00:11,780
+has a database consisting of 150 terabytes worth of taxpayer
+
+4
+00:00:11,780 --> 00:00:13,310
+records.
+
+5
+00:00:13,310 --> 00:00:15,330
+The Australian Bureau of Statistics
+
+6
+00:00:15,330 --> 00:00:19,620
+has over 250 terabytes worth of vital statistics
+
+7
+00:00:19,620 --> 00:00:21,135
+about Australians.
+
+8
+00:00:21,135 --> 00:00:26,580
+And AT&T has over 312 terabytes worth of call records
+
+9
+00:00:26,580 --> 00:00:28,860
+for all of its callers.
+
+10
+00:00:28,860 --> 00:00:31,540
+eBay's database, its largest database,
+
+11
+00:00:31,540 --> 00:00:35,710
+is over 1.4 petabytes in size.
+
+12
+00:00:35,710 --> 00:00:38,630
+And Yahoo has a click database that's
+
+13
+00:00:38,630 --> 00:00:44,480
+used for behavioral tracking that contains over two
+
+14
+00:00:44,480 --> 00:00:46,545
+petabytes worth of data.
+
+15
+00:00:46,545 --> 00:00:48,170
+Now, for each of these large databases,
+
+16
+00:00:48,170 --> 00:00:52,130
+we can ask the question, what matters for these databases?
+
+17
+00:00:52,130 --> 00:00:54,820
+In the case of the IRS, they care
+
+18
+00:00:54,820 --> 00:00:57,850
+about accuracy, consistency, durability, and the ability
+
+19
+00:00:57,850 --> 00:01:00,120
+to make rich queries.
+
+20
+00:01:00,120 --> 00:01:02,070
+The Australian Bureau of Statistics
+
+21
+00:01:02,070 --> 00:01:05,200
+cares about fast, rich queries.
+
+22
+00:01:05,200 --> 00:01:07,420
+AT&T, for their call records database,
+
+23
+00:01:07,420 --> 00:01:11,310
+cares about accuracy, consistency, and durability.
+
+24
+00:01:11,310 --> 00:01:15,570
+eBay and Yahoo care about availability and timeliness
+
+25
+00:01:15,570 --> 00:01:17,200
+for their databases.
+
+26
+00:01:17,200 --> 00:01:17,700
+
+

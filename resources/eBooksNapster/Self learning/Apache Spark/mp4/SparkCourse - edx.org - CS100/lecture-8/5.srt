@@ -1,0 +1,140 @@
+0
+00:00:00,000 --> 00:00:01,340
+
+
+1
+00:00:01,340 --> 00:00:03,670
+Many statistical tools, for example mean,
+
+2
+00:00:03,670 --> 00:00:07,430
+variance, t-test, ANOVA, assume the data is normally
+
+3
+00:00:07,430 --> 00:00:08,350
+distributed.
+
+4
+00:00:08,350 --> 00:00:10,380
+But very often, this is not the case.
+
+5
+00:00:10,380 --> 00:00:13,620
+So it's important to examine the histogram for your data set.
+
+6
+00:00:13,620 --> 00:00:16,120
+On the left, we have a curve that
+
+7
+00:00:16,120 --> 00:00:18,390
+is a normal distribution curve.
+
+8
+00:00:18,390 --> 00:00:20,290
+In the middle, we have a histogram
+
+9
+00:00:20,290 --> 00:00:23,490
+representing a positive skew in the data set.
+
+10
+00:00:23,490 --> 00:00:27,230
+And on the right curve, we have an example of negative skew
+
+11
+00:00:27,230 --> 00:00:30,000
+in a data set.
+
+12
+00:00:30,000 --> 00:00:31,600
+Now, there are other distributions
+
+13
+00:00:31,600 --> 00:00:34,190
+that are important that you will likely encounter in your work
+
+14
+00:00:34,190 --> 00:00:35,630
+with big data.
+
+15
+00:00:35,630 --> 00:00:37,449
+These include Poisson distributions.
+
+16
+00:00:37,449 --> 00:00:39,240
+These are a distribution of the counts that
+
+17
+00:00:39,240 --> 00:00:41,650
+occur at a certain rate, for example,
+
+18
+00:00:41,650 --> 00:00:45,240
+the observed frequency of a given term in a corpus,
+
+19
+00:00:45,240 --> 00:00:48,030
+or the number of visits to a website in a fixed time
+
+20
+00:00:48,030 --> 00:00:52,060
+interval, or the number of website clicks in an hour.
+
+21
+00:00:52,060 --> 00:00:55,070
+Another example of an important distribution is exponential.
+
+22
+00:00:55,070 --> 00:00:57,470
+And this is the interval between two such events
+
+23
+00:00:57,470 --> 00:00:59,495
+that you might see in a Poisson distribution.
+
+24
+00:00:59,495 --> 00:01:02,280
+
+
+25
+00:01:02,280 --> 00:01:05,099
+Zipf, Pareto, and Yule distributions
+
+26
+00:01:05,099 --> 00:01:06,930
+govern the frequencies of different terms
+
+27
+00:01:06,930 --> 00:01:09,970
+in a document or website visits.
+
+28
+00:01:09,970 --> 00:01:12,990
+And binomial or multinomial distributions
+
+29
+00:01:12,990 --> 00:01:15,170
+are a number of counts of events,
+
+30
+00:01:15,170 --> 00:01:18,260
+for example, the number of six dies that show up
+
+31
+00:01:18,260 --> 00:01:20,846
+when you toss them n times.
+
+32
+00:01:20,846 --> 00:01:22,220
+It's very important to understand
+
+33
+00:01:22,220 --> 00:01:23,880
+your data's distribution before you
+
+34
+00:01:23,880 --> 00:01:27,050
+apply any model to that data.
+

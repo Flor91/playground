@@ -1,0 +1,192 @@
+0
+00:00:00,000 --> 00:00:01,120
+
+
+1
+00:00:01,120 --> 00:00:02,840
+In big data there are two different kinds
+
+2
+00:00:02,840 --> 00:00:04,940
+of statistics that are very important,
+
+3
+00:00:04,940 --> 00:00:07,250
+descriptive and inferential.
+
+4
+00:00:07,250 --> 00:00:11,040
+With descriptive statistics, an example is the median.
+
+5
+00:00:11,040 --> 00:00:13,070
+Descriptive statistics describes the data,
+
+6
+00:00:13,070 --> 00:00:15,310
+but we can't generalize beyond that.
+
+7
+00:00:15,310 --> 00:00:18,490
+In this lecture, we'll look at exploratory data analysis,
+
+8
+00:00:18,490 --> 00:00:21,700
+which is a form of descriptive statistics.
+
+9
+00:00:21,700 --> 00:00:25,180
+Inferential statistics, examples are the t-test-- enable
+
+10
+00:00:25,180 --> 00:00:28,112
+inferences about populations beyond our data.
+
+11
+00:00:28,112 --> 00:00:30,570
+These are techniques that we leverage from machine learning
+
+12
+00:00:30,570 --> 00:00:33,170
+and prediction.
+
+13
+00:00:33,170 --> 00:00:35,000
+Examples of the kinds of business questions
+
+14
+00:00:35,000 --> 00:00:38,450
+we might want to ask include things like simple descriptive
+
+15
+00:00:38,450 --> 00:00:39,480
+statistics.
+
+16
+00:00:39,480 --> 00:00:42,510
+For example, who are the most profitable customers?
+
+17
+00:00:42,510 --> 00:00:44,590
+Or hypothesis testing.
+
+18
+00:00:44,590 --> 00:00:46,880
+Is there a difference in value to the company
+
+19
+00:00:46,880 --> 00:00:49,540
+of these different customers?
+
+20
+00:00:49,540 --> 00:00:51,680
+Or segmentation and classification.
+
+21
+00:00:51,680 --> 00:00:53,340
+What are the common characteristics
+
+22
+00:00:53,340 --> 00:00:55,150
+of these customers?
+
+23
+00:00:55,150 --> 00:00:56,320
+And finally prediction.
+
+24
+00:00:56,320 --> 00:00:59,260
+Will this new customer become a profitable customer?
+
+25
+00:00:59,260 --> 00:01:00,480
+And if so, how profitable?
+
+26
+00:01:00,480 --> 00:01:03,670
+
+
+27
+00:01:03,670 --> 00:01:06,460
+We can apply these techniques in different ways.
+
+28
+00:01:06,460 --> 00:01:08,200
+Often, the kinds of questions that we
+
+29
+00:01:08,200 --> 00:01:10,910
+ask when we ask business questions are very casual.
+
+30
+00:01:10,910 --> 00:01:13,200
+What would happen if I show this ad?
+
+31
+00:01:13,200 --> 00:01:15,670
+It's often easier to ask correlational questions
+
+32
+00:01:15,670 --> 00:01:19,456
+such as, what happened in the past when I showed this ad.
+
+33
+00:01:19,456 --> 00:01:20,830
+Now there are two different forms
+
+34
+00:01:20,830 --> 00:01:23,750
+of learning that are interesting for big data.
+
+35
+00:01:23,750 --> 00:01:26,160
+There is supervised learning which is classification
+
+36
+00:01:26,160 --> 00:01:28,340
+and regression, and there's unsupervised
+
+37
+00:01:28,340 --> 00:01:31,180
+learning which is clustering and dimension reduction.
+
+38
+00:01:31,180 --> 00:01:33,730
+Now oftentimes we use unsupervised learning
+
+39
+00:01:33,730 --> 00:01:36,420
+inside a larger supervised learning problem.
+
+40
+00:01:36,420 --> 00:01:39,274
+So for example, auto-encoders are used for image recognition
+
+41
+00:01:39,274 --> 00:01:39,940
+neural networks.
+
+42
+00:01:39,940 --> 00:01:42,459
+
+
+43
+00:01:42,459 --> 00:01:45,000
+Now here's some examples of the different learning techniques
+
+44
+00:01:45,000 --> 00:01:46,760
+that we might try to apply.
+
+45
+00:01:46,760 --> 00:01:48,390
+They fall again into the categories
+
+46
+00:01:48,390 --> 00:01:51,633
+of supervised learning and unsupervised learning.
+
+47
+00:01:51,633 --> 00:01:52,133
+
+

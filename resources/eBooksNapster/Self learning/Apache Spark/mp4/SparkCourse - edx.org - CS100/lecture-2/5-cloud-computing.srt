@@ -1,0 +1,100 @@
+0
+00:00:00,000 --> 00:00:00,680
+
+
+1
+00:00:00,680 --> 00:00:03,489
+Cloud computing is a key enabler of data science.
+
+2
+00:00:03,489 --> 00:00:05,780
+Instead of going out and purchasing your own computers,
+
+3
+00:00:05,780 --> 00:00:08,029
+and then having to pay to operate those computers
+
+4
+00:00:08,029 --> 00:00:10,230
+and maintain them, with Cloud computing,
+
+5
+00:00:10,230 --> 00:00:13,210
+you rent computers from a Cloud computing provider.
+
+6
+00:00:13,210 --> 00:00:15,770
+This allows you to reduce overall computing costs,
+
+7
+00:00:15,770 --> 00:00:19,590
+and in particular, your operating costs for computing.
+
+8
+00:00:19,590 --> 00:00:21,940
+Cloud computing enables you to perform data science
+
+9
+00:00:21,940 --> 00:00:23,680
+on a massive scale, because you can
+
+10
+00:00:23,680 --> 00:00:26,570
+rent huge numbers of inexpensive computers,
+
+11
+00:00:26,570 --> 00:00:29,340
+perform a problem, exploration, and then
+
+12
+00:00:29,340 --> 00:00:32,729
+shut down those computers and stop paying for them.
+
+13
+00:00:32,729 --> 00:00:36,640
+Now to make this possible, Cloud computing providers are
+
+14
+00:00:36,640 --> 00:00:39,520
+building massive data centers, data
+
+15
+00:00:39,520 --> 00:00:41,630
+centers that have hundreds of thousands,
+
+16
+00:00:41,630 --> 00:00:44,255
+or even a million servers in them.
+
+17
+00:00:44,255 --> 00:00:48,300
+Now there are many challenges to building a data center
+
+18
+00:00:48,300 --> 00:00:52,220
+that contains a million servers, including cooling,
+
+19
+00:00:52,220 --> 00:00:56,160
+the building itself, and power, and how you actually organize
+
+20
+00:00:56,160 --> 00:00:59,650
+the computers into modules.
+
+21
+00:00:59,650 --> 00:01:02,540
+But people are performing research exactly in engineering
+
+22
+00:01:02,540 --> 00:01:03,790
+and how to build these things.
+
+23
+00:01:03,790 --> 00:01:06,750
+And they are building these data centers.
+
+24
+00:01:06,750 --> 00:01:11,490
+This is driving down the cost of Cloud computing.
+

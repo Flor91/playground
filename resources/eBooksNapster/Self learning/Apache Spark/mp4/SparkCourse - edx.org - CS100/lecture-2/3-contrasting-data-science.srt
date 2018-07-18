@@ -1,0 +1,896 @@
+0
+00:00:00,000 --> 00:00:02,070
+
+
+1
+00:00:02,070 --> 00:00:04,510
+One way to understand what data science is
+
+2
+00:00:04,510 --> 00:00:07,050
+is to contrast it with other domains.
+
+3
+00:00:07,050 --> 00:00:10,160
+So let's contrast it first with databases.
+
+4
+00:00:10,160 --> 00:00:15,300
+In databases, every data value is precious
+
+5
+00:00:15,300 --> 00:00:18,090
+because our data values are things like bank records
+
+6
+00:00:18,090 --> 00:00:20,660
+or personnel records or census or medical records.
+
+7
+00:00:20,660 --> 00:00:23,600
+We don't want to lose or corrupt any of that.
+
+8
+00:00:23,600 --> 00:00:27,360
+In data science, our data is cheap
+
+9
+00:00:27,360 --> 00:00:29,250
+because it's things like online clicks
+
+10
+00:00:29,250 --> 00:00:33,340
+or GPS logs or tweets or tree sensor readings.
+
+11
+00:00:33,340 --> 00:00:37,650
+We can lose a value, and it won't affect our end results.
+
+12
+00:00:37,650 --> 00:00:40,130
+And this is because in data science, the volume of data
+
+13
+00:00:40,130 --> 00:00:42,550
+that we have is absolutely massive.
+
+14
+00:00:42,550 --> 00:00:45,770
+Whereas in databases, it's fairly modest.
+
+15
+00:00:45,770 --> 00:00:48,950
+Databases have some very important properties;
+
+16
+00:00:48,950 --> 00:00:53,010
+consistency, error recovery, and auditability.
+
+17
+00:00:53,010 --> 00:00:55,710
+Consistency means we always want to make sure
+
+18
+00:00:55,710 --> 00:00:58,290
+that our database has the correct information.
+
+19
+00:00:58,290 --> 00:01:02,330
+Error recovery means that if the database server fails
+
+20
+00:01:02,330 --> 00:01:04,760
+or the disk fails, we want to make sure
+
+21
+00:01:04,760 --> 00:01:09,440
+that we can recover all of the data and not lose any of it.
+
+22
+00:01:09,440 --> 00:01:11,080
+Auditability means that we want to make
+
+23
+00:01:11,080 --> 00:01:14,520
+sure we can know who made a change
+
+24
+00:01:14,520 --> 00:01:16,660
+and when they made that change.
+
+25
+00:01:16,660 --> 00:01:20,270
+In contrast, the primary properties and priorities
+
+26
+00:01:20,270 --> 00:01:23,210
+for data science are speed, availability,
+
+27
+00:01:23,210 --> 00:01:24,860
+and query richness.
+
+28
+00:01:24,860 --> 00:01:27,750
+We want to get answers as quickly as possible.
+
+29
+00:01:27,750 --> 00:01:30,280
+We always want our system to be available to give us
+
+30
+00:01:30,280 --> 00:01:31,880
+those quick answers, and we want to be
+
+31
+00:01:31,880 --> 00:01:35,440
+able to ask very complex questions.
+
+32
+00:01:35,440 --> 00:01:38,850
+Now, databases are very strongly structured.
+
+33
+00:01:38,850 --> 00:01:42,050
+They have a schema that very clearly defines
+
+34
+00:01:42,050 --> 00:01:44,900
+all of the fields that we store in that database
+
+35
+00:01:44,900 --> 00:01:46,900
+and the types of those fields.
+
+36
+00:01:46,900 --> 00:01:49,840
+In data science, we may have no structure,
+
+37
+00:01:49,840 --> 00:01:51,870
+or it may be very weak structure.
+
+38
+00:01:51,870 --> 00:01:53,470
+We may simply just have a text file
+
+39
+00:01:53,470 --> 00:01:56,150
+that contains our information.
+
+40
+00:01:56,150 --> 00:01:58,840
+Now, databases have very important properties
+
+41
+00:01:58,840 --> 00:02:02,450
+of transactions and ACID semantics.
+
+42
+00:02:02,450 --> 00:02:05,600
+Transactions mean that we're able to control how
+
+43
+00:02:05,600 --> 00:02:08,860
+the database changes its state.
+
+44
+00:02:08,860 --> 00:02:11,540
+And we do that using the ACID properties.
+
+45
+00:02:11,540 --> 00:02:14,610
+ACID stands for atomicity, consistency, isolation,
+
+46
+00:02:14,610 --> 00:02:15,910
+and durability.
+
+47
+00:02:15,910 --> 00:02:19,480
+Atomicity means that when we make a change in the database,
+
+48
+00:02:19,480 --> 00:02:22,760
+it happens completely or not at all.
+
+49
+00:02:22,760 --> 00:02:25,780
+Consistency means our database is always
+
+50
+00:02:25,780 --> 00:02:28,360
+in a consistent or correct state.
+
+51
+00:02:28,360 --> 00:02:31,080
+And isolation means that if we have multiple things occurring
+
+52
+00:02:31,080 --> 00:02:33,530
+within that database at the same time,
+
+53
+00:02:33,530 --> 00:02:36,040
+they're isolated from one another.
+
+54
+00:02:36,040 --> 00:02:40,250
+Durability means that once we've made a change to the database,
+
+55
+00:02:40,250 --> 00:02:42,430
+we guarantee that that change will
+
+56
+00:02:42,430 --> 00:02:46,945
+survive even if the system should crash or should fail.
+
+57
+00:02:46,945 --> 00:02:51,320
+In data science, instead we have the properties
+
+58
+00:02:51,320 --> 00:02:53,210
+like the CAP theorem.
+
+59
+00:02:53,210 --> 00:02:56,360
+CAP theorem stands for consistency, availability,
+
+60
+00:02:56,360 --> 00:02:58,120
+and partition tolerance.
+
+61
+00:02:58,120 --> 00:03:00,960
+The CAP theorem says that we can have any two of those
+
+62
+00:03:00,960 --> 00:03:04,560
+properties, but we cannot have all three of those properties.
+
+63
+00:03:04,560 --> 00:03:06,430
+So for example, imagine that we have
+
+64
+00:03:06,430 --> 00:03:10,030
+two systems that are interconnected and sharing
+
+65
+00:03:10,030 --> 00:03:11,040
+data.
+
+66
+00:03:11,040 --> 00:03:14,119
+And we want to make sure that those systems are
+
+67
+00:03:14,119 --> 00:03:15,785
+consistent with one another because they
+
+68
+00:03:15,785 --> 00:03:18,250
+have the same data in them.
+
+69
+00:03:18,250 --> 00:03:19,990
+So they're connected.
+
+70
+00:03:19,990 --> 00:03:22,790
+Well, if that connection is broken,
+
+71
+00:03:22,790 --> 00:03:25,190
+then changes made to one of the systems
+
+72
+00:03:25,190 --> 00:03:29,030
+will not be apparent in the other system.
+
+73
+00:03:29,030 --> 00:03:32,600
+So if we want to have a system that's consistent overall,
+
+74
+00:03:32,600 --> 00:03:35,380
+we can't make that system be available and tolerate
+
+75
+00:03:35,380 --> 00:03:36,390
+partitions.
+
+76
+00:03:36,390 --> 00:03:39,620
+So you can apply each of these consistency, availability,
+
+77
+00:03:39,620 --> 00:03:43,030
+and partition tolerance properties and look at them,
+
+78
+00:03:43,030 --> 00:03:45,240
+and you can only have two of them at the same time.
+
+79
+00:03:45,240 --> 00:03:46,960
+Can't have all three.
+
+80
+00:03:46,960 --> 00:03:48,490
+The second aspect of data science
+
+81
+00:03:48,490 --> 00:03:51,720
+is that we're interested in eventual consistency.
+
+82
+00:03:51,720 --> 00:03:54,360
+So in these two systems that are the same system
+
+83
+00:03:54,360 --> 00:03:57,410
+but are distributed, we don't require
+
+84
+00:03:57,410 --> 00:04:00,780
+that they be perfectly consistent all of the time.
+
+85
+00:04:00,780 --> 00:04:03,090
+They could be slightly out of sync with one another.
+
+86
+00:04:03,090 --> 00:04:06,060
+But eventually, they will be consistent.
+
+87
+00:04:06,060 --> 00:04:10,137
+So as an example, imagine that you have a friend in England,
+
+88
+00:04:10,137 --> 00:04:11,470
+and you're in the United States.
+
+89
+00:04:11,470 --> 00:04:14,150
+And you add that person as a friend on Facebook.
+
+90
+00:04:14,150 --> 00:04:15,780
+Well, Facebook's distributed.
+
+91
+00:04:15,780 --> 00:04:17,420
+So it means it might take a few seconds
+
+92
+00:04:17,420 --> 00:04:20,175
+before they notice that they've been added as a friend.
+
+93
+00:04:20,175 --> 00:04:22,710
+
+
+94
+00:04:22,710 --> 00:04:24,590
+The final property that we want to look
+
+95
+00:04:24,590 --> 00:04:28,410
+at in contrasting databases is the realizations,
+
+96
+00:04:28,410 --> 00:04:31,530
+the query languages that we can use.
+
+97
+00:04:31,530 --> 00:04:34,870
+Databases store their data using the structured query language,
+
+98
+00:04:34,870 --> 00:04:36,580
+or SQL.
+
+99
+00:04:36,580 --> 00:04:41,450
+In data science, we store it using NoSQL data stores.
+
+100
+00:04:41,450 --> 00:04:44,350
+And there are many different open source data stores that
+
+101
+00:04:44,350 --> 00:04:47,324
+provide the NoSQL environment.
+
+102
+00:04:47,324 --> 00:04:49,115
+The key properties of the NoSQL environment
+
+103
+00:04:49,115 --> 00:04:52,250
+is they allow for much more rich queries
+
+104
+00:04:52,250 --> 00:04:54,390
+than we have in the SQL environment.
+
+105
+00:04:54,390 --> 00:04:59,250
+
+
+106
+00:04:59,250 --> 00:05:02,684
+Another contrast that we have with databases
+
+107
+00:05:02,684 --> 00:05:04,350
+is that if you think about it, databases
+
+108
+00:05:04,350 --> 00:05:08,730
+are all about collecting data and then querying that data.
+
+109
+00:05:08,730 --> 00:05:10,460
+But that data represents the past.
+
+110
+00:05:10,460 --> 00:05:12,460
+So we're really querying the past.
+
+111
+00:05:12,460 --> 00:05:14,950
+Whereas with data science, we collect data,
+
+112
+00:05:14,950 --> 00:05:18,610
+and then we want to use that to query the future.
+
+113
+00:05:18,610 --> 00:05:21,465
+So this is very related to business analytics.
+
+114
+00:05:21,465 --> 00:05:23,090
+Because in business analytics, the goal
+
+115
+00:05:23,090 --> 00:05:26,910
+is to obtain actionable insight in complex environments.
+
+116
+00:05:26,910 --> 00:05:29,010
+The challenge that we have, both in data science
+
+117
+00:05:29,010 --> 00:05:31,150
+and in business analytics, is that we
+
+118
+00:05:31,150 --> 00:05:33,880
+have vast amounts of disparate, unstructured data,
+
+119
+00:05:33,880 --> 00:05:35,990
+and we have to provide a result in a very
+
+120
+00:05:35,990 --> 00:05:37,620
+limited amount of time.
+
+121
+00:05:37,620 --> 00:05:39,810
+So for example, trying to decide,
+
+122
+00:05:39,810 --> 00:05:42,980
+do I show someone a particular ad or not.
+
+123
+00:05:42,980 --> 00:05:45,540
+So I want to know, are they likely to click on that ad?
+
+124
+00:05:45,540 --> 00:05:49,200
+Are they likely to click on that ad and purchase that product?
+
+125
+00:05:49,200 --> 00:05:54,180
+Or what related products do I show someone?
+
+126
+00:05:54,180 --> 00:05:57,907
+Or at a supermarket, what coupon do I print out
+
+127
+00:05:57,907 --> 00:05:58,990
+when they're checking out?
+
+128
+00:05:58,990 --> 00:06:03,180
+
+
+129
+00:06:03,180 --> 00:06:08,930
+We can contrast data science with scientific computing.
+
+130
+00:06:08,930 --> 00:06:13,230
+So here on the left, we have a climate model example
+
+131
+00:06:13,230 --> 00:06:15,600
+as a case of scientific modeling.
+
+132
+00:06:15,600 --> 00:06:18,110
+And on the right, we have a system
+
+133
+00:06:18,110 --> 00:06:21,380
+being developed at Lawrence Berkeley National Labs that's
+
+134
+00:06:21,380 --> 00:06:24,060
+designed to determine whether a particular image
+
+135
+00:06:24,060 --> 00:06:28,730
+from a telescope contains a supernova or not.
+
+136
+00:06:28,730 --> 00:06:33,370
+In scientific modeling, we build physics-based models,
+
+137
+00:06:33,370 --> 00:06:39,752
+and we use those to derive properties of our data.
+
+138
+00:06:39,752 --> 00:06:44,340
+In the data driven approach, we build general inference engines
+
+139
+00:06:44,340 --> 00:06:47,490
+instead of these physics based models.
+
+140
+00:06:47,490 --> 00:06:50,460
+So here on the right, we have a general purpose machine
+
+141
+00:06:50,460 --> 00:06:53,490
+learning classifier that's being trained to recognize
+
+142
+00:06:53,490 --> 00:06:56,570
+images that contain supernovas.
+
+143
+00:06:56,570 --> 00:06:58,750
+In scientific modeling, everything
+
+144
+00:06:58,750 --> 00:07:02,290
+is structured around the problem that we're trying to solve,
+
+145
+00:07:02,290 --> 00:07:04,550
+whereas in a data driven approach,
+
+146
+00:07:04,550 --> 00:07:06,840
+we're using general purpose or things that
+
+147
+00:07:06,840 --> 00:07:11,140
+are not related to the structure of the problem.
+
+148
+00:07:11,140 --> 00:07:14,220
+Scientific modeling is mostly deterministic
+
+149
+00:07:14,220 --> 00:07:17,820
+and quite precise, whereas in a data driven approach,
+
+150
+00:07:17,820 --> 00:07:22,120
+we build statistical models that handle this true randomness
+
+151
+00:07:22,120 --> 00:07:25,750
+and that can deal with unmodeled complexity.
+
+152
+00:07:25,750 --> 00:07:27,310
+So in the case of the climate model,
+
+153
+00:07:27,310 --> 00:07:30,910
+we have to understand exactly how particles in the atmosphere
+
+154
+00:07:30,910 --> 00:07:33,070
+are going to interact.
+
+155
+00:07:33,070 --> 00:07:35,400
+But in the case of detecting supernovas,
+
+156
+00:07:35,400 --> 00:07:37,200
+we're simply taking a picture that
+
+157
+00:07:37,200 --> 00:07:41,350
+contains pixels representing photons
+
+158
+00:07:41,350 --> 00:07:45,600
+received from a telescope, by a telescope.
+
+159
+00:07:45,600 --> 00:07:48,120
+So here there's tremendous complexity
+
+160
+00:07:48,120 --> 00:07:50,260
+in trying to determine whether this image is
+
+161
+00:07:50,260 --> 00:07:52,750
+an image of a supernovae or not.
+
+162
+00:07:52,750 --> 00:07:56,500
+Trying to come up with a physics based model to determine that
+
+163
+00:07:56,500 --> 00:08:00,620
+would be truly a massive undertaking.
+
+164
+00:08:00,620 --> 00:08:02,900
+Instead, we use a much simpler approach
+
+165
+00:08:02,900 --> 00:08:04,900
+using these statistical models that
+
+166
+00:08:04,900 --> 00:08:08,170
+tries to detect whether the supernova is present or not.
+
+167
+00:08:08,170 --> 00:08:11,570
+And there's going to be a degree of accuracy, or alternatively
+
+168
+00:08:11,570 --> 00:08:15,100
+inaccuracy, in those results.
+
+169
+00:08:15,100 --> 00:08:18,970
+Scientific modeling runs on supercomputers or on high end
+
+170
+00:08:18,970 --> 00:08:20,270
+cluster computers.
+
+171
+00:08:20,270 --> 00:08:22,360
+These clusters can cost over $1 billion.
+
+172
+00:08:22,360 --> 00:08:28,080
+In contrast, data science runs on cheaper computer clusters
+
+173
+00:08:28,080 --> 00:08:29,255
+like Amazon EC2.
+
+174
+00:08:29,255 --> 00:08:33,240
+
+
+175
+00:08:33,240 --> 00:08:35,850
+We can contrast data science with traditional machine
+
+176
+00:08:35,850 --> 00:08:36,849
+learning.
+
+177
+00:08:36,849 --> 00:08:38,390
+In traditional machine learning, it's
+
+178
+00:08:38,390 --> 00:08:41,960
+all about developing novel individual models,
+
+179
+00:08:41,960 --> 00:08:44,642
+whereas in data science, we'll explore many models.
+
+180
+00:08:44,642 --> 00:08:45,350
+We'll build them.
+
+181
+00:08:45,350 --> 00:08:46,055
+We'll tune them.
+
+182
+00:08:46,055 --> 00:08:47,675
+We'll build hybrids of models.
+
+183
+00:08:47,675 --> 00:08:51,279
+They're also considered very inexpensive.
+
+184
+00:08:51,279 --> 00:08:52,820
+In traditional machine learning, it's
+
+185
+00:08:52,820 --> 00:08:55,860
+all about proving mathematical properties of the models.
+
+186
+00:08:55,860 --> 00:08:57,930
+Whereas in data science, we want to understand
+
+187
+00:08:57,930 --> 00:08:59,970
+the empirical properties of the models.
+
+188
+00:08:59,970 --> 00:09:02,140
+That is, how do they perform in practice,
+
+189
+00:09:02,140 --> 00:09:06,370
+both in terms of accuracy and in terms of actual wall clock
+
+190
+00:09:06,370 --> 00:09:06,870
+time?
+
+191
+00:09:06,870 --> 00:09:09,410
+How quickly do they run?
+
+192
+00:09:09,410 --> 00:09:14,170
+In traditional machine learning, we take a small, clean data
+
+193
+00:09:14,170 --> 00:09:17,610
+set, and that's what we use to validate our results
+
+194
+00:09:17,610 --> 00:09:19,135
+and build our models.
+
+195
+00:09:19,135 --> 00:09:22,100
+In data science, we're dealing with massive amounts
+
+196
+00:09:22,100 --> 00:09:23,400
+of dirty data.
+
+197
+00:09:23,400 --> 00:09:26,290
+We have no control over what's in the data set
+
+198
+00:09:26,290 --> 00:09:29,170
+and what's not in the data set in terms of cleanliness.
+
+199
+00:09:29,170 --> 00:09:33,980
+And so we need tools that can handle this dirty data.
+
+200
+00:09:33,980 --> 00:09:36,550
+In traditional machine learning, the end result
+
+201
+00:09:36,550 --> 00:09:38,030
+is publishing a paper.
+
+202
+00:09:38,030 --> 00:09:43,086
+Whereas in data science, we want to use this to build
+
+203
+00:09:43,086 --> 00:09:44,335
+systems that can take actions.
+
+204
+00:09:44,335 --> 00:09:49,270
+
+
+205
+00:09:49,270 --> 00:09:52,010
+So one way to look at data science
+
+206
+00:09:52,010 --> 00:09:56,390
+is how we can use data science to find data scientists.
+
+207
+00:09:56,390 --> 00:09:59,790
+So kaggle is a website where people
+
+208
+00:09:59,790 --> 00:10:03,450
+can upload various types of problems
+
+209
+00:10:03,450 --> 00:10:05,840
+that they want data scientists to solve.
+
+210
+00:10:05,840 --> 00:10:07,330
+So here's some examples.
+
+211
+00:10:07,330 --> 00:10:10,210
+And we can see there's one predicting
+
+212
+00:10:10,210 --> 00:10:12,930
+West Nile virus in Chicago.
+
+213
+00:10:12,930 --> 00:10:16,300
+There's another one to predict restaurant revenue.
+
+214
+00:10:16,300 --> 00:10:20,090
+And data scientists can form teams and then
+
+215
+00:10:20,090 --> 00:10:24,119
+compete to come up with the best solutions to these problems.
+
+216
+00:10:24,119 --> 00:10:25,910
+And if they come up with the best solution,
+
+217
+00:10:25,910 --> 00:10:29,650
+they win a prize, a prize being cash.
+
+218
+00:10:29,650 --> 00:10:32,880
+Now, most data scientists don't participate in kaggle
+
+219
+00:10:32,880 --> 00:10:34,650
+because they're trying to win money.
+
+220
+00:10:34,650 --> 00:10:36,880
+Rather, they participate for the bragging rights
+
+221
+00:10:36,880 --> 00:10:39,420
+of being able to say they came up with the best
+
+222
+00:10:39,420 --> 00:10:41,168
+possible algorithm.
+
+223
+00:10:41,168 --> 00:10:41,667
+
+

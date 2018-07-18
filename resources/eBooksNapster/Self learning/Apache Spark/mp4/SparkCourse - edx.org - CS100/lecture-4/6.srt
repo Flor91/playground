@@ -1,0 +1,36 @@
+0
+00:00:00,000 --> 00:00:01,050
+
+
+1
+00:00:01,050 --> 00:00:03,140
+Let's review Python's lambda functions.
+
+2
+00:00:03,140 --> 00:00:04,690
+These are small, anonymous functions
+
+3
+00:00:04,690 --> 00:00:06,220
+that are not bound to a name.
+
+4
+00:00:06,220 --> 00:00:10,320
+So here, we have lambda a comma b colon a plus b.
+
+5
+00:00:10,320 --> 00:00:13,840
+This returns the sum of its two arguments, a and b.
+
+6
+00:00:13,840 --> 00:00:17,000
+You can use lambda functions wherever function objects are
+
+7
+00:00:17,000 --> 00:00:20,267
+required, but they're restricted to a single expression.
+
+8
+00:00:20,267 --> 00:00:20,767
+
+

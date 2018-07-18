@@ -1,0 +1,28 @@
+0
+00:00:00,000 --> 00:00:04,550
+
+
+1
+00:00:04,550 --> 00:00:08,039
+In this lecture, I'll talk about the structure spectrum.
+
+2
+00:00:08,039 --> 00:00:10,610
+I'll talk about the formats and performance for files.
+
+3
+00:00:10,610 --> 00:00:14,850
+We'll look at tabular data, some examples, the challenges
+
+4
+00:00:14,850 --> 00:00:17,830
+of working with tabular data, and pySpark's support
+
+5
+00:00:17,830 --> 00:00:20,610
+for tabular data in the form of dataframes.
+
+6
+00:00:20,610 --> 00:00:23,330
+And then we'll look at log files.
+

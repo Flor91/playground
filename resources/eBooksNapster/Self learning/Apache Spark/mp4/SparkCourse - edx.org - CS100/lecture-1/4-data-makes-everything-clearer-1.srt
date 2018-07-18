@@ -1,0 +1,128 @@
+0
+00:00:00,000 --> 00:00:02,280
+
+
+1
+00:00:02,280 --> 00:00:06,370
+This is a cautionary tale about performing data science.
+
+2
+00:00:06,370 --> 00:00:10,540
+In 1958 Ancel Keys started the Seven Countries Study
+
+3
+00:00:10,540 --> 00:00:13,990
+where he followed 13,000 subjects for anywhere
+
+4
+00:00:13,990 --> 00:00:17,010
+from five to 40 years.
+
+5
+00:00:17,010 --> 00:00:21,940
+Now as a part of this study, he produced the following graph.
+
+6
+00:00:21,940 --> 00:00:25,090
+This graph shows on the x-axis the fat calories
+
+7
+00:00:25,090 --> 00:00:29,940
+consumed as a percentage of total daily calories consumed.
+
+8
+00:00:29,940 --> 00:00:33,633
+On the y-axis it shows deaths per 1,000
+
+9
+00:00:33,633 --> 00:00:36,500
+for degenerative heart disease.
+
+10
+00:00:36,500 --> 00:00:41,940
+And this is for the time period 1948 to 1949 for men.
+
+11
+00:00:41,940 --> 00:00:45,509
+What you can see here is that it appears
+
+12
+00:00:45,509 --> 00:00:47,050
+to be that it's the case that there's
+
+13
+00:00:47,050 --> 00:00:51,290
+a correlation between the fat calories consumed
+
+14
+00:00:51,290 --> 00:00:55,660
+and deaths per 1,000 from degenerative heart disease.
+
+15
+00:00:55,660 --> 00:01:00,380
+However, this study has caused a lot of controversy.
+
+16
+00:01:00,380 --> 00:01:05,170
+In particular, he only studied a subset of the 21 countries
+
+17
+00:01:05,170 --> 00:01:06,870
+that had data.
+
+18
+00:01:06,870 --> 00:01:10,140
+He also failed to consider other factors that
+
+19
+00:01:10,140 --> 00:01:12,930
+might cause deaths from degenerative heart disease.
+
+20
+00:01:12,930 --> 00:01:16,560
+For example, if we look at the per capita annual sugar
+
+21
+00:01:16,560 --> 00:01:20,820
+consumption in pounds, we find that for Japan it was
+
+22
+00:01:20,820 --> 00:01:23,500
+15 pounds per person per year.
+
+23
+00:01:23,500 --> 00:01:26,290
+In Italy it was 40 pounds per person per year.
+
+24
+00:01:26,290 --> 00:01:30,920
+And in England and Wales it was 60 pounds per person per year.
+
+25
+00:01:30,920 --> 00:01:35,150
+So appears here that there's a correlation between per capita
+
+26
+00:01:35,150 --> 00:01:37,890
+annual sugar consumption in pounds,
+
+27
+00:01:37,890 --> 00:01:42,280
+and deaths per 1,000 of degenerative heart disease.
+
+28
+00:01:42,280 --> 00:01:44,450
+So this really emphasizes the point
+
+29
+00:01:44,450 --> 00:01:47,220
+that Fisher made that correlation does not
+
+30
+00:01:47,220 --> 00:01:49,520
+imply causation.
+
+31
+00:01:49,520 --> 00:01:50,100
+
+

@@ -1,0 +1,108 @@
+0
+00:00:00,000 --> 00:00:01,080
+
+
+1
+00:00:01,080 --> 00:00:05,020
+Let's look at the example that we created before.
+
+2
+00:00:05,020 --> 00:00:09,460
+So here, we have the creation of an RDD lines
+
+3
+00:00:09,460 --> 00:00:12,290
+from a text file with four partitions.
+
+4
+00:00:12,290 --> 00:00:16,500
+Nothing happens when we actually do that until we
+
+5
+00:00:16,500 --> 00:00:18,144
+execute an action.
+
+6
+00:00:18,144 --> 00:00:20,060
+The action we're going to execute in this case
+
+7
+00:00:20,060 --> 00:00:21,930
+is the count function, which returns
+
+8
+00:00:21,930 --> 00:00:25,180
+a count of the number of elements in an RDD.
+
+9
+00:00:25,180 --> 00:00:27,620
+So when we run the command, print
+
+10
+00:00:27,620 --> 00:00:30,350
+lines.count, that will cause Spark
+
+11
+00:00:30,350 --> 00:00:33,120
+to read the data from the text file,
+
+12
+00:00:33,120 --> 00:00:38,650
+to sum the number of lines per partition,
+
+13
+00:00:38,650 --> 00:00:41,790
+and then to combine those sums in the driver.
+
+14
+00:00:41,790 --> 00:00:46,390
+And we'll find out how many lines are in our program.
+
+15
+00:00:46,390 --> 00:00:49,060
+Now if we add another transformation,
+
+16
+00:00:49,060 --> 00:00:50,830
+in this case, a filter transformation,
+
+17
+00:00:50,830 --> 00:00:55,500
+that's going to create an RDD that contains
+
+18
+00:00:55,500 --> 00:00:58,300
+the lines that are comments.
+
+19
+00:00:58,300 --> 00:01:01,120
+And then we want to see how many comments lines there are.
+
+20
+00:01:01,120 --> 00:01:03,340
+We can do comments.count.
+
+21
+00:01:03,340 --> 00:01:06,120
+This is going to cause Spark to re-compute lines.
+
+22
+00:01:06,120 --> 00:01:08,930
+It will re-read all of the data from that text file
+
+23
+00:01:08,930 --> 00:01:12,010
+again, sum within the partition the number
+
+24
+00:01:12,010 --> 00:01:14,860
+of lines, so the number of elements,
+
+25
+00:01:14,860 --> 00:01:18,330
+and then combine those sums in the driver.
+
+26
+00:01:18,330 --> 00:01:19,767
+
+

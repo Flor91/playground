@@ -1,0 +1,148 @@
+0
+00:00:00,000 --> 00:00:01,320
+
+
+1
+00:00:01,320 --> 00:00:05,860
+Here's an example of an instance of a student's relation.
+
+2
+00:00:05,860 --> 00:00:08,810
+The schema is the one that we saw earlier,
+
+3
+00:00:08,810 --> 00:00:12,060
+which is we have a student ID, we have a name,
+
+4
+00:00:12,060 --> 00:00:14,540
+we have a login, an age, and a GPA.
+
+5
+00:00:14,540 --> 00:00:19,750
+And associated with each one of those columns is a type.
+
+6
+00:00:19,750 --> 00:00:22,570
+in the instance we see here, we have three rows.
+
+7
+00:00:22,570 --> 00:00:25,560
+So the cardinality of this instance is three.
+
+8
+00:00:25,560 --> 00:00:28,970
+We have five columns, so the degree is five.
+
+9
+00:00:28,970 --> 00:00:31,969
+And you'll notice that all of the rows, the tuples,
+
+10
+00:00:31,969 --> 00:00:32,510
+are distinct.
+
+11
+00:00:32,510 --> 00:00:35,080
+
+
+12
+00:00:35,080 --> 00:00:37,640
+Now, relational databases have several advantages.
+
+13
+00:00:37,640 --> 00:00:40,280
+They provide a well defined structure,
+
+14
+00:00:40,280 --> 00:00:42,320
+they maintain indices, which allow
+
+15
+00:00:42,320 --> 00:00:44,810
+them to have very high performance,
+
+16
+00:00:44,810 --> 00:00:47,300
+and the guarantee the consistency of the data
+
+17
+00:00:47,300 --> 00:00:50,580
+is maintained by using transactions.
+
+18
+00:00:50,580 --> 00:00:52,630
+The disadvantages of databases are
+
+19
+00:00:52,630 --> 00:00:55,910
+that they have a limited rigid structure,
+
+20
+00:00:55,910 --> 00:00:58,240
+and that most of the disk space ends up being taken up
+
+21
+00:00:58,240 --> 00:01:00,000
+by large indices.
+
+22
+00:01:00,000 --> 00:01:02,000
+Transactions can also be very slow,
+
+23
+00:01:02,000 --> 00:01:05,409
+and they have very poor support for sparse data.
+
+24
+00:01:05,409 --> 00:01:07,200
+So you can see that many of the things that
+
+25
+00:01:07,200 --> 00:01:10,970
+are advantages in one respect, are also disadvantages
+
+26
+00:01:10,970 --> 00:01:12,510
+in another respect.
+
+27
+00:01:12,510 --> 00:01:16,460
+Now looking at this last item, poor support for sparse data,
+
+28
+00:01:16,460 --> 00:01:20,490
+in more detail, we find that sparse data
+
+29
+00:01:20,490 --> 00:01:22,930
+is very common today.
+
+30
+00:01:22,930 --> 00:01:26,240
+Oftentimes, we want to store data with thousands of columns,
+
+31
+00:01:26,240 --> 00:01:30,000
+but not all the rows will have values for all of the columns.
+
+32
+00:01:30,000 --> 00:01:31,480
+In a typical database, the tables
+
+33
+00:01:31,480 --> 00:01:33,850
+might have dozens of columns.
+
+34
+00:01:33,850 --> 00:01:36,260
+But tables are going to be very wasteful for sparse data,
+
+35
+00:01:36,260 --> 00:01:40,033
+because most of the entries are going to be empty.
+
+36
+00:01:40,033 --> 00:01:40,533
+
+

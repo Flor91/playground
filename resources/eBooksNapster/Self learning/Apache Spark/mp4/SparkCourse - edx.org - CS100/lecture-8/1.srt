@@ -1,0 +1,20 @@
+0
+00:00:00,000 --> 00:00:03,100
+
+
+1
+00:00:03,100 --> 00:00:06,890
+In this lecture, we'll look at exploratory data analysis
+
+2
+00:00:06,890 --> 00:00:09,560
+along with some important distributions.
+
+3
+00:00:09,560 --> 00:00:14,068
+And then we'll look at Spark's mllib Machine Learning Library.
+
+4
+00:00:14,068 --> 00:00:14,567
+
+

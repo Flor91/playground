@@ -1,0 +1,232 @@
+0
+00:00:00,000 --> 00:00:01,110
+
+
+1
+00:00:01,110 --> 00:00:04,059
+Broadcast variables allow us to keep a read-only variable
+
+2
+00:00:04,059 --> 00:00:05,610
+cached at a worker.
+
+3
+00:00:05,610 --> 00:00:07,540
+We can send it to the worker only once instead
+
+4
+00:00:07,540 --> 00:00:09,280
+of having to send it with each task
+
+5
+00:00:09,280 --> 00:00:11,200
+that we perform at that worker.
+
+6
+00:00:11,200 --> 00:00:13,970
+As an example, we could efficiently give every worker
+
+7
+00:00:13,970 --> 00:00:16,600
+a large data set or table.
+
+8
+00:00:16,600 --> 00:00:18,100
+Now usually, broadcast variables are
+
+9
+00:00:18,100 --> 00:00:22,010
+distributed using very efficient broadcast algorithms.
+
+10
+00:00:22,010 --> 00:00:24,480
+Using broadcast variables is very straightforward.
+
+11
+00:00:24,480 --> 00:00:28,860
+At the driver you simply use Spark Context dot broadcast
+
+12
+00:00:28,860 --> 00:00:32,290
+to specify the broadcast variable.
+
+13
+00:00:32,290 --> 00:00:34,340
+And at a worker, in the code that's automatically
+
+14
+00:00:34,340 --> 00:00:37,510
+passed via a closure, you simply refer to that broadcast
+
+15
+00:00:37,510 --> 00:00:40,890
+variable with dot value.
+
+16
+00:00:40,890 --> 00:00:43,940
+Here's an example of using a broadcast variable
+
+17
+00:00:43,940 --> 00:00:47,300
+for country code lookup for HAM radio call signs.
+
+18
+00:00:47,300 --> 00:00:50,000
+So we have an RDD, contactCounts,
+
+19
+00:00:50,000 --> 00:00:53,780
+that contains a list of call signs and the number of times
+
+20
+00:00:53,780 --> 00:00:55,090
+that we've seen each call sign.
+
+21
+00:00:55,090 --> 00:00:58,700
+So it's a pair of call sign and account.
+
+22
+00:00:58,700 --> 00:01:02,160
+And we want to look up the country code associated
+
+23
+00:01:02,160 --> 00:01:03,880
+with that call sign.
+
+24
+00:01:03,880 --> 00:01:06,630
+So we create a table, called signPrefixes,
+
+25
+00:01:06,630 --> 00:01:09,200
+that contains this information.
+
+26
+00:01:09,200 --> 00:01:12,570
+We then create a function, processSignCounts,
+
+27
+00:01:12,570 --> 00:01:17,020
+which will take in one of these pairs of a call sign
+
+28
+00:01:17,020 --> 00:01:19,200
+and a number of times that it's been seen along
+
+29
+00:01:19,200 --> 00:01:22,130
+with that table, signPrefixes, and we'll
+
+30
+00:01:22,130 --> 00:01:26,480
+look up the country code from the first element
+
+31
+00:01:26,480 --> 00:01:28,630
+of the pair, the call sign.
+
+32
+00:01:28,630 --> 00:01:31,567
+And then return a pair consisting
+
+33
+00:01:31,567 --> 00:01:33,150
+of the country and the number of times
+
+34
+00:01:33,150 --> 00:01:35,880
+that we've seen that call sign.
+
+35
+00:01:35,880 --> 00:01:40,270
+Now, we can apply this to our contactCounts RDD using a map
+
+36
+00:01:40,270 --> 00:01:43,500
+function where we pass in this function that we just defined,
+
+37
+00:01:43,500 --> 00:01:45,090
+processSignCounts.
+
+38
+00:01:45,090 --> 00:01:46,770
+What that'll do is when that runs,
+
+39
+00:01:46,770 --> 00:01:50,800
+Spark will automatically create a closure containing
+
+40
+00:01:50,800 --> 00:01:54,240
+processSignCount along with signPrefixes--
+
+41
+00:01:54,240 --> 00:01:56,240
+that large table that we just created--
+
+42
+00:01:56,240 --> 00:01:57,740
+and send that to the worker.
+
+43
+00:01:57,740 --> 00:02:02,150
+If we now want to process a second contactCounts RDD,
+
+44
+00:02:02,150 --> 00:02:04,680
+it'll repeat that process all over again of constructing
+
+45
+00:02:04,680 --> 00:02:08,400
+the closure of the function along with this large call sign
+
+46
+00:02:08,400 --> 00:02:08,956
+table.
+
+47
+00:02:08,956 --> 00:02:11,330
+So that can be very expensive if this table is very, very
+
+48
+00:02:11,330 --> 00:02:16,130
+large because it's being sent every time we process the file.
+
+49
+00:02:16,130 --> 00:02:18,330
+As an alternative, all we have to do
+
+50
+00:02:18,330 --> 00:02:24,290
+is add the Spark Context dot broadcast to our load call sign
+
+51
+00:02:24,290 --> 00:02:26,622
+table to create a broadcast variable.
+
+52
+00:02:26,622 --> 00:02:28,080
+And then when we want to invoke it,
+
+53
+00:02:28,080 --> 00:02:31,660
+we just simply use signPrefixes.value.
+
+54
+00:02:31,660 --> 00:02:35,300
+Now, our table is only sent once to the workers
+
+55
+00:02:35,300 --> 00:02:38,400
+and will be reused every time we want to look up
+
+56
+00:02:38,400 --> 00:02:40,966
+a different contactCounts RDD.
+
+57
+00:02:40,966 --> 00:02:41,466
+
+

@@ -1,0 +1,260 @@
+0
+00:00:00,000 --> 00:00:00,860
+
+
+1
+00:00:00,860 --> 00:00:04,550
+Let's talk about the differences between Spark and Map Reduce.
+
+2
+00:00:04,550 --> 00:00:07,680
+In Map Reduce, your only option for storage is the disk.
+
+3
+00:00:07,680 --> 00:00:10,330
+In Spark, it supports both in-memory storage
+
+4
+00:00:10,330 --> 00:00:12,240
+and on disk storage.
+
+5
+00:00:12,240 --> 00:00:15,290
+In terms of operations, Map Reduce only supports the map
+
+6
+00:00:15,290 --> 00:00:17,400
+and reduce operations, whereas Spark
+
+7
+00:00:17,400 --> 00:00:19,710
+supports Map Reduce, join, sample,
+
+8
+00:00:19,710 --> 00:00:21,850
+and many other operations.
+
+9
+00:00:21,850 --> 00:00:24,850
+The execution model for Map Reduce is limited to batch,
+
+10
+00:00:24,850 --> 00:00:26,880
+whereas for Spark, Spark supports
+
+11
+00:00:26,880 --> 00:00:29,640
+execution models including batch, interactive,
+
+12
+00:00:29,640 --> 00:00:31,260
+and streaming.
+
+13
+00:00:31,260 --> 00:00:33,200
+In terms of programming environments,
+
+14
+00:00:33,200 --> 00:00:35,580
+Map Reduce only supports the Java environment,
+
+15
+00:00:35,580 --> 00:00:38,705
+whereas Spark supports Scala, Java, R, and Python.
+
+16
+00:00:38,705 --> 00:00:42,020
+
+
+17
+00:00:42,020 --> 00:00:44,330
+Other differences between Spark and Map Reduce
+
+18
+00:00:44,330 --> 00:00:48,580
+include Spark having support for generalized patterns.
+
+19
+00:00:48,580 --> 00:00:51,230
+It has a unified engine that supports many different kinds
+
+20
+00:00:51,230 --> 00:00:53,320
+of programming use cases.
+
+21
+00:00:53,320 --> 00:00:55,540
+Spark also supports lazy evaluation
+
+22
+00:00:55,540 --> 00:00:58,050
+of the lineage graph, which leads to reduced wait
+
+23
+00:00:58,050 --> 00:01:00,140
+states and better pipelining.
+
+24
+00:01:00,140 --> 00:01:02,550
+Spark also has a lower overhead for starting jobs
+
+25
+00:01:02,550 --> 00:01:05,349
+and less expensive shuffles.
+
+26
+00:01:05,349 --> 00:01:07,990
+Pulling all of this together, in-memory operation
+
+27
+00:01:07,990 --> 00:01:12,120
+makes a huge difference in terms of overall performance.
+
+28
+00:01:12,120 --> 00:01:15,050
+Here's a comparison of two different iterative machine
+
+29
+00:01:15,050 --> 00:01:17,720
+learning algorithms, K-means clustering
+
+30
+00:01:17,720 --> 00:01:19,780
+and logistic regression.
+
+31
+00:01:19,780 --> 00:01:22,160
+On the x-axis, we have the run time
+
+32
+00:01:22,160 --> 00:01:24,430
+of these algorithms for the different environments
+
+33
+00:01:24,430 --> 00:01:26,510
+in seconds.
+
+34
+00:01:26,510 --> 00:01:28,260
+Let's start with K-means clustering.
+
+35
+00:01:28,260 --> 00:01:30,240
+In red, we have Hadoop Map Reduce,
+
+36
+00:01:30,240 --> 00:01:33,650
+and you can see it takes 121 seconds to complete
+
+37
+00:01:33,650 --> 00:01:36,730
+that machine learning algorithm, whereas Spark
+
+38
+00:01:36,730 --> 00:01:39,510
+takes 4.1 seconds.
+
+39
+00:01:39,510 --> 00:01:44,140
+For logistic regression, it takes Map Reduce 80 seconds
+
+40
+00:01:44,140 --> 00:01:46,410
+to complete the execution, whereas Spark
+
+41
+00:01:46,410 --> 00:01:48,665
+completes execution in less than a second.
+
+42
+00:01:48,665 --> 00:01:51,180
+
+
+43
+00:01:51,180 --> 00:01:54,020
+Here are results from the Daytona Gray
+
+44
+00:01:54,020 --> 00:01:56,510
+100 terabyte sort benchmark.
+
+45
+00:01:56,510 --> 00:02:02,400
+Spark set the record for the sort benchmark in fall of 2014
+
+46
+00:02:02,400 --> 00:02:04,920
+by reducing the time it took to perform
+
+47
+00:02:04,920 --> 00:02:07,120
+that benchmark from Hadoop, which
+
+48
+00:02:07,120 --> 00:02:12,610
+held the record previously at 72 minutes, down to 23 minutes.
+
+49
+00:02:12,610 --> 00:02:15,180
+There's no actual benchmark for it,
+
+50
+00:02:15,180 --> 00:02:18,180
+but Spark demonstrated the sort of 1 petabyte.
+
+51
+00:02:18,180 --> 00:02:20,680
+That's 1,000 terabytes worth of data
+
+52
+00:02:20,680 --> 00:02:25,706
+that took only 234 minutes running on 190 Amazon EC2
+
+53
+00:02:25,706 --> 00:02:26,205
+instances.
+
+54
+00:02:26,205 --> 00:02:30,330
+
+
+55
+00:02:30,330 --> 00:02:33,450
+A different way of looking at the difference between Spark
+
+56
+00:02:33,450 --> 00:02:35,570
+and other tools is this survey, which
+
+57
+00:02:35,570 --> 00:02:38,285
+shows the median salaries for respondents
+
+58
+00:02:38,285 --> 00:02:40,300
+who use a given tool.
+
+59
+00:02:40,300 --> 00:02:43,660
+This is a survey that covered over 100 respondents
+
+60
+00:02:43,660 --> 00:02:47,410
+around the globe, and it showed that Spark expertise
+
+61
+00:02:47,410 --> 00:02:50,920
+led to higher salaries for respondents.
+
+62
+00:02:50,920 --> 00:02:53,350
+Now it's just a correlation here,
+
+63
+00:02:53,350 --> 00:02:56,010
+but that does obviously not mean causation.
+
+64
+00:02:56,010 --> 00:03:00,200
+However, it's an interesting observation to see.
+

@@ -1,0 +1,36 @@
+0
+00:00:00,000 --> 00:00:01,070
+
+
+1
+00:00:01,070 --> 00:00:02,950
+The life cycle of a Spark program
+
+2
+00:00:02,950 --> 00:00:06,330
+is that you first create RDDs from some external data source
+
+3
+00:00:06,330 --> 00:00:09,560
+or parallelize a collection in your driver program.
+
+4
+00:00:09,560 --> 00:00:14,360
+You then lazily transform these RDDs into new RDDs.
+
+5
+00:00:14,360 --> 00:00:17,650
+You cache some of those RDDs for future reuse.
+
+6
+00:00:17,650 --> 00:00:20,930
+And you perform actions to execute parallel computation
+
+7
+00:00:20,930 --> 00:00:22,934
+and to produce results.
+
+8
+00:00:22,934 --> 00:00:23,433
+
+

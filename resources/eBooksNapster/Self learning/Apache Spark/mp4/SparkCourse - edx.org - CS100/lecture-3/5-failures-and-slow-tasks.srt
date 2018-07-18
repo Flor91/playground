@@ -1,0 +1,60 @@
+0
+00:00:00,000 --> 00:00:01,280
+
+
+1
+00:00:01,280 --> 00:00:02,970
+How do we deal with failures?
+
+2
+00:00:02,970 --> 00:00:06,270
+So in this case, the first machine has failed.
+
+3
+00:00:06,270 --> 00:00:10,240
+The simplest solution is to just launch another task,
+
+4
+00:00:10,240 --> 00:00:12,060
+either on that machine if it's recovered,
+
+5
+00:00:12,060 --> 00:00:15,490
+or on another machine.
+
+6
+00:00:15,490 --> 00:00:17,510
+How do we deal with slow tasks?
+
+7
+00:00:17,510 --> 00:00:21,180
+So in this case, all of the other tasks finish quickly,
+
+8
+00:00:21,180 --> 00:00:23,330
+but the task that was running on machine one
+
+9
+00:00:23,330 --> 00:00:25,100
+hasn't finished yet.
+
+10
+00:00:25,100 --> 00:00:27,590
+All we do is just simply launch another task.
+
+11
+00:00:27,590 --> 00:00:29,230
+And then kill that original task.
+
+12
+00:00:29,230 --> 00:00:31,407
+And we can launch that task on a different machine
+
+13
+00:00:31,407 --> 00:00:33,490
+because maybe that first machine was about to fail
+
+14
+00:00:33,490 --> 00:00:35,840
+and so it's running very slowly.
+

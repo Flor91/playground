@@ -1,0 +1,140 @@
+0
+00:00:00,000 --> 00:00:01,190
+
+
+1
+00:00:01,190 --> 00:00:04,790
+Spark provides mllib, which is a scalable, distributed machine
+
+2
+00:00:04,790 --> 00:00:05,680
+learning library.
+
+3
+00:00:05,680 --> 00:00:09,020
+It provides a scikit-learn like Machine Learning tool kit
+
+4
+00:00:09,020 --> 00:00:11,520
+and interoperates with NumPy.
+
+5
+00:00:11,520 --> 00:00:13,350
+It provides functionality, including
+
+6
+00:00:13,350 --> 00:00:19,520
+classification, regression, and many other useful methods.
+
+7
+00:00:19,520 --> 00:00:21,520
+In this course, in the lab, you'll
+
+8
+00:00:21,520 --> 00:00:24,140
+be working on a problem of collaborative filtering.
+
+9
+00:00:24,140 --> 00:00:27,100
+The goal here is predict user's movie ratings
+
+10
+00:00:27,100 --> 00:00:29,850
+based on past ratings of other movies.
+
+11
+00:00:29,850 --> 00:00:32,530
+So the way to think about this is we have a set of users.
+
+12
+00:00:32,530 --> 00:00:33,810
+Those are columns here.
+
+13
+00:00:33,810 --> 00:00:36,790
+And we have a set of movies, which are rows here
+
+14
+00:00:36,790 --> 00:00:39,530
+in this Ratings matrix.
+
+15
+00:00:39,530 --> 00:00:42,600
+We can model Ratings as a product of User and Movie
+
+16
+00:00:42,600 --> 00:00:47,590
+Feature matrices of size U by K for the User matrix and M
+
+17
+00:00:47,590 --> 00:00:51,020
+by K for the Movie Feature matrix, where in this case
+
+18
+00:00:51,020 --> 00:00:51,950
+K is the rank.
+
+19
+00:00:51,950 --> 00:00:55,160
+And we want to learn K factors for each user
+
+20
+00:00:55,160 --> 00:00:58,160
+and learn K factors for each movie.
+
+21
+00:00:58,160 --> 00:01:00,770
+Now, we can do this by using the Alternating Least Squares
+
+22
+00:01:00,770 --> 00:01:01,690
+method.
+
+23
+00:01:01,690 --> 00:01:04,640
+We start with random A and B vectors.
+
+24
+00:01:04,640 --> 00:01:06,470
+And then we optimize the user vectors--
+
+25
+00:01:06,470 --> 00:01:09,030
+those are the A vectors-- based on the movies.
+
+26
+00:01:09,030 --> 00:01:11,160
+And we optimize the movie vectors--
+
+27
+00:01:11,160 --> 00:01:13,740
+that's the B vector-- based on the users.
+
+28
+00:01:13,740 --> 00:01:17,240
+And we repeat this process until we reach convergence.
+
+29
+00:01:17,240 --> 00:01:20,300
+You'll explore this in the lab.
+
+30
+00:01:20,300 --> 00:01:22,050
+Now, if you're interested in learning more
+
+31
+00:01:22,050 --> 00:01:23,960
+about Spark and Machine Learning,
+
+32
+00:01:23,960 --> 00:01:26,260
+I encourage you to take the Scalable Machine Learning
+
+33
+00:01:26,260 --> 00:01:30,667
+course, which starts June 22, 2015.
+
+34
+00:01:30,667 --> 00:01:31,167
+
+

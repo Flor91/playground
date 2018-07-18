@@ -1,0 +1,268 @@
+0
+00:00:00,000 --> 00:00:01,170
+
+
+1
+00:00:01,170 --> 00:00:04,450
+Similar to Map Reduce, Spark supports Key-Value pairs
+
+2
+00:00:04,450 --> 00:00:05,890
+for RDDs.
+
+3
+00:00:05,890 --> 00:00:09,290
+Each element of a pair RDD is a pair tuple.
+
+4
+00:00:09,290 --> 00:00:11,310
+So here's an example where we applied
+
+5
+00:00:11,310 --> 00:00:16,680
+SC parallelize operation to a list consisting of two pairs.
+
+6
+00:00:16,680 --> 00:00:18,860
+The first pair is 1, 2.
+
+7
+00:00:18,860 --> 00:00:21,010
+The second pair is 3, 4.
+
+8
+00:00:21,010 --> 00:00:24,660
+This creates a new RDD that consists of two elements.
+
+9
+00:00:24,660 --> 00:00:27,260
+The first element being the pair 1, 2.
+
+10
+00:00:27,260 --> 00:00:31,360
+The second element being the pair 3, 4.
+
+11
+00:00:31,360 --> 00:00:33,380
+Now some of the Key-Value transformations
+
+12
+00:00:33,380 --> 00:00:36,050
+that we could perform include the following.
+
+13
+00:00:36,050 --> 00:00:39,920
+Reduce by key, which takes an RDD
+
+14
+00:00:39,920 --> 00:00:44,350
+and returns a new distributed RDD of key-value pairs
+
+15
+00:00:44,350 --> 00:00:47,840
+where the values for each key are aggregated using the given
+
+16
+00:00:47,840 --> 00:00:49,350
+reduced function.
+
+17
+00:00:49,350 --> 00:00:51,490
+And that reduced function has to be of the type
+
+18
+00:00:51,490 --> 00:00:55,680
+takes two values and returns one value.
+
+19
+00:00:55,680 --> 00:00:59,530
+The second key-value transformation is sort by key.
+
+20
+00:00:59,530 --> 00:01:02,150
+This returns a new data set of key-value pairs
+
+21
+00:01:02,150 --> 00:01:04,870
+that's sorted by keys in ascending order.
+
+22
+00:01:04,870 --> 00:01:06,690
+And the third key-value transformation
+
+23
+00:01:06,690 --> 00:01:09,150
+that we're going to look at is group by key.
+
+24
+00:01:09,150 --> 00:01:13,840
+This returns a new data set consisting of key and iterable
+
+25
+00:01:13,840 --> 00:01:16,960
+valued pairs.
+
+26
+00:01:16,960 --> 00:01:19,180
+So let's look at some examples.
+
+27
+00:01:19,180 --> 00:01:22,360
+So the first example is a reduced by key example.
+
+28
+00:01:22,360 --> 00:01:25,130
+So we start by parallelizing a list consisting
+
+29
+00:01:25,130 --> 00:01:26,540
+of three tuples.
+
+30
+00:01:26,540 --> 00:01:30,230
+1, 2; 3, 4; and 3, 6.
+
+31
+00:01:30,230 --> 00:01:34,100
+We then call the reduced by key transformation with a lambda
+
+32
+00:01:34,100 --> 00:01:38,060
+function that will sum the two values.
+
+33
+00:01:38,060 --> 00:01:42,560
+This produces a new RDD consisting of two elements.
+
+34
+00:01:42,560 --> 00:01:45,990
+The first element is the tuple 1, 2.
+
+35
+00:01:45,990 --> 00:01:49,710
+The second element is the tuple 3, 10.
+
+36
+00:01:49,710 --> 00:01:53,320
+The 10 came from taking the two tuples-- 3, 4 and 3,
+
+37
+00:01:53,320 --> 00:01:56,057
+6-- and combining the values using
+
+38
+00:01:56,057 --> 00:01:57,640
+the lambda function, which summed them
+
+39
+00:01:57,640 --> 00:02:01,150
+up giving us the value 10.
+
+40
+00:02:01,150 --> 00:02:04,800
+The second example is a sort by key example.
+
+41
+00:02:04,800 --> 00:02:09,580
+Here we create an RDD by parallelizing three tuples.
+
+42
+00:02:09,580 --> 00:02:13,070
+1 and the character A, 2 and the character C,
+
+43
+00:02:13,070 --> 00:02:15,640
+and 1 and the character B.
+
+44
+00:02:15,640 --> 00:02:19,560
+Now when we invoke sort by key, what we end up with
+
+45
+00:02:19,560 --> 00:02:24,660
+is a new RDD that consists of the elements.
+
+46
+00:02:24,660 --> 00:02:31,870
+A tuple of 1 and A, a tuple of 1 and B, and a tuple of 2 and C.
+
+47
+00:02:31,870 --> 00:02:33,380
+The third key value transformation
+
+48
+00:02:33,380 --> 00:02:35,870
+that we'd like to look at is a group by key.
+
+49
+00:02:35,870 --> 00:02:42,890
+So using that same RDD from the last example-- the tuple 1, A;
+
+50
+00:02:42,890 --> 00:02:46,080
+2, C; and 1, B-- when we apply the group
+
+51
+00:02:46,080 --> 00:02:49,400
+by key transformation, what we end up with
+
+52
+00:02:49,400 --> 00:02:52,940
+is a new RDD that contains two elements.
+
+53
+00:02:52,940 --> 00:02:58,685
+The first element is the tuple 1 and an iterable of A and B.
+
+54
+00:02:58,685 --> 00:03:04,340
+And the second element is the key 2 and an iterable
+
+55
+00:03:04,340 --> 00:03:07,890
+of C. You have to be very careful when using group by key
+
+56
+00:03:07,890 --> 00:03:10,260
+as it can cause a large amount of data movement
+
+57
+00:03:10,260 --> 00:03:11,760
+across the network.
+
+58
+00:03:11,760 --> 00:03:15,970
+It also can create very large iterables at a worker.
+
+59
+00:03:15,970 --> 00:03:22,050
+Imagine you have an RDD where you have 1 million pairs that
+
+60
+00:03:22,050 --> 00:03:24,710
+have the key 1.
+
+61
+00:03:24,710 --> 00:03:29,680
+All of the values will have to fit in a single worker
+
+62
+00:03:29,680 --> 00:03:31,847
+if you use group by key.
+
+63
+00:03:31,847 --> 00:03:33,430
+So instead of a group by key, consider
+
+64
+00:03:33,430 --> 00:03:36,680
+using reduced by key or a different key value
+
+65
+00:03:36,680 --> 00:03:38,001
+transformation.
+
+66
+00:03:38,001 --> 00:03:38,500
+
+

@@ -1,0 +1,68 @@
+0
+00:00:00,000 --> 00:00:01,100
+
+
+1
+00:00:01,100 --> 00:00:03,970
+To avoid having to reload the data,
+
+2
+00:00:03,970 --> 00:00:08,570
+we can add the cache directive to the lines RDD.
+
+3
+00:00:08,570 --> 00:00:10,420
+So here, we use lines.caches.
+
+4
+00:00:10,420 --> 00:00:13,740
+This tells Spark to save that line's RDD
+
+5
+00:00:13,740 --> 00:00:15,420
+so that we don't have to recompute it
+
+6
+00:00:15,420 --> 00:00:17,730
+each time we want to use it.
+
+7
+00:00:17,730 --> 00:00:20,480
+So now, what will happen is the first time
+
+8
+00:00:20,480 --> 00:00:24,750
+when we do lines.count that will cause us to read the text
+
+9
+00:00:24,750 --> 00:00:27,110
+file into memory.
+
+10
+00:00:27,110 --> 00:00:29,210
+Then, we'll count the number of lines,
+
+11
+00:00:29,210 --> 00:00:31,420
+sum that across each of the partitions,
+
+12
+00:00:31,420 --> 00:00:34,570
+then combine that total in the driver.
+
+13
+00:00:34,570 --> 00:00:37,990
+Now, when we run the filter, lines.filter,
+
+14
+00:00:37,990 --> 00:00:40,400
+to create the comments RDD, instead of
+
+15
+00:00:40,400 --> 00:00:43,890
+that having to read from disk, it will read from memory.
+
+16
+00:00:43,890 --> 00:00:46,560
+So it'll run much, much faster.
+

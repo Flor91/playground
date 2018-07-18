@@ -1,0 +1,148 @@
+0
+00:00:00,000 --> 00:00:01,230
+
+
+1
+00:00:01,230 --> 00:00:04,540
+Working with tabular data introduces several challenges.
+
+2
+00:00:04,540 --> 00:00:06,370
+The format may not be well defined.
+
+3
+00:00:06,370 --> 00:00:09,270
+It may be missing data values.
+
+4
+00:00:09,270 --> 00:00:11,070
+Types may be incorrectly inferred.
+
+5
+00:00:11,070 --> 00:00:15,220
+So for example, if a cell contains 2, instead of 2.0,
+
+6
+00:00:15,220 --> 00:00:18,420
+the type might incorrectly be inferred as integer.
+
+7
+00:00:18,420 --> 00:00:21,450
+And then there's no support for versioning of the format,
+
+8
+00:00:21,450 --> 00:00:24,765
+and many other challenges that you'll have to face.
+
+9
+00:00:24,765 --> 00:00:27,220
+When you have tabular data from multiple sources,
+
+10
+00:00:27,220 --> 00:00:29,960
+there are additional challenges that you may face.
+
+11
+00:00:29,960 --> 00:00:31,920
+Not every source may provide the same data,
+
+12
+00:00:31,920 --> 00:00:35,090
+which means that some fields may be missing.
+
+13
+00:00:35,090 --> 00:00:36,790
+There may be inconsistent data types
+
+14
+00:00:36,790 --> 00:00:38,310
+between the different sources.
+
+15
+00:00:38,310 --> 00:00:40,200
+So one file may have dollar values,
+
+16
+00:00:40,200 --> 00:00:43,450
+while another file has pound values.
+
+17
+00:00:43,450 --> 00:00:46,740
+There also may be inconsistent values for the same entity.
+
+18
+00:00:46,740 --> 00:00:50,620
+One file may refer to the supermarket company Walmart
+
+19
+00:00:50,620 --> 00:00:54,000
+as Wal-Mart, whereas the other file refers to them
+
+20
+00:00:54,000 --> 00:00:56,902
+as Walmart, all one word.
+
+21
+00:00:56,902 --> 00:00:59,430
+When you get tabular data from sensors
+
+22
+00:00:59,430 --> 00:01:01,150
+there are additional challenges.
+
+23
+00:01:01,150 --> 00:01:02,309
+They may be missing fields.
+
+24
+00:01:02,309 --> 00:01:03,850
+For example, a given sensor might not
+
+25
+00:01:03,850 --> 00:01:06,800
+produce all of the different types of data.
+
+26
+00:01:06,800 --> 00:01:10,610
+So some sensors may produce temperature and humidity,
+
+27
+00:01:10,610 --> 00:01:14,360
+while other sensors provide temperature, humidity,
+
+28
+00:01:14,360 --> 00:01:15,610
+and light.
+
+29
+00:01:15,610 --> 00:01:19,110
+A sensor may be damaged, either permanently or intermittently.
+
+30
+00:01:19,110 --> 00:01:22,360
+And timestamps may be inaccurate or incorrect
+
+31
+00:01:22,360 --> 00:01:24,790
+between different sensors.
+
+32
+00:01:24,790 --> 00:01:27,370
+Other metadata for the sensors may also have errors.
+
+33
+00:01:27,370 --> 00:01:30,150
+For example, the location of a sensor or its identification
+
+34
+00:01:30,150 --> 00:01:30,840
+code.
+
+35
+00:01:30,840 --> 00:01:33,390
+And sensors may periodically go offline for a while,
+
+36
+00:01:33,390 --> 00:01:36,100
+leading to gaps in the data.
+

@@ -1,0 +1,180 @@
+0
+00:00:00,000 --> 00:00:00,740
+
+
+1
+00:00:00,740 --> 00:00:02,080
+So what is data science?
+
+2
+00:00:02,080 --> 00:00:04,380
+Well, according to O'Reilly, data science
+
+3
+00:00:04,380 --> 00:00:06,330
+aims to drive knowledge from big data
+
+4
+00:00:06,330 --> 00:00:08,540
+efficiently and intelligently.
+
+5
+00:00:08,540 --> 00:00:11,280
+Data science encompasses the set of activities, tools,
+
+6
+00:00:11,280 --> 00:00:13,710
+and methods that enable data-driven activities
+
+7
+00:00:13,710 --> 00:00:17,900
+in science, business, medicine, and government.
+
+8
+00:00:17,900 --> 00:00:19,990
+Here's another definition of data science.
+
+9
+00:00:19,990 --> 00:00:24,290
+Data science combines three different skills-- hacking
+
+10
+00:00:24,290 --> 00:00:28,420
+skills, math and statistics knowledge, and domain expertise
+
+11
+00:00:28,420 --> 00:00:29,710
+skills.
+
+12
+00:00:29,710 --> 00:00:32,119
+Now this leads to some interesting intersections.
+
+13
+00:00:32,119 --> 00:00:35,760
+For example, between hacking skills and math and statistics
+
+14
+00:00:35,760 --> 00:00:38,120
+knowledge, we have traditional machine learning.
+
+15
+00:00:38,120 --> 00:00:39,911
+So this is the case where you have somebody
+
+16
+00:00:39,911 --> 00:00:44,790
+who can apply algorithms at scale to large amounts of data,
+
+17
+00:00:44,790 --> 00:00:47,190
+and understand both the algorithms and the results
+
+18
+00:00:47,190 --> 00:00:50,290
+that they see from those algorithms.
+
+19
+00:00:50,290 --> 00:00:52,180
+Combining the skills of math and statistics
+
+20
+00:00:52,180 --> 00:00:55,640
+knowledge with domain expertise, we have traditional research.
+
+21
+00:00:55,640 --> 00:00:58,230
+So this is where someone in a specific domain
+
+22
+00:00:58,230 --> 00:01:00,260
+is able to collect some data, and then
+
+23
+00:01:00,260 --> 00:01:02,580
+perform detailed analyses on that data,
+
+24
+00:01:02,580 --> 00:01:05,420
+understanding both the analytical process
+
+25
+00:01:05,420 --> 00:01:07,740
+and the results that they get.
+
+26
+00:01:07,740 --> 00:01:11,450
+The danger zone is someone who has hacking skills and domain
+
+27
+00:01:11,450 --> 00:01:12,604
+expertise skills.
+
+28
+00:01:12,604 --> 00:01:14,020
+In this case, you have someone who
+
+29
+00:01:14,020 --> 00:01:17,450
+is able to collect a lot of domain-specific knowledge,
+
+30
+00:01:17,450 --> 00:01:20,360
+apply algorithms to that at scale,
+
+31
+00:01:20,360 --> 00:01:22,730
+but doesn't really understand either the algorithms
+
+32
+00:01:22,730 --> 00:01:25,847
+or the results that they get from applying those algorithms.
+
+33
+00:01:25,847 --> 00:01:27,430
+So if you remember the cautionary tale
+
+34
+00:01:27,430 --> 00:01:30,330
+from last time about the Facebook analysis,
+
+35
+00:01:30,330 --> 00:01:34,260
+that's a case where someone applied hacking skills
+
+36
+00:01:34,260 --> 00:01:37,460
+to a large amount of domain-specific information,
+
+37
+00:01:37,460 --> 00:01:41,180
+and yielded a result that they didn't really understand.
+
+38
+00:01:41,180 --> 00:01:44,560
+The combination of hacking skills, math and statistics
+
+39
+00:01:44,560 --> 00:01:49,220
+knowledge, and domain expertise yields data science.
+
+40
+00:01:49,220 --> 00:01:52,400
+Someone who can apply domain-specific knowledge
+
+41
+00:01:52,400 --> 00:01:55,520
+at very large scale, while understanding
+
+42
+00:01:55,520 --> 00:01:57,390
+both the algorithms that they're applying,
+
+43
+00:01:57,390 --> 00:02:01,090
+and the results that they get from applying those algorithms.
+
+44
+00:02:01,090 --> 00:02:02,200
+
+

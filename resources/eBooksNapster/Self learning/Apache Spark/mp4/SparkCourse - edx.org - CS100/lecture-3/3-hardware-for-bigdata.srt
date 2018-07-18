@@ -1,0 +1,144 @@
+0
+00:00:00,000 --> 00:00:00,880
+
+
+1
+00:00:00,880 --> 00:00:02,480
+The hardware we have for big data
+
+2
+00:00:02,480 --> 00:00:05,680
+includes lots of hard drives and CPUs.
+
+3
+00:00:05,680 --> 00:00:07,292
+The question is how do we organize
+
+4
+00:00:07,292 --> 00:00:09,680
+these CPUs and hard drives?
+
+5
+00:00:09,680 --> 00:00:12,540
+One approach is to put them all in one big box.
+
+6
+00:00:12,540 --> 00:00:16,050
+This is a solution that people used in the 1990s,
+
+7
+00:00:16,050 --> 00:00:18,310
+but it was very expensive, because these machines were
+
+8
+00:00:18,310 --> 00:00:20,650
+only produced in very low volume,
+
+9
+00:00:20,650 --> 00:00:22,920
+and they were considered premium hardware.
+
+10
+00:00:22,920 --> 00:00:28,110
+And for today's big data, these machines are not big enough.
+
+11
+00:00:28,110 --> 00:00:29,940
+The alternative that we use for big data
+
+12
+00:00:29,940 --> 00:00:32,950
+today is consumer grade hardware.
+
+13
+00:00:32,950 --> 00:00:35,780
+It's not the gold plated servers that we put traditionally
+
+14
+00:00:35,780 --> 00:00:37,830
+into data centers, but rather, it's
+
+15
+00:00:37,830 --> 00:00:40,930
+more desktop like kinds of machines.
+
+16
+00:00:40,930 --> 00:00:44,740
+These machines are very easy to add in terms of capacity,
+
+17
+00:00:44,740 --> 00:00:48,450
+they're much cheaper for an individual CPU and disk
+
+18
+00:00:48,450 --> 00:00:51,080
+than traditional servers.
+
+19
+00:00:51,080 --> 00:00:54,960
+But they're not as reliable, and they're much harder to manage.
+
+20
+00:00:54,960 --> 00:00:58,370
+The trade off is we'll deal with this complexity in software
+
+21
+00:00:58,370 --> 00:01:00,380
+instead.
+
+22
+00:01:00,380 --> 00:01:03,550
+So some of the problems that we have with cheap hardware
+
+23
+00:01:03,550 --> 00:01:05,230
+include failures.
+
+24
+00:01:05,230 --> 00:01:09,980
+So Google's numbers are that you lose between 1% to 5%
+
+25
+00:01:09,980 --> 00:01:11,920
+of hard drives every year.
+
+26
+00:01:11,920 --> 00:01:16,900
+And 0.2% of memory chips per year.
+
+27
+00:01:16,900 --> 00:01:19,750
+Also, network speeds are much slower
+
+28
+00:01:19,750 --> 00:01:21,320
+than the shared memory speeds that we
+
+29
+00:01:21,320 --> 00:01:25,220
+found in those big box 1990s solutions.
+
+30
+00:01:25,220 --> 00:01:28,050
+It's much slower to read something over the network,
+
+31
+00:01:28,050 --> 00:01:31,400
+and the network can be much slower than reading something
+
+32
+00:01:31,400 --> 00:01:34,400
+from a storage drive.
+
+33
+00:01:34,400 --> 00:01:37,330
+Also, these machines have very uneven performance.
+
+34
+00:01:37,330 --> 00:01:41,580
+Some may be very fast, others may be very slow, sometimes
+
+35
+00:01:41,580 --> 00:01:43,520
+because they're failing.
+

@@ -1,0 +1,96 @@
+0
+00:00:00,000 --> 00:00:01,040
+
+
+1
+00:00:01,040 --> 00:00:03,020
+In one of the labs for this course
+
+2
+00:00:03,020 --> 00:00:07,030
+you'll be exploring a web server access log from NASA,
+
+3
+00:00:07,030 --> 00:00:09,570
+the space agency in America.
+
+4
+00:00:09,570 --> 00:00:11,960
+This log covers 21 days and includes
+
+5
+00:00:11,960 --> 00:00:14,050
+over a million requests.
+
+6
+00:00:14,050 --> 00:00:15,960
+We've partially cleaned the log for you
+
+7
+00:00:15,960 --> 00:00:19,240
+to help you by removing some of the very hard to parse
+
+8
+00:00:19,240 --> 00:00:20,940
+requests.
+
+9
+00:00:20,940 --> 00:00:23,460
+Now, with a log like this there are many different questions
+
+10
+00:00:23,460 --> 00:00:24,790
+that you could ask.
+
+11
+00:00:24,790 --> 00:00:27,097
+For example, what are the statistics
+
+12
+00:00:27,097 --> 00:00:28,680
+for the content that's being returned,
+
+13
+00:00:28,680 --> 00:00:31,190
+the sizes, or the statuses?
+
+14
+00:00:31,190 --> 00:00:33,820
+What types of return codes occur?
+
+15
+00:00:33,820 --> 00:00:37,760
+How many 404-- that's page not found errors-- are there?
+
+16
+00:00:37,760 --> 00:00:39,510
+Those are important because that indicates
+
+17
+00:00:39,510 --> 00:00:41,560
+that someone wasn't able to find something
+
+18
+00:00:41,560 --> 00:00:43,230
+that they were looking for.
+
+19
+00:00:43,230 --> 00:00:45,480
+But you can also ask a lot of temporal questions,
+
+20
+00:00:45,480 --> 00:00:48,370
+like how many unique hosts were there per day?
+
+21
+00:00:48,370 --> 00:00:50,210
+Or how many requests were there per day?
+
+22
+00:00:50,210 --> 00:00:53,430
+Or on average, how many requests were there per host?
+
+23
+00:00:53,430 --> 00:00:58,130
+Or how many 404 errors were there on a daily basis?
+

@@ -1,0 +1,220 @@
+0
+00:00:00,000 --> 00:00:01,160
+
+
+1
+00:00:01,160 --> 00:00:04,980
+Technology trends show that the cost of memory is dropping.
+
+2
+00:00:04,980 --> 00:00:08,410
+Here's a graph that shows the cost of memory
+
+3
+00:00:08,410 --> 00:00:12,620
+with, on the x-axis, the year, and on the y-axis, price.
+
+4
+00:00:12,620 --> 00:00:14,490
+And this is a log-linear plot.
+
+5
+00:00:14,490 --> 00:00:17,390
+And so you can see that memory is dropping exponentially
+
+6
+00:00:17,390 --> 00:00:18,450
+over time.
+
+7
+00:00:18,450 --> 00:00:22,470
+In 2010, it only cost one cent per megabyte.
+
+8
+00:00:22,470 --> 00:00:23,890
+Now what does this mean?
+
+9
+00:00:23,890 --> 00:00:26,610
+Cheaper memory means we can put a lot more memory
+
+10
+00:00:26,610 --> 00:00:29,040
+in each server.
+
+11
+00:00:29,040 --> 00:00:31,600
+So now, the hardware that we have for Big Data
+
+12
+00:00:31,600 --> 00:00:36,690
+is lots of hard drives, lots of CPUs, and lots of memory.
+
+13
+00:00:36,690 --> 00:00:38,330
+So this gives us an opportunity.
+
+14
+00:00:38,330 --> 00:00:41,720
+We can keep more data in memory instead of writing it out
+
+15
+00:00:41,720 --> 00:00:44,810
+to slow disks, and then having to read it
+
+16
+00:00:44,810 --> 00:00:47,320
+right back in from those slow disks.
+
+17
+00:00:47,320 --> 00:00:50,060
+So this opportunity led to the creation of a new distributed
+
+18
+00:00:50,060 --> 00:00:52,910
+execution engine, Apache Spark.
+
+19
+00:00:52,910 --> 00:00:56,300
+So we'd like to use memory instead of disk.
+
+20
+00:00:56,300 --> 00:00:59,250
+Remember that what happens when we have an iterative task
+
+21
+00:00:59,250 --> 00:01:05,099
+is we read in data from disk, process it, write it out
+
+22
+00:01:05,099 --> 00:01:08,380
+to disk, read it in for the next iteration,
+
+23
+00:01:08,380 --> 00:01:11,840
+process it, write it back to disk, and so on.
+
+24
+00:01:11,840 --> 00:01:14,270
+Similarly, when we're performing a query,
+
+25
+00:01:14,270 --> 00:01:18,970
+we read information from disk, perform that query job
+
+26
+00:01:18,970 --> 00:01:21,950
+to give a result, and then for the next query
+
+27
+00:01:21,950 --> 00:01:25,660
+that comes in, we read the data back in all over again
+
+28
+00:01:25,660 --> 00:01:28,530
+and present a result. And if we're operating interactively,
+
+29
+00:01:28,530 --> 00:01:30,420
+this is going to be very, very slow.
+
+30
+00:01:30,420 --> 00:01:34,480
+So instead, what we'd like to do is use memory, and use memory
+
+31
+00:01:34,480 --> 00:01:38,050
+for in-data sharing.
+
+32
+00:01:38,050 --> 00:01:41,820
+So here, when we read in from disk for iteration one,
+
+33
+00:01:41,820 --> 00:01:45,330
+when we're finished, we write it to memory.
+
+34
+00:01:45,330 --> 00:01:48,930
+And that way, iteration two can read from very fast memory
+
+35
+00:01:48,930 --> 00:01:50,860
+and write to very fast memory.
+
+36
+00:01:50,860 --> 00:01:52,710
+The same thing with our query.
+
+37
+00:01:52,710 --> 00:01:56,220
+We do a one time processing step to read our data
+
+38
+00:01:56,220 --> 00:01:59,820
+into distributed memory, and from there all the queries
+
+39
+00:01:59,820 --> 00:02:02,920
+run from memory.
+
+40
+00:02:02,920 --> 00:02:06,640
+This can be anywhere from 10 to 100 times faster
+
+41
+00:02:06,640 --> 00:02:11,380
+than using the network or the disk.
+
+42
+00:02:11,380 --> 00:02:14,020
+The abstraction that Apache Spark provides
+
+43
+00:02:14,020 --> 00:02:17,780
+is that of the Resilient Distributed Data sets or RDDs.
+
+44
+00:02:17,780 --> 00:02:21,110
+We write our programs in terms of operations on distributed
+
+45
+00:02:21,110 --> 00:02:23,520
+data sets, and these are partition collections
+
+46
+00:02:23,520 --> 00:02:26,530
+of objects that are spread across a cluster stored
+
+47
+00:02:26,530 --> 00:02:29,380
+either in memory or on disk.
+
+48
+00:02:29,380 --> 00:02:32,330
+We can manipulate and build RDDs using
+
+49
+00:02:32,330 --> 00:02:34,610
+a diverse set of parallel transformations,
+
+50
+00:02:34,610 --> 00:02:39,410
+including map, filter, and join, and actions, including count,
+
+51
+00:02:39,410 --> 00:02:41,150
+collect, and save.
+
+52
+00:02:41,150 --> 00:02:42,830
+And Spark automatically keeps track
+
+53
+00:02:42,830 --> 00:02:46,070
+of how we created the RDDs and will automatically rebuild them
+
+54
+00:02:46,070 --> 00:02:50,110
+if a machine fails or a job is running slowly.
+

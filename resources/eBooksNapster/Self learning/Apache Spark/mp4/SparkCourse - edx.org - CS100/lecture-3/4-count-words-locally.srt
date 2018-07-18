@@ -1,0 +1,120 @@
+0
+00:00:00,000 --> 00:00:01,130
+
+
+1
+00:00:01,130 --> 00:00:03,620
+So what's hard about cluster computing?
+
+2
+00:00:03,620 --> 00:00:08,390
+One challenge is how do we split work across machines?
+
+3
+00:00:08,390 --> 00:00:10,090
+Let's look at an example.
+
+4
+00:00:10,090 --> 00:00:12,380
+How do we count the number of occurrences
+
+5
+00:00:12,380 --> 00:00:14,590
+of each word in a document?
+
+6
+00:00:14,590 --> 00:00:17,140
+So here we have the document, I am Sam.
+
+7
+00:00:17,140 --> 00:00:18,110
+I am Sam.
+
+8
+00:00:18,110 --> 00:00:19,340
+Sam, I am.
+
+9
+00:00:19,340 --> 00:00:21,490
+Do you like green eggs and ham?
+
+10
+00:00:21,490 --> 00:00:23,450
+We'd like to count the words.
+
+11
+00:00:23,450 --> 00:00:26,580
+So, for example, there are three occurrences of I,
+
+12
+00:00:26,580 --> 00:00:30,310
+three occurrences of am, three occurrences of Sam,
+
+13
+00:00:30,310 --> 00:00:34,410
+and one of do, and one of you, and one of like, and so on.
+
+14
+00:00:34,410 --> 00:00:38,610
+So one approach we could do is to use a hash table.
+
+15
+00:00:38,610 --> 00:00:41,380
+So here we start with an empty hash table,
+
+16
+00:00:41,380 --> 00:00:43,320
+and we look at each word.
+
+17
+00:00:43,320 --> 00:00:46,420
+So we start with I. I doesn't appear in the hash table,
+
+18
+00:00:46,420 --> 00:00:49,300
+so we add it with a single occurrence.
+
+19
+00:00:49,300 --> 00:00:51,236
+We then examine the word am.
+
+20
+00:00:51,236 --> 00:00:53,540
+Am does not occur in the hash table,
+
+21
+00:00:53,540 --> 00:00:56,140
+so we add it with one occurrence.
+
+22
+00:00:56,140 --> 00:00:57,080
+We look at Sam.
+
+23
+00:00:57,080 --> 00:00:59,850
+Sam occurs not at all in our hash table,
+
+24
+00:00:59,850 --> 00:01:04,190
+so we add Sam to our hash table with one occurrence.
+
+25
+00:01:04,190 --> 00:01:06,650
+Now we see I, that appears in our hash table already,
+
+26
+00:01:06,650 --> 00:01:08,920
+and so we update the value to two.
+
+27
+00:01:08,920 --> 00:01:10,740
+And we can keep doing this for each
+
+28
+00:01:10,740 --> 00:01:13,333
+of the words in our document.
+
+29
+00:01:13,333 --> 00:01:13,833
+
+

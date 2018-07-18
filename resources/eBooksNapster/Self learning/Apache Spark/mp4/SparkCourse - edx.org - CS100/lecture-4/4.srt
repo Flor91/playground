@@ -1,0 +1,124 @@
+0
+00:00:00,000 --> 00:00:00,970
+
+
+1
+00:00:00,970 --> 00:00:03,850
+So let's look at some examples of creating an RDD.
+
+2
+00:00:03,850 --> 00:00:06,540
+Here, we create an RDD from a Python list.
+
+3
+00:00:06,540 --> 00:00:08,720
+So we start with the list data, and then we
+
+4
+00:00:08,720 --> 00:00:12,960
+use sc.paralyze to create an RDD.
+
+5
+00:00:12,960 --> 00:00:15,530
+Now, no computation actually occurs when we
+
+6
+00:00:15,530 --> 00:00:17,690
+run the sc.paralyze operation.
+
+7
+00:00:17,690 --> 00:00:20,590
+All that occurs is Spark records how
+
+8
+00:00:20,590 --> 00:00:24,580
+to create an RDD that has four partitions from our list.
+
+9
+00:00:24,580 --> 00:00:27,250
+
+
+10
+00:00:27,250 --> 00:00:31,270
+Here we can look at what happens when we use sc.textfile
+
+11
+00:00:31,270 --> 00:00:33,940
+with an actual file instead.
+
+12
+00:00:33,940 --> 00:00:37,130
+So we can use a file that comes from HDFS, from a text file,
+
+13
+00:00:37,130 --> 00:00:41,460
+from Hypertable, Amazon S3 Apache Hbase, SequenceFiles,
+
+14
+00:00:41,460 --> 00:00:43,650
+or any other Hadoop input format or even
+
+15
+00:00:43,650 --> 00:00:46,510
+a directory or wild card.
+
+16
+00:00:46,510 --> 00:00:49,420
+Again, all that will happen is Spark
+
+17
+00:00:49,420 --> 00:00:51,360
+will record that we want to create
+
+18
+00:00:51,360 --> 00:00:54,170
+an RDD, in this case with four partitions,
+
+19
+00:00:54,170 --> 00:00:55,420
+from the file README.md.
+
+20
+00:00:55,420 --> 00:00:58,650
+
+
+21
+00:00:58,650 --> 00:01:01,380
+Now what actually happens when we
+
+22
+00:01:01,380 --> 00:01:04,580
+do something like sc.textfile?
+
+23
+00:01:04,580 --> 00:01:07,930
+We tell Spark that we want to create an RDD that's
+
+24
+00:01:07,930 --> 00:01:10,090
+distributed in four partitions.
+
+25
+00:01:10,090 --> 00:01:12,000
+Each element of that RDD is going
+
+26
+00:01:12,000 --> 00:01:14,440
+to be aligned from the input file.
+
+27
+00:01:14,440 --> 00:01:17,210
+And again, lazy evaluation means that no execution
+
+28
+00:01:17,210 --> 00:01:18,170
+happens right now.
+
+29
+00:01:18,170 --> 00:01:21,090
+All that happens is Spark records
+
+30
+00:01:21,090 --> 00:01:25,000
+how to create the RDD from that text file.
+

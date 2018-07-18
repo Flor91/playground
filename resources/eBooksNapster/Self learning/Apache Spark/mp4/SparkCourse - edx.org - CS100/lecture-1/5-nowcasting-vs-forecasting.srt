@@ -1,0 +1,228 @@
+0
+00:00:00,000 --> 00:00:00,730
+
+
+1
+00:00:00,730 --> 00:00:02,810
+Let's look at several examples of why
+
+2
+00:00:02,810 --> 00:00:06,130
+there's so much excitement around working with big data.
+
+3
+00:00:06,130 --> 00:00:08,850
+The first is nowcasting.
+
+4
+00:00:08,850 --> 00:00:11,520
+Traditionally what people have done is forecasting.
+
+5
+00:00:11,520 --> 00:00:13,980
+You collect a bunch of data, you build a model,
+
+6
+00:00:13,980 --> 00:00:17,010
+and you use that model to predict the future.
+
+7
+00:00:17,010 --> 00:00:19,950
+With nowcasting, you collect a lot of data
+
+8
+00:00:19,950 --> 00:00:21,710
+and you build a model, but instead you
+
+9
+00:00:21,710 --> 00:00:24,070
+use it to predict what's happening now.
+
+10
+00:00:24,070 --> 00:00:27,150
+So the example we're going to use is Google Flu trends.
+
+11
+00:00:27,150 --> 00:00:29,050
+The way that traditionally we determine
+
+12
+00:00:29,050 --> 00:00:30,990
+that there's an outbreak of the flu
+
+13
+00:00:30,990 --> 00:00:33,760
+is when someone's ill they go to the doctor,
+
+14
+00:00:33,760 --> 00:00:35,570
+the doctor fills out an incident report
+
+15
+00:00:35,570 --> 00:00:38,910
+and passes that on to their local health department, which
+
+16
+00:00:38,910 --> 00:00:42,950
+then passes it up the hierarchy through the county, the state.
+
+17
+00:00:42,950 --> 00:00:44,450
+Eventually it reaches the Centers
+
+18
+00:00:44,450 --> 00:00:47,812
+for Disease Control in Atlanta, Georgia.
+
+19
+00:00:47,812 --> 00:00:49,270
+That process takes about two weeks,
+
+20
+00:00:49,270 --> 00:00:51,540
+so it takes a roughly two weeks to know that there's
+
+21
+00:00:51,540 --> 00:00:54,090
+an outbreak of flu, by which time
+
+22
+00:00:54,090 --> 00:00:56,766
+the outbreak may actually already be over.
+
+23
+00:00:56,766 --> 00:00:59,680
+With Google Flu Trends, what Google did is
+
+24
+00:00:59,680 --> 00:01:02,460
+they started with lots of data.
+
+25
+00:01:02,460 --> 00:01:07,155
+From 2003 to 2008, they looked at weekly search queries.
+
+26
+00:01:07,155 --> 00:01:09,890
+There's about 50 million of these.
+
+27
+00:01:09,890 --> 00:01:11,710
+From the search queries, they were
+
+28
+00:01:11,710 --> 00:01:16,220
+able to derive 45 terms that were relevant to people
+
+29
+00:01:16,220 --> 00:01:18,500
+who are searching for flu information
+
+30
+00:01:18,500 --> 00:01:21,300
+when they had the flu.
+
+31
+00:01:21,300 --> 00:01:23,350
+They used this to build a model.
+
+32
+00:01:23,350 --> 00:01:25,620
+The model was very accurate.
+
+33
+00:01:25,620 --> 00:01:28,710
+In February of 2010 it was able to detect an outbreak
+
+34
+00:01:28,710 --> 00:01:32,550
+two weeks ahead of CDC data.
+
+35
+00:01:32,550 --> 00:01:36,040
+Initially the model was about 97% accurate,
+
+36
+00:01:36,040 --> 00:01:38,776
+but during the period from 2011 to 2013,
+
+37
+00:01:38,776 --> 00:01:42,860
+it overestimated the prevalence of flu,
+
+38
+00:01:42,860 --> 00:01:46,130
+including an interval in the 2012 to 2013
+
+39
+00:01:46,130 --> 00:01:48,900
+period where it was off by a factor of two.
+
+40
+00:01:48,900 --> 00:01:50,910
+That is, Google Flu Trends estimated
+
+41
+00:01:50,910 --> 00:01:53,120
+that there were twice as many flu cases
+
+42
+00:01:53,120 --> 00:01:54,960
+as there actually were.
+
+43
+00:01:54,960 --> 00:01:56,000
+So what happened?
+
+44
+00:01:56,000 --> 00:02:01,750
+What happened is Google rolled out flu stories in Google News
+
+45
+00:02:01,750 --> 00:02:03,530
+during this period.
+
+46
+00:02:03,530 --> 00:02:06,460
+And so now people started reading about flu in the news
+
+47
+00:02:06,460 --> 00:02:08,720
+and searching on those stories, either
+
+48
+00:02:08,720 --> 00:02:11,740
+for those stories or things in those stories,
+
+49
+00:02:11,740 --> 00:02:13,640
+and that skewed their results.
+
+50
+00:02:13,640 --> 00:02:15,880
+Once they identified those factors,
+
+51
+00:02:15,880 --> 00:02:17,570
+they were able to take them into account
+
+52
+00:02:17,570 --> 00:02:20,280
+and the model was very accurate after that.
+
+53
+00:02:20,280 --> 00:02:23,440
+And in fact today new types of models
+
+54
+00:02:23,440 --> 00:02:25,800
+are being used to estimate which cities are most
+
+55
+00:02:25,800 --> 00:02:29,340
+at risk for the spread of the Ebola virus.
+
+56
+00:02:29,340 --> 00:02:30,133
+
+

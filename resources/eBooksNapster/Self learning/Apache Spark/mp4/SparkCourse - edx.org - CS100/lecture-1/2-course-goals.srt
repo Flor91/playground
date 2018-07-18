@@ -1,0 +1,100 @@
+0
+00:00:00,000 --> 00:00:00,960
+
+
+1
+00:00:00,960 --> 00:00:04,720
+The goals of this course include learning about data science,
+
+2
+00:00:04,720 --> 00:00:07,765
+where does Big Data come from, performing observation
+
+3
+00:00:07,765 --> 00:00:11,280
+and experimentation, and the elements of data science, which
+
+4
+00:00:11,280 --> 00:00:16,000
+include data acquisition, data preparation, analysis,
+
+5
+00:00:16,000 --> 00:00:19,930
+data presentation, and data products.
+
+6
+00:00:19,930 --> 00:00:21,880
+Another goal of the course is that you
+
+7
+00:00:21,880 --> 00:00:24,595
+learn how to perform data science,
+
+8
+00:00:24,595 --> 00:00:27,790
+that you understand data quality and how to clean and manipulate
+
+9
+00:00:27,790 --> 00:00:31,080
+data sets, how to use and parse data representations,
+
+10
+00:00:31,080 --> 00:00:33,120
+and how to use basic machine learning
+
+11
+00:00:33,120 --> 00:00:34,910
+algorithms and libraries.
+
+12
+00:00:34,910 --> 00:00:37,550
+And that you learn how to write big data applications
+
+13
+00:00:37,550 --> 00:00:41,780
+and perform exploratory data analysis.
+
+14
+00:00:41,780 --> 00:00:43,810
+The third goal of this course is that you learn
+
+15
+00:00:43,810 --> 00:00:46,150
+to write Apache Spark programs.
+
+16
+00:00:46,150 --> 00:00:49,090
+You'll learn about the history and development of Apache
+
+17
+00:00:49,090 --> 00:00:51,520
+Spark, along with its conceptual model,
+
+18
+00:00:51,520 --> 00:00:53,770
+how the Spark cluster model works.
+
+19
+00:00:53,770 --> 00:00:57,220
+And you'll learn about Spark essentials, transformations,
+
+20
+00:00:57,220 --> 00:01:01,140
+actions, persistence, broadcast variables, accumulators,
+
+21
+00:01:01,140 --> 00:01:06,060
+key value pairs, and the Python spark API, pySpark.
+
+22
+00:01:06,060 --> 00:01:08,120
+You'll also learn how to debug Spark programs
+
+23
+00:01:08,120 --> 00:01:13,270
+and how to use Spark's mllib library for machine learning.
+
+24
+00:01:13,270 --> 00:01:14,167
+
+

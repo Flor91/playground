@@ -1,0 +1,192 @@
+0
+00:00:00,000 --> 00:00:00,500
+
+
+1
+00:00:00,500 --> 00:00:03,000
+We're just going to go through a few basic commands
+
+2
+00:00:03,000 --> 00:00:06,670
+for using the box.
+
+3
+00:00:06,670 --> 00:00:10,660
+Going through Vagrant and using the proper commands
+
+4
+00:00:10,660 --> 00:00:14,500
+ensures, or should ensure that your virtual machine remains
+
+5
+00:00:14,500 --> 00:00:16,745
+stable and usable.
+
+6
+00:00:16,745 --> 00:00:20,070
+If you use any other methods or do not
+
+7
+00:00:20,070 --> 00:00:22,930
+do clean shutdowns of the virtual machine,
+
+8
+00:00:22,930 --> 00:00:25,460
+unexpected things could happen.
+
+9
+00:00:25,460 --> 00:00:30,920
+So first off, I'm going to open up VirtualBox
+
+10
+00:00:30,920 --> 00:00:32,980
+so we can see it running here in the background.
+
+11
+00:00:32,980 --> 00:00:34,925
+Here I see my virtual machine is powered off.
+
+12
+00:00:34,925 --> 00:00:38,234
+
+
+13
+00:00:38,234 --> 00:00:41,700
+Open up a terminal.
+
+14
+00:00:41,700 --> 00:00:44,630
+Put it in the foreground, kind of over here.
+
+15
+00:00:44,630 --> 00:00:48,970
+CD into my directory, my custom directory, my vagrant,
+
+16
+00:00:48,970 --> 00:00:53,450
+and to just simply start the virtual machine or the box,
+
+17
+00:00:53,450 --> 00:00:54,420
+do a Vagrant up.
+
+18
+00:00:54,420 --> 00:01:07,590
+
+
+19
+00:01:07,590 --> 00:01:10,640
+It'll take a little bit here, but it will start.
+
+20
+00:01:10,640 --> 00:01:13,220
+
+
+21
+00:01:13,220 --> 00:01:14,840
+You can see what's going on here,
+
+22
+00:01:14,840 --> 00:01:16,960
+there's a preview screen here.
+
+23
+00:01:16,960 --> 00:01:24,100
+
+
+24
+00:01:24,100 --> 00:01:26,910
+And we'll also get some feedback immediate here,
+
+25
+00:01:26,910 --> 00:01:30,210
+command line, once it's actually done starting up.
+
+26
+00:01:30,210 --> 00:01:42,460
+
+
+27
+00:01:42,460 --> 00:01:44,620
+So it's started.
+
+28
+00:01:44,620 --> 00:01:49,440
+To do a clean shutdown, or clean stop of my virtual machine
+
+29
+00:01:49,440 --> 00:01:55,899
+we'd do a vagrant halt. OK, that's the command to run,
+
+30
+00:01:55,899 --> 00:01:57,940
+and that should be the command that you basically
+
+31
+00:01:57,940 --> 00:02:01,090
+run every time you're going to possibly shut down
+
+32
+00:02:01,090 --> 00:02:04,160
+your desktop, your system server, or what have you.
+
+33
+00:02:04,160 --> 00:02:07,420
+
+
+34
+00:02:07,420 --> 00:02:13,410
+There's also a Vagrant destroy, which will basically remove
+
+35
+00:02:13,410 --> 00:02:14,920
+the virtual machine completely.
+
+36
+00:02:14,920 --> 00:02:18,730
+So it would actually remove this virtual machine here
+
+37
+00:02:18,730 --> 00:02:23,520
+completely, if I did a destroy, which I'm not going to do.
+
+38
+00:02:23,520 --> 00:02:28,180
+OK, so I'm going to leave it running, minimize.
+
+39
+00:02:28,180 --> 00:02:31,560
+
+
+40
+00:02:31,560 --> 00:02:35,820
+So now we're going to go-- not that we have the box running,
+
+41
+00:02:35,820 --> 00:02:39,810
+we're going to go to our Python notebook that should be running
+
+42
+00:02:39,810 --> 00:02:40,935
+within the virtual machine.
+
+43
+00:02:40,935 --> 00:02:43,820
+
+
+44
+00:02:43,820 --> 00:02:47,140
+So the special port to access it, an address,
+
+45
+00:02:47,140 --> 00:02:55,970
+127.0.0.1:80001.
+
+46
+00:02:55,970 --> 00:02:58,970
+And there we go, our Python notebook.
+
+47
+00:02:58,970 --> 00:03:00,070
+
+

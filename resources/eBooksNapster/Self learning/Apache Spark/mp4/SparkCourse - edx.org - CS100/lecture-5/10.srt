@@ -1,0 +1,160 @@
+0
+00:00:00,000 --> 00:00:01,450
+
+
+1
+00:00:01,450 --> 00:00:03,830
+One of the most important considerations for file format
+
+2
+00:00:03,830 --> 00:00:05,950
+is performance.
+
+3
+00:00:05,950 --> 00:00:10,220
+Now, when you think about file format in terms of performance,
+
+4
+00:00:10,220 --> 00:00:13,670
+consider the read versus the write performance;
+
+5
+00:00:13,670 --> 00:00:17,350
+the performance for plain text versus binary format;
+
+6
+00:00:17,350 --> 00:00:21,920
+the environment that you use, Python versus Scala or Java;
+
+7
+00:00:21,920 --> 00:00:25,690
+and uncompressed versus compressed.
+
+8
+00:00:25,690 --> 00:00:30,520
+So here's an example using a 626-megabyte text file
+
+9
+00:00:30,520 --> 00:00:35,070
+and a 787-megabyte binary file in two environments,
+
+10
+00:00:35,070 --> 00:00:38,500
+a Python environment using Pandas and a Scala/Java
+
+11
+00:00:38,500 --> 00:00:40,670
+environment.
+
+12
+00:00:40,670 --> 00:00:44,140
+Now, on the first line, we see the Python performance.
+
+13
+00:00:44,140 --> 00:00:45,790
+And we can see that the read time
+
+14
+00:00:45,790 --> 00:00:49,080
+for the text version of the file, for a text file
+
+15
+00:00:49,080 --> 00:00:50,590
+is 36 seconds.
+
+16
+00:00:50,590 --> 00:00:52,700
+The write time is 45 seconds.
+
+17
+00:00:52,700 --> 00:00:56,560
+There's no times for binary reading of the binary file
+
+18
+00:00:56,560 --> 00:00:59,927
+because Pandas does not have a binary file I/O library, which
+
+19
+00:00:59,927 --> 00:01:02,510
+means that the performance that you're going to see for Python
+
+20
+00:01:02,510 --> 00:01:06,810
+will depend on which particular library that you choose to use.
+
+21
+00:01:06,810 --> 00:01:10,070
+Now, for Scala and Java, we see that the read time
+
+22
+00:01:10,070 --> 00:01:11,470
+is 18 seconds.
+
+23
+00:01:11,470 --> 00:01:14,420
+And the write time is 21 seconds for the text file.
+
+24
+00:01:14,420 --> 00:01:17,510
+And the read time is one to six seconds for the binary file
+
+25
+00:01:17,510 --> 00:01:22,530
+and one to six seconds for the write of the binary file.
+
+26
+00:01:22,530 --> 00:01:25,950
+Now, the difference here in range from one to six seconds
+
+27
+00:01:25,950 --> 00:01:28,600
+is because six seconds is the time for when we're
+
+28
+00:01:28,600 --> 00:01:31,730
+doing sustained reading and writing of a file, when it's
+
+29
+00:01:31,730 --> 00:01:34,121
+not cached in a system cache.
+
+30
+00:01:34,121 --> 00:01:35,870
+But if it gets cached in the system cache,
+
+31
+00:01:35,870 --> 00:01:39,590
+we'll see much faster performance, especially when
+
+32
+00:01:39,590 --> 00:01:41,160
+dealing with binary files.
+
+33
+00:01:41,160 --> 00:01:44,240
+Now overall, we can see that the read and write
+
+34
+00:01:44,240 --> 00:01:48,890
+times are quite comparable between Python
+
+35
+00:01:48,890 --> 00:01:52,490
+and also for Scala and Java.
+
+36
+00:01:52,490 --> 00:01:55,670
+However, we notice that binary I/O is much,
+
+37
+00:01:55,670 --> 00:02:00,550
+much faster than text I/O. In fact, it's
+
+38
+00:02:00,550 --> 00:02:03,590
+more than an order of magnitude greater performance
+
+39
+00:02:03,590 --> 00:02:08,720
+when dealing with binary files instead of textual files.
+
