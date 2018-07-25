@@ -1,13 +1,6 @@
 #! python3
 # phoneEmainExtractor.py - Extracts emails and phones from texts copied into clipboard
 
-'''
-Say you have the boring task of finding every phone number and email address in a long web page or document. 
-If you manually scroll through the page, you might end up searching for a long time. 
-But if you had a program that could search the text in your clipboard for phone numbers and email addresses, you could simply press CTRL-A to select all the text, press CTRL-C to copy it to the clipboard, and then run your program. 
-It could replace the text on the clipboard with just the phone numbers and email addresses it finds.
-'''
-
 import pyperclip, re
 
 text = str(pyperclip.paste())
@@ -28,6 +21,21 @@ emailRegex = re.compile(r'''(
       (\.[a-zA-Z]{2,4})      # dot-something
       )''', re.VERBOSE)
 
+webRegex = re.compile(r'''(
+    (((http)|(https)):\\\\)?  # begins with either http:// or https://
+    (www\.)
+    [a-zA-Z0-9._%+-]+      # webpage name
+    (\.[a-zA-Z]{2,4})      # dot-something
+)''', re.VERBOSE)
+
+# dateRegex = re.compile(r'''
+#     ([1-9]{1})|([0-9]{2})|(\d{4})   # first part of date
+#     (/|-|\.|\\)              # separator
+#     ([1-9]{1})|(\d{2}))      # second part of date
+#     (/|-|\.|\\)              # separator
+#     (([1-9]{1})|(\d{2})|(\d{4})         # third part of date
+#     ''', re.VERBOSE)
+
 matches = []
 
 for groups in phoneRegex.findAll(text):
@@ -38,6 +46,20 @@ for groups in phoneRegex.findAll(text):
 
 for groups in emailRegex.findall(text):
 	matches.append(groups[0])
+
+for groups in webRegex.findAll(text):
+    matches.append(groups[0])
+
+# for groups in dateRegex.findAll(text):
+#
+#     y = groups[5]
+#     if len(y) != 4:
+#         if int(y) < 20:
+#             y = "20" + y
+#         else:
+#             y = "19" + y
+#     date = '/'.join([groups[1], groups[3], groups[5]])
+#     matches.append(date)
 
 if len(matches) > 0:
 	pyperclip.copy('\n'.join(matches))
