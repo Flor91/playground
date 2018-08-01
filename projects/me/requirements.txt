@@ -1,0 +1,3 @@
+myfitnesspal
+habitica
+openpyxl
