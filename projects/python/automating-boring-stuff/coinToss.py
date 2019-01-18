@@ -4,6 +4,10 @@ while guess not in ('heads', 'tails'):
     print('Guess the coin toss! Enter heads or tails:')
     guess = input()
 toss = random.randint(0, 1) # 0 is tails, 1 is heads
+if toss == 1: 
+	toss = 'heads'
+else:
+	toss = 'tails'
 if toss == guess:
     print('You got it!')
 else:
